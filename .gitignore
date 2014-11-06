@@ -1,0 +1,4 @@
+.idea
+*.idea
+bedrockstone_v2/web/static/*
+bedrockstone_v2/bedrockstone_v2/local_settings.*
