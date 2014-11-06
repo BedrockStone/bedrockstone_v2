@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'r3@m81j=gb6nfy5)zi3q=y_9+na$ygzb$x2y1t)%61$#_^4$sa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -81,6 +81,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'web/static')
 
 #Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'web/static/media')
