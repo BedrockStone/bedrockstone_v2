@@ -1,0 +1,191 @@
+{% extends 'web/base.html' %}
+{% load staticfiles %}
+{% block head_scripts %}
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script src="{% static 'js/jquery.mobile.customized.min.js' %}"></script>
+<!--<![endif]-->
+<script>
+ $(document).ready(function(){
+
+
+       /////////////////////// camera with owl carousel //////////////////////////
+
+        var $owl = $("#owl"),
+            $camera = $('#camera_wrap');
+       /* carousel */
+        $owl.owlCarousel({
+            items : 4, //10 items above 1000px browser width
+            itemsDesktop : [995,3], //5 items between 1000px and 901px
+            itemsDesktopSmall : [767, 3], // betweem 900px and 601px
+            itemsTablet: [700, 3], //2 items between 600 and 0
+            itemsMobile : [479, 3], // itemsMobile disabled - inherit from itemsTablet option
+            navigation : true,
+            pagination :  true
+        });
+
+       $camera.camera({
+            loader: false,
+            pagination: true,
+            minHeight: '500',
+            thumbnails: false,
+            height: '46.875%',
+            caption: true,
+            navigation: false,
+            fx: 'mosaic',
+            time: 4000,
+            onStartTransition:function(){
+              var ind = $camera.find('.camera_pag_ul>li.cameracurrent').index();
+              (ind < 0)&&(ind = 0);
+
+              $('.item', $owl)
+                .removeClass('active')
+                .eq(ind).addClass('active');
+
+              $owl
+                .data('owlCarousel')
+                .goTo(ind);
+            }
+          });
+
+        $owl.find('.item a').click(function(){
+          var $this = $(this),
+              ind = $this.parents('.owl-item').index();
+          $('.camera_pag_ul>li').eq(ind).click();
+          return false;
+        })
+
+        /////////////////////// end of camera with owl carousel //////////////////////////
+
+  $().UItoTop({ easingType: 'easeOutQuart' });
+  $('#stuck_container').tmStickUp({});
+
+   $("#owl1").owlCarousel({
+            items : 4, //10 items above 1000px browser width
+            itemsDesktop : [995,3], //5 items between 1000px and 901px
+            itemsDesktopSmall : [767, 2], // betweem 900px and 601px
+            itemsTablet: [700, 2], //2 items between 600 and 0
+            itemsMobile : [479, 1], // itemsMobile disabled - inherit from itemsTablet option
+            navigation : false,
+            pagination :  false
+        });
+  });
+</script>
+<!--[if lt IE 9]>
+ <div style=' clear: both; text-align:center; position: relative;'>
+   <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+     <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+   </a>
+</div>
+<script src="js/html5shiv.js"></script>
+<link rel="stylesheet" media="screen" href="css/ie.css">
+
+
+<![endif]-->
+ <style type="text/css">
+ .camera_pag_ul span{
+     display: none;
+ }
+
+ </style>
+{% endblock %}
+{% block content %}
+<div class="slider_wrapper ">
+  <div id="camera_wrap" class="">
+    {% for item in galleryItems %}
+    <div data-src="{{ MEDIA_URL }}{{ item.preview }}"></div>
+    {% endfor %}
+  </div>
+  <div class="car_div">
+    <div id="owl">
+      {% for item in galleryItems %}
+        <div class="item"><a href="#"><img src="{{ MEDIA_URL }}{{ item.image }}" alt="{{ image.name }}" /></a></div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="page1_block">
+  <div class="container">
+    <div class="row">
+      <div class="grid_12">
+        <h2>Austin's premier rock supplier!</h2>
+        <strong>Bedrock Stone &amp; Design is the headquarters for the largest selection of stone in Central Texas.
+            With four convenient locations, both North and South Austin customers are able to benefit from wide
+            selection of product. At Bedrock, we take great pride in being the "Stone of Choice", not only for
+            commercial contractors, but designers and retail customers.</strong>
+      </div>
+    </div>
+  </div>
+</div>
+<!--=====================
+          Content
+======================-->
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="grid_4">
+        <div class="box">
+          <div class="maxheight">
+            <div class="box_title">Natural Stone</div>
+            <img src="{% static 'images/page1_img1.jpg' %}" alt="">
+            <div class="box_bot">Bedrock Stone &amp; Design has the largest selection of natural stone in the Austin, Tx
+                area. Feel free to browse our virtual showcase.
+
+              <a href="{% url 'natural_stone' %}" class="quest"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid_4">
+        <div class="box">
+          <div class="maxheight">
+            <div class="box_title bt__1">Thin Veneer</div>
+            <img src="{% static 'images/page1_img2.jpg' %}" alt="">
+            <div class="box_bot">
+                Bedrock Stone &amp; Design carries a large selection of Thin Veneer products.
+                The relatively light-weight application broadens your options when considering the best location
+                for this beautiful, easy to use product.
+                <a href="{% url 'category' 'thin_venner' %}" class="quest"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid_4">
+        <div class="box">
+          <div class="maxheight">
+            <div class="box_title bt__2">Masonry Supplies </div>
+            <img src="{% static 'images/page1_img3.jpg' %}" alt="">
+            <div class="box_bot">
+                Bedrock Stone &amp; Design carries a full line of masonry tools at great prices for your convenience.
+                <a href="{% url 'category' 'masonry_tools' %}" class="quest"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid_12">
+        <h3>Our Locations</h3>
+        <div id="owl1">
+          <div class="item">
+            <img src="{% static 'images/rock_1.jpg' %}" class="img_inner" alt="">
+            <div class="text1"><a href="{% url 'locations' 'rock_1' %}">Rock 1</a></div>
+          </div>
+          <div class="item">
+            <img src="{% static 'images/rock_2.JPG' %}" class="img_inner" alt="">
+            <div class="text1"><a href="{% url 'locations' 'rock_2' %}">Rock 2</a></div>
+          </div>
+          <div class="item">
+            <img src="{% static 'images/rock_3.jpg' %}" class="img_inner" alt="">
+            <div class="text1"><a href="{% url 'locations' 'rock_3' %}">Rock 3</a></div>
+          </div>
+          <div class="item">
+            <img src="{% static 'images/rock_4.JPG' %}" class="img_inner" alt="">
+            <div class="text1"><a href="{% url 'locations' 'rock_4' %}">Rock 4</a></div>
+          </div>
+          <!--
+          <div class="item">
+            <img src="{% static 'images/page1_img4.jpg' %}" class="img_inner" alt="">
+            <div class="text1"><a href="#">culinary experience</a></div>
+          </div>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% block header_title %}{{ location.name }}{% endblock %}
+{% block header_image_src %}{{ STATIC_URL }}/images/{{ location.slug }}.jpg{% endblock %}
+{% block content_blurb %}
+    <address>
+        {{ location.address.street }}<br />
+        {{ location.address.city }},{{ location.address.zip }}
+    </address>
+
+
+<div class="map">
+    <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.address.city }}{{ ' '|iriencode }}{{ location.address.zip }}" target="google">
+        <img src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=400x400&markers={{ location.address |iriencode }},{{ location.address.city }}{{ ' '|iriencode }}{{ location.address.zip }}">
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'web/base.html' %}
+{% load staticfiles %}
+{% block head_scripts %}
+{% endblock %}
+{% block content %}
+ <div class="container">
+ <div class="row">
+    <div class="grid_12">
+    <h3>Products</h3>
+    <div class="grid_3">
+        <div class="box" style="padding:7px;margin:0 1em 0 0; ">
+            <img src="{% static 'images/products.jpg' %}"  style="width:200px;" />
+        </div>
+    </div>
+
+    <p>
+        Bedrock Stone &amp; Design is proud to feature the largest selection of stone products in the Austin, Tx
+        area. You can browse just a few of them here.
+    </p>
+ </div>
+ </div>
+ <div class="row">
+{% for category in categories %}
+       <div class="grid_4">
+            <div class="box">
+                <div class="maxheight" style="height: 460px;">
+                    <div class="box_inner">
+                        <div class="box_title">{{ category.name }}</div>
+                        <img src="{{ MEDIA_URL }}{{ category.image }}" alt="">
+                        <div class="box_bot">
+                            <div>{{ category.description |linebreaks }}</div>
+                            <a href="{% url 'category' category.slug %}" class="btn">View Products</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+           <!--
+        <a href="full-gallery-2.html" class="lightbox"><img src="{{ MEDIA_URL }}{{ category.image }}" alt=""></a>
+        <div class="text1"><a href="#">{{ category.name }}</a></div>
+        {{ categories.description }}
+        -->
+      </div>
+{% endfor %}
+ </div>
+<div class="clear sep__2"></div>
+ </div>
+
+{% endblock %}

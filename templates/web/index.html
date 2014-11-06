@@ -1,0 +1,98 @@
+{% extends "web/base_web.html" %}
+{% load staticfiles %}
+{% block pageId %}index{%endblock%}
+{% block content %}
+			<div class="header">
+				<div>
+					<a id="slider_container"><img src="{% static 'images/18.jpg' %}" /></a>
+					<div>
+						<h1><a href="gardens.html">Bedrock Stone &amp; Design</a></h1>
+						<p>
+							Welcome to Bedrock Stone &amp; Design. Bedrock Stone is Austin's premier rock yard.
+						</p>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<a href="index.html" class="figure">
+                            <img src="{% static "images/gardening2.jpg" %}" alt="Image">
+
+                        </a>
+						<h3><a href="index.html">Pools</a></h3>
+						<p>
+							View photos of beautiful pools built using some of our products.
+						</p>
+					</li>
+					<li>
+						<a href="gardens.html" class="figure"><img src="{% static "images/gardening3.jpg" %}" alt="Image"></a>
+						<h3><a href="gardens.html">Patios</a></h3>
+						<p>
+							Natural stone patios add warmth an character to any patio. View some here.
+						</p>
+					</li>
+					<li class="last">
+						<a href="plants.html" class="figure"><img src=" {% static "images/gardening4.jpg" %}" alt="Image"></a>
+						<h3><a href="plants.html">Landscaping</a></h3>
+						<p>
+							Natural rock has many uses in landscaping. Browse some of our photos.
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="body">
+				<h1>Locations</h1>
+				<ul>
+					<li>
+						<a href="/locations/"><img src="{% static "images/garden1.jpg" %}" alt="Image"></a>
+						<h2>Rock 1</h2>
+						<p>
+							Lorem ipsum dolor sit amet aaas, consectetur adipiscing elit. Sed luctus nisi...
+						</p>
+					</li>
+					<li>
+						<a href="gardens.html"><img src="{% static "images/garden2.jpg" %}" alt="Image"></a>
+						<h2>Rock 2</h2>
+						<p>
+							Etiam sed auctor turpis. Maecenas orci purus, ultrices eget rhoncus in...
+						</p>
+					</li>
+					<li>
+						<a href="gardens.html"><img src="{% static "images/garden3.jpg" %}" alt="Image"></a>
+						<h2>Rock 3</h2>
+						<p>
+							Phasellus eleifend fringilla gravida. Etiam ultrices convallis sodales...
+						</p>
+					</li>
+					<li>
+						<a href="gardens.html"><img src="{%  static "images/garden4.jpg" %}" alt="Image"></a>
+						<h2>Rock 4</h2>
+						<p>
+							Cras nec velit nec turpis aliquet aliquet id imperdiet libero...
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="footer">
+				<img src="{%  static "images/gardening5.jpg" %}" alt="Image">
+				<div>
+					<h1>Tips of the Week</h1>
+					<ol>
+						<li>
+							<p>
+								Aenean nulla purus nullam dapibus erat lobortis est molestie consectetur adipiscing elit.
+							</p>
+						</li>
+						<li>
+							<p>
+								Etiam sed auctor turpis. Maecenas orci purus, ultrices eget rhoncus in, vestibulum a justo. Nunc in risus erat.
+							</p>
+						</li>
+						<li>
+							<p>
+								Duis pellentesque consequat tincidunt. Nam elementum interdum gravida. Morbi risus velit molestie.
+							</p>
+						</li>
+					</ol>
+				</div>
+			</div>
+            {% endblock %}

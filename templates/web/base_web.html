@@ -1,0 +1,113 @@
+{% extends "web/base_generic.html" %}
+{% load staticfiles %}
+{% load extras %}
+    {% block head %}
+    <meta charset="UTF-8">
+	<title>Bedrock Stone &amp; Design, Austin, Tx </title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css"%}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jssor.core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jssor.utils.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jssor.slider.js' %}"></script>
+
+    {%  endblock %}
+    {% block body %}
+	<div id="page">
+		<div id="header">
+			<a href="index.html" id="logo"><img src="{% static "images/bedrock.png"%}" alt="Logo"></a>
+            {% block menu %}
+            <ul id="main_menu">
+                {% nav_item request 'index,Home'%}
+                {% nav_item request 'about us,About' %}
+                <li class="products">
+                    <a href="#">Products</a>
+                    <ul>
+                        {% for product in products %}
+                            <li><a href="#">{{ product.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% nav_item request 'virtual showcase, Virtual Showcase' %}
+                {% if jobs %}
+				<li class="jobs">
+					<a href="{% url 'jobs' %}">Jobs</a>
+					<ul>
+                        {% for job in jobs %}
+
+                        <li>
+							<a href="/jobs/{{ job.url }}">{{ job.name }}</a>
+						</li>
+
+                        {% endfor %}
+					</ul>
+				</li>
+                {% endif %}
+                {% nav_item request 'contact, Contact' %}
+			</ul>
+            {% endblock %}
+		</div>
+		<div id="body">
+            {% block content %}
+
+            {% endblock %}
+		</div>
+		<div id="footer">
+            {% block footer %}
+			<div>
+				<div>
+					<h1>Outdoor living</h1>
+					<ul>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h1>Exterior Stone</h1>
+					<ul>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h1>Builders, Architects &amp; Contractors</h1>
+					<ul>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+						<li>
+							<a href="index.html">This is just a place holder</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h1>Connect</h1>
+					<a href="#" target="_blank" id="mail">Email us</a>
+					<a href="#" target="_blank" id="facebook">Facebook</a>
+					<a href="#" target="_blank" id="twitter">Twitter</a>
+					<a href="#" target="_blank" id="googleplus">Google&#43;</a>
+				</div>
+			</div>
+			<p>
+				Bedrock Stone & Design &copy; 2014  | All Rights Reserved
+			</p>
+            {% endblock %}
+		</div>
+	</div>
+    {% endblock %}

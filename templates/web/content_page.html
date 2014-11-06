@@ -1,0 +1,23 @@
+{% extends 'web/base.html' %}
+{% load staticfiles %}
+{% block head_scripts %}
+{% endblock %}
+{% block content %}
+ <div class="container" style="min-height: 350px">
+ <div class="row">
+    <div class="grid_12">
+    <h3>{% block header_title %}{% endblock %}</h3>
+    <div class="grid_3">
+        <div class="box" style="padding:7px;margin:0 1em 0 0; ">
+            <img src="{% block header_image_src %}{% endblock %}"  style="width:200px;" />
+        </div>
+    </div>
+       {% block content_blurb %}{% endblock %}
+
+ </div>
+ </div>
+ <div class="row">
+    {% block main_content %}{% endblock %}
+ </div>
+</div>
+{% endblock %}
