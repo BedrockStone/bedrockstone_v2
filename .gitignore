@@ -1,5 +1,5 @@
 .idea/*
 *.idea
-bedrockstone_v2/web/static/*
+web/static/*
 bedrockstone_v2/local_settings.*
 bedrockstone_v2/local_settings.
