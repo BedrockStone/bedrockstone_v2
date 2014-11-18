@@ -43,6 +43,7 @@ nav {
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
+
 }
 
 .sf-menu>li>a{
@@ -50,13 +51,13 @@ nav {
 	color: #fff; 
 	font-weight: 300;
 	display: block;
-	background: url(../images/menu_hover.png) 0 -100px repeat-x;
+	background: url(../images/menu_hover_1.png) 0 -100px repeat-x;
 	padding: 29px 16px 31px;
 }
 
 .sf-menu>li.sfHover>a, .sf-menu>li.current>a, .sf-menu>li>a:hover {
 	background-position: 0 0;
-	background-color: #00aeff;
+	background-color: #dddddd;
 }
  
 .sf-menu>li>ul>li>a.sf-with-ul:after {
@@ -103,7 +104,8 @@ nav {
 	top: 100%;
 	padding-top: 16px;
 	padding-bottom: 16px;
-	background: #00aeff url(../images/sub_bg.png) 0 0 repeat-x;
+	/*background: #00aeff url(../images/sub_bg.png) 0 0 repeat-x;*/
+    background: #dddddd url(../images/sub_bg.png) 0 0 repeat-x;
 }
 
 

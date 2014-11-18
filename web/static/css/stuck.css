@@ -1,11 +1,14 @@
 #stuck_container {
-	background: url(../images/header_bg.png) 0 0 repeat-x #00b6ff;
+	/*background: url(../images/header_bg.png) 0 0 repeat-x #00b6ff;
+    background: url(../images/header_bg.png) 0 0 repeat-x #CCC;*/
+    background: url(../images/header_background.png) bottom left repeat-x;
 		-webkit-transition: all 0.4s ease;
 		-moz-transition: all 0.4s ease;
 		-ms-transition: all 0.4s ease;
 		-o-transition: all 0.4s ease;
 		transition: all 0.4s ease;
 		z-index: 999;
+    /*background-color: #636363;*/
 }
 
 .isStuck {

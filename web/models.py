@@ -73,4 +73,15 @@ class GalleryItem(NamedModel):
         ordering = ['sort_order']
 
 
+class StaffMember(NamedModel):
+    title = models.CharField(max_length=50)
+    bio = models.TextField(null=True)
+    email = models.EmailField(null=True)
+    photo = models.ImageField(null=True)
+    sort_order = models.IntegerField(default=500)
+
+    class Meta:
+        ordering = ['sort_order']
+
+
 
