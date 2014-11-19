@@ -1,3 +1,4 @@
+from django.core.validators import RegexValidator
 from django.db import models
 
 # Create your models here.
@@ -56,6 +57,11 @@ class Address(models.Model):
 class Location(NamedModel):
     address = models.ForeignKey(Address)
     description = models.TextField(null=True)
+    phone_number = models.CharField(null=True, max_length=13)
+    sort_order = models.IntegerField(default=500)
+
+    class Meta:
+        ordering = ['sort_order']
 
 
 class Job(NamedModel):

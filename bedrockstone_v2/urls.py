@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^services/$', views.services, name='services'),
     url(r'^gallery/$', views.gallery, name='gallery'),
     url(r'^natural_stone/$', views.natural_stone, name='natural_stone'),
+    url(r'^staff/$', views.staff, name='staff'),
     #url(r'^p/*/$', views.category, name='category'),
 
 

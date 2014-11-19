@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from web.models import Job, Location, Category, CategoryProduct, GalleryItem
+from web.models import Job, Location, Category, CategoryProduct, GalleryItem, StaffMember
 
 # Create your views here.
 from django.template import RequestContext
@@ -10,12 +10,19 @@ def index(request):
     g = GalleryItem.objects.all()
     return render(request, 'web/home.html', {'galleryItems': g})
 
+
 def contact(request):
-    return render(request, 'web/contact.html')
+    locations = Location.objects.all().order_by('sort_order')
+    return render(request, 'web/contact.html', {'locations': locations})
 
 
 def aboutus(request):
     return render(request, 'web/aboutus.html')
+
+
+def staff(request):
+    s = StaffMember.objects.all().order_by('sort_order')
+    return render(request, 'web/staff.html', {'staff': s})
 
 
 def jobs(request):
@@ -30,7 +37,7 @@ def job_details(request, job_name):
     job = get_object_or_404(Job, url=job_name)
     context = {'jobs': Job.objects.all(), 'job': job}
     #return render(request, context, "web/job_details.html")
-    return render(request, 'web/job_details.html',context)
+    return render(request, 'web/job_details.html', context)
 
 
 def location(request,name):

@@ -1,0 +1,23 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% block header_title %}Bedrock Stone &amp; Design Senior Staff{% endblock %}
+{% block header_image_src %}{% static 'images/products.JPG' %}{% endblock %}
+{% block main_content %}
+
+{% for staffMember in staff %}
+    <div class="grid_4">
+        <div class="box">
+            <div class="box_inner">
+                <div class="box_title">
+                    {{ staffMember.name }}
+                </div>
+                <img src="{{ MEDIA_URL }}{{ staffMember.photo }}" alt="">
+                <div class="box_bot">
+                    {{ staffMember.title }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
