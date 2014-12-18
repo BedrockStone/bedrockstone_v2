@@ -70,7 +70,7 @@ class Job(NamedModel):
 
 
 class GalleryItem(NamedModel):
-    description = models.TextField()
+    description = models.TextField(null=True)
     preview = models.ImageField()
     image = models.ImageField()
     sort_order = models.IntegerField(default=5000)

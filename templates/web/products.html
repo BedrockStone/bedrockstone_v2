@@ -14,22 +14,15 @@
             <div class="box">
                 <div class="maxheight" style="height: 460px;">
                     <div class="box_inner">
-                        <div class="box_title">{{ category.name }}</div>
+                        <div class="box_title"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
                         <img src="{{ MEDIA_URL }}{{ category.image }}" alt="">
                         <div class="box_bot">
                             <div>{{ category.description |linebreaks }}</div>
-                            <a href="{% url 'category' category.slug %}" class="btn">View Products</a>
                         </div>
-
                     </div>
                 </div>
             </div>
-           <!--
-        <a href="full-gallery-2.html" class="lightbox"><img src="{{ MEDIA_URL }}{{ category.image }}" alt=""></a>
-        <div class="text1"><a href="#">{{ category.name }}</a></div>
-        {{ categories.description }}
-        -->
-      </div>
+       </div>
 {% endfor %}
 
 {% endblock %}
