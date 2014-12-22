@@ -28,14 +28,14 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+import storages
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles','storages',
     'web',
 )
 
@@ -90,7 +90,6 @@ MEDIA_URL = '/static/media/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
-
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
@@ -100,7 +99,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
-    'web.core.context_processor','storages',)
+    'web.core.context_processor',)
 
 
 from local_settings import *
