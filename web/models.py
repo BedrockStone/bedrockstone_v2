@@ -18,8 +18,8 @@ class ModelWithImage(NamedModel):
 
 
 class Category(ModelWithImage):
-    description = models.TextField(null=True)
-    sort_order = models.IntegerField(null=True)
+    description = models.TextField(null=True, blank=True, )
+    sort_order = models.IntegerField(null=True, default=5000)
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -57,7 +57,7 @@ class Address(models.Model):
 class Location(NamedModel):
     address = models.ForeignKey(Address)
     description = models.TextField(null=True)
-    phone_number = models.CharField(null=True, max_length=13)
+    phone_number = models.CharField(null=True, blank=True,  max_length=13)
     sort_order = models.IntegerField(default=500)
 
     class Meta:
@@ -70,7 +70,7 @@ class Job(NamedModel):
 
 
 class GalleryItem(NamedModel):
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     preview = models.ImageField()
     image = models.ImageField()
     sort_order = models.IntegerField(default=5000)
@@ -81,9 +81,9 @@ class GalleryItem(NamedModel):
 
 class StaffMember(NamedModel):
     title = models.CharField(max_length=50)
-    bio = models.TextField(null=True)
-    email = models.EmailField(null=True)
-    photo = models.ImageField(null=True)
+    bio = models.TextField(blank=True)
+    email = models.EmailField(null=True, blank=True)
+    photo = models.ImageField(null=True, blank=True)
     sort_order = models.IntegerField(default=500)
 
     class Meta:
