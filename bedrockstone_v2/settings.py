@@ -109,5 +109,8 @@ from datetime import date, timedelta
 tenyrs = date.today() + timedelta(days=365*10)
 # Expires 10 years in the future at 8PM GMT
 AWS_HEADERS = {
-    'Expires': tenyrs.strftime('%a, %d %b %Y 20:00:00 GMT')
+    'Expires': tenyrs.strftime('%a, %d %b %Y 20:00:00 GMT'),
+    'Vary': 'Accept-Encoding',
+
 }
+AWS_IS_GZIPPED = True
