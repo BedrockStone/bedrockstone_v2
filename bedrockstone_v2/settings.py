@@ -101,5 +101,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'web.core.context_processor',)
 
-
 from local_settings import *
+
+
+
+from datetime import date, timedelta
+tenyrs = date.today() + timedelta(days=365*10)
+# Expires 10 years in the future at 8PM GMT
+AWS_HEADERS = {
+    'Expires': tenyrs.strftime('%a, %d %b %Y 20:00:00 GMT')
+}
