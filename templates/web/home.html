@@ -114,36 +114,35 @@
       <div class="grid_4">
         <div class="box">
           <div class="maxheight">
-            <div class="box_title">Natural Stone</div>
-            <img src="{% static 'images/page1_img1.jpg' %}" alt="">
+            <div class="box_title"><a href="{% url 'natural_stone' %}">Natural Stone</a></div>
+            <a href="{% url 'natural_stone' %}"><img src="{% static 'images/page1_img1.jpg' %}" alt=""></a>
             <div class="box_bot">Bedrock Stone &amp; Design has the largest selection of natural stone in the Austin, Tx
                 area. Feel free to browse our virtual showcase.
 
-              <a href="{% url 'natural_stone' %}" class="quest"></a></div>
+              </div>
           </div>
         </div>
       </div>
       <div class="grid_4">
         <div class="box">
           <div class="maxheight">
-            <div class="box_title">Thin Veneer</div>
-            <img src="{% static 'images/page1_img2.jpg' %}" alt="">
+            <div class="box_title"><a href="{% url 'category' 'thin_veneer' %}">Thin Veneer</a></div>
+            <a href="{% url 'category' 'thin_veneer' %}"><img src="{% static 'images/page1_img2.jpg' %}" alt=""></a>
             <div class="box_bot">
                 Bedrock Stone &amp; Design carries a large selection of Thin Veneer products.
                 The relatively light-weight application broadens your options when considering the best location
                 for this beautiful, easy to use product.
-                <a href="{% url 'category' 'thin_veneer' %}" class="quest"></a></div>
+               </div>
           </div>
         </div>
       </div>
       <div class="grid_4">
         <div class="box">
           <div class="maxheight">
-            <div class="box_title">Masonry Supplies </div>
-            <img src="{% static 'images/page1_img3.jpg' %}" alt="">
+            <div class="box_title"><a href="{% url 'category' 'masonry_tools' %}">Masonry Supplies</a></div>
+            <a href="{% url 'category' 'masonry_tools' %}"><img src="{% static 'images/page1_img3.jpg' %}" alt=""></a>
             <div class="box_bot">
                 Bedrock Stone &amp; Design carries a full line of masonry tools at great prices for your convenience.
-                <a href="{% url 'category' 'masonry_tools' %}" class="quest"></a></div>
           </div>
         </div>
       </div>
