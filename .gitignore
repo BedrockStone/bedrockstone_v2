@@ -1,7 +1,7 @@
 .idea/*
 *.idea
 web/static/media/
-
+web/static/admin/
 web/migrations/*
 bedrockstone_v2/local_settings.*
 bedrockstone_v2/local_settings.
