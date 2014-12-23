@@ -69,4 +69,4 @@
 			}).trigger('scroll');
 		}
 	}//end tmStickUp function
-})(jQuery)
+})(jQuery);
