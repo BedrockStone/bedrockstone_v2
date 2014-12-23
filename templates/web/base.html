@@ -24,10 +24,13 @@
 @import url(//fonts.googleapis.com/css?family=Allan:700);
 @import url(//fonts.googleapis.com/css?family=Roboto+Condensed:300);
 </style>
-
+<!--
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<!--<script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>-->
+-->
+<!--TODO: upgrade jquery and use google hosting -->
 {% compress js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
 <script src="{% static 'js/superfish.js' %}"></script>
 <script src="{% static 'js/jquery.equalheights.js' %}"></script>
