@@ -28,7 +28,7 @@ class Category(ModelWithImage):
 
 
 class Product(ModelWithImage):
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category)
 
 
