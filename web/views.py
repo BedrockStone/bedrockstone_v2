@@ -27,7 +27,8 @@ def staff(request):
 
 
 def jobs(request):
-    return render(request, 'web/jobs.html')
+    j = Job.objects.filter(is_active=True).order_by('sort_order')
+    return render(request, 'web/jobs.html', {'jobs': j})
 
 
 def virtual_showcase(request):

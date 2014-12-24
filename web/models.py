@@ -68,7 +68,7 @@ class Location(NamedModel):
 class Job(NamedModel):
     description = models.TextField()
     sort_order = models.IntegerField(default=5000)
-
+    is_active = models.BooleanField(default=True)
 
 class GalleryItem(NamedModel):
     description = models.TextField(null=True, blank=True)
