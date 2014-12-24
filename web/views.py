@@ -8,7 +8,8 @@ from django.template import RequestContext
 def index(request):
     #return render(request, 'web/index_1.html')
     g = GalleryItem.objects.all()
-    return render(request, 'web/home.html', {'galleryItems': g})
+    categories = Category.objects.exclude(homepage_position=None).order_by('homepage_position')[:5]
+    return render(request, 'web/home.html', {'galleryItems': g, 'categories': categories})
 
 
 def contact(request):

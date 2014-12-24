@@ -20,6 +20,7 @@ class ModelWithImage(NamedModel):
 class Category(ModelWithImage):
     description = models.TextField(null=True, blank=True, )
     sort_order = models.IntegerField(null=True, default=5000)
+    homepage_position = models.IntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Categories'
