@@ -13,8 +13,13 @@ class NamedModel(models.Model):
         return self.name
 
 
+def upload_image(self, filename):
+        return "%s/%s" % (type(self).__name__.lower(), filename.lower())
+
+
 class ModelWithImage(NamedModel):
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True, upload_to=upload_image)
+
 
 
 class Category(ModelWithImage):
@@ -69,6 +74,7 @@ class Job(NamedModel):
     description = models.TextField()
     sort_order = models.IntegerField(default=5000)
     is_active = models.BooleanField(default=True)
+
 
 class GalleryItem(NamedModel):
     description = models.TextField(null=True, blank=True)
