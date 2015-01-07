@@ -1,4 +1,10 @@
+@import "grid.css";
+@import "font-awesome.css";
+@import "superfish.css";
 
+@import url(//fonts.googleapis.com/css?family=Allan:400);
+@import url(//fonts.googleapis.com/css?family=Allan:700);
+@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:300);
 
 html {
     width: 100%;
@@ -341,7 +347,7 @@ header h1 a img {
 .box_title {
     color: #5ab645;
     font: bold 36px/30px 'Allan', cursive;
-    padding: 10px 20px 10px;
+    padding: 19px 10px 15px;
 }
 
 
