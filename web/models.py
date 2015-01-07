@@ -14,12 +14,11 @@ class NamedModel(models.Model):
 
 
 def upload_image(self, filename):
-        return "%s/%s" % (type(self).__name__.lower(), filename.lower())
+        return "%s/%s" % (type(self).__name__.lower(), self.name.replace(' ', '_'))
 
 
 class ModelWithImage(NamedModel):
     image = models.ImageField(null=True, upload_to=upload_image)
-
 
 
 class Category(ModelWithImage):
