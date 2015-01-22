@@ -1,3 +1,4 @@
+import os
 from django.core.validators import RegexValidator
 from django.db import models
 
@@ -14,7 +15,9 @@ class NamedModel(models.Model):
 
 
 def upload_image(self, filename):
-        return "%s/%s" % (type(self).__name__.lower(), self.name.replace(' ', '_'))
+        return "%s/%s%s" % (type(self).__name__.lower(),
+                            self.name.replace(' ', '_'),
+                            os.path.splitext(filename)[-1])
 
 
 class ModelWithImage(NamedModel):

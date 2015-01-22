@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import web.models
 
 
 class Migration(migrations.Migration):
@@ -48,7 +49,7 @@ class Migration(migrations.Migration):
             name='ModelWithImage',
             fields=[
                 ('namedmodel_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.NamedModel')),
-                ('image', models.ImageField(null=True, upload_to=b'')),
+                ('image', models.ImageField(null=True, upload_to=web.models.upload_image)),
             ],
             options={
             },
@@ -58,8 +59,9 @@ class Migration(migrations.Migration):
             name='Category',
             fields=[
                 ('modelwithimage_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.ModelWithImage')),
-                ('description', models.TextField(null=True)),
-                ('sort_order', models.IntegerField(null=True)),
+                ('description', models.TextField(null=True, blank=True)),
+                ('sort_order', models.IntegerField(default=5000, null=True)),
+                ('homepage_position', models.IntegerField(null=True, blank=True)),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -72,9 +74,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('namedmodel_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.NamedModel')),
                 ('description', models.TextField(null=True)),
+                ('phone_number', models.CharField(max_length=13, null=True, blank=True)),
+                ('sort_order', models.IntegerField(default=500)),
                 ('address', models.ForeignKey(to='web.Address')),
             ],
             options={
+                'ordering': ['sort_order'],
             },
             bases=('web.namedmodel',),
         ),
@@ -84,6 +89,7 @@ class Migration(migrations.Migration):
                 ('namedmodel_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.NamedModel')),
                 ('description', models.TextField()),
                 ('sort_order', models.IntegerField(default=5000)),
+                ('is_active', models.BooleanField(default=True)),
             ],
             options={
             },
@@ -93,11 +99,13 @@ class Migration(migrations.Migration):
             name='GalleryItem',
             fields=[
                 ('namedmodel_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.NamedModel')),
-                ('description', models.TextField()),
-                ('preview', models.ImageField(upload_to=b'/gallery/thumbs/')),
-                ('image', models.ImageField(upload_to=b'/gallery/full')),
+                ('description', models.TextField(null=True, blank=True)),
+                ('preview', models.ImageField(upload_to=b'')),
+                ('image', models.ImageField(upload_to=b'')),
+                ('sort_order', models.IntegerField(default=5000)),
             ],
             options={
+                'ordering': ['sort_order'],
             },
             bases=('web.namedmodel',),
         ),
@@ -105,11 +113,27 @@ class Migration(migrations.Migration):
             name='Product',
             fields=[
                 ('modelwithimage_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.ModelWithImage')),
-                ('description', models.TextField(null=True)),
+                ('description', models.TextField(null=True, blank=True)),
+                ('category', models.ForeignKey(to='web.Category')),
             ],
             options={
             },
             bases=('web.modelwithimage',),
+        ),
+        migrations.CreateModel(
+            name='StaffMember',
+            fields=[
+                ('namedmodel_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='web.NamedModel')),
+                ('title', models.CharField(max_length=50)),
+                ('bio', models.TextField(blank=True)),
+                ('email', models.EmailField(max_length=75, null=True, blank=True)),
+                ('photo', models.ImageField(null=True, upload_to=b'', blank=True)),
+                ('sort_order', models.IntegerField(default=500)),
+            ],
+            options={
+                'ordering': ['sort_order'],
+            },
+            bases=('web.namedmodel',),
         ),
         migrations.AddField(
             model_name='categoryproduct',
