@@ -5,7 +5,10 @@
 {% block content_blurb %}
 {% if jobs  %}
     <div class="row">
+    <ul>
         {% for job in jobs %}
+            <li><h4><a href="{% url 'job' job.slug%}">{{job.name  }}</a></h4></li>
+            <!--
             <h3>{{ job.name }}</h3>
             <div>
                 {{ job.description | linebreaks }}
@@ -14,7 +17,9 @@
                     <a href="mailto:jobs@bedrockstoneanddesign.com">jobs@bedrockstoneanddesign.com</a>
                 </div>
             </div>
+            -->
         {% endfor %}
+    </ul>
     </div>
 
 {% else %}

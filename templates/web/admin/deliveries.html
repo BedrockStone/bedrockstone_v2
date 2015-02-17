@@ -1,0 +1,133 @@
+{% extends 'web/base_generic.html' %}
+{% load staticfiles %}
+{% block head %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="{% static 'js/jquery.cookie.js' %}"></script>
+<script type="text/javascript">
+  $(function(){
+      $('.sortable').sortable(
+              {
+                  connectWith:'.sortable',
+                  update: function (event, ui) {
+                      var $form = ui.item.parents('form');
+                      $form.submit();
+                  }
+              });
+
+      $('.change_post').change(function(){
+          var action ='{% url 'admin_deliveries_update' %}'
+          var delivery_id = $(this).data('delivery_id');
+          var val = $(this).val();
+          var name = $(this).attr('name');
+          var payload = {
+              'delivery_id':delivery_id,
+              'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val()
+
+          };
+          payload[name]=val;
+          $.post(action,payload);
+
+      });
+  });
+  </script>
+    <style type="text/css">
+    fieldset{
+        border: solid 1px #CCC;
+        width: 35%;
+        margin-left:3em;
+        padding: 1em;
+        float: left;
+    }
+    fieldset legend{
+        font-size:18px;
+    }
+    fieldset div label{
+        display: block;
+        float: left;
+        width: 35%;
+        text-align: right;
+        padding-right:.3em;
+    }
+    #deliveries_table{
+        width: 100%;
+        border: solid 1px #ccc;
+        display: table;
+        height:600px;
+
+    }
+    .day {
+        display: table-cell;
+        width:14%;
+        padding:0;
+        margin:0;
+        border:solid 1px #ccc;
+        height:150px;
+
+    }
+    .day h4{
+        border-bottom: solid 1px #ccc;
+    }
+    .sortable{
+        min-height: 200px;
+        padding:0;
+        margin: 0;
+    }
+    .sortable li{
+        height: 65px;
+        border: solid 1px #ccc;
+        border-top:0;
+        border-left: 0;
+        list-style-position: inside;
+        padding-top:.3em;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+<h1 class="">Deliveries</h1>
+<form id="add_delivery" method="post" action="{% url 'admin_add_delivery' %}">
+    <fieldset class="ui-widget"><legend class="ui-widget-header ui-corner-top">Add Delivery</legend>
+    <div><label for="address">Address</label><textarea name="address" id="address"></textarea></div>
+    <div><label for="pos_receipt">POS Receipt</label><input name="pos_receipt" id="pos_receipt"/> </div>
+    <div><label for="target_ship_date">Ship Date</label><input name="target_ship_date" id="target_ship_date" /></div>
+    <div><input type="submit" value="Add" name="add" type="button" class="ui-widget-button" /> </div>
+        {% csrf_token %}
+    </fieldset>
+</form>
+<div id="deliveries_table">
+{% for key,value in dates.items %}
+    <div class="day">
+        <h4>{{ key | date:'D m-d' }}</h4>
+        <form method="post" action="reorder/">
+        {% csrf_token %}
+        <input type="hidden" name="target_ship_date" value="{{ key | date:'Y-m-d' }}" />
+        <ol class="sortable">
+            {% for delivery in value %}
+                <li id="delivery_{{ delivery.id }}">
+                    {{ delivery.address }}
+                    <input name="delivery" value="{{ delivery.id }}" type="hidden" />
+                    <select class="change_post" name="driver_id" data-delivery_id="{{ delivery.id }}">
+                        <option>Assign Driver</option>
+                        {% for driver in drivers %}
+                            <option value="{{ driver.id }}" {% if delivery.driver.id == driver.id %}selected='selected'{% endif  %}>{{ driver }}</option>
+                        {% endfor %}
+                    </select>
+                    <div>
+                    Build At:<select name="build_at_id" class="change_post" data-delivery_id="{{ delivery.id }}" data-action="{% url 'admin_deliveries_update' %}">
+                        <option>----</option>
+                        {% for location in locations %}
+                            <option value="{{ location.id }}" {% if location.id == delivery.build_at_id%}selected='selected'{%endif%}>{{ location }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+        </form>
+    </div>
+{% endfor %}
+ </div>
+<br style="clear:both" />
+
+{%  endblock %}

@@ -99,4 +99,23 @@ class StaffMember(NamedModel):
         ordering = ['sort_order']
 
 
+class Driver(StaffMember):
+    license_type = models.CharField(max_length=10)
+
+
+class Delivery(models.Model):
+    address = models.TextField()
+    target_ship_date = models.DateField(null=True, blank=True)
+    driver = models.ForeignKey(Driver, null=True, blank=True)
+    build_at = models.ForeignKey(Location, null=True, blank=True)
+    left_at = models.DateTimeField(null=True, blank=True)
+    delivered_at = models.DateTimeField(blank=True, null=True)
+    sort_order = models.IntegerField(default=500)
+    pos_receipt_number = models.IntegerField()
+
+    def __str__(self):
+        return self.address
+
+
+
 
