@@ -25,8 +25,6 @@ urlpatterns = patterns('',
     url(r'^gallery/$', views.gallery, name='gallery'),
     url(r'^natural_stone/$', views.natural_stone, name='natural_stone'),
     url(r'^staff/$', views.staff, name='staff'),
-    #url(r'^p/*/$', views.category, name='category'),
-
     #NOT FOR PROD!
     (r'^static/media/(?P<path>,*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )

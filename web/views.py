@@ -1,11 +1,5 @@
-from collections import OrderedDict
-from datetime import timedelta,datetime
-
 from django.shortcuts import render, get_object_or_404, redirect
-from web.models import Job, Location, Category, CategoryProduct, GalleryItem, StaffMember
-
-# Create your views here.
-from django.template import RequestContext
+from web.models import Job, Location, Category, GalleryItem, StaffMember
 
 
 def index(request):
@@ -63,8 +57,7 @@ def products(request):
 
 def category(request, slug):
     cat = get_object_or_404(Category, slug=slug)
-    category_products = CategoryProduct.objects.filter(category_id=cat.id).order_by('sort_order')
-    context = {'category_products': category_products,'category': cat}
+    context = {'category': cat}
     return render(request, 'web/category.html', context)
 
 
@@ -73,9 +66,6 @@ def services(request):
 
 
 def gallery(request):
-    #items = []#GalleryItem.objects().all().order_by('sort_order')
-    #context = null#{'items': []}#items}
-    #return render(request, context, 'web/gallery.html')
     return render(request, 'web/gallery.html')
 
 
