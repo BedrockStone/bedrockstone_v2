@@ -27,11 +27,6 @@ urlpatterns = patterns('',
     url(r'^staff/$', views.staff, name='staff'),
     #url(r'^p/*/$', views.category, name='category'),
 
-    url(r'^admin/deliveries/$', views.admin_deliver, name='admin_deliver'),
-    url(r'^admin/deliveries/add/$', views.admin_add_delivery, name='admin_add_delivery'),
-    url(r'^admin/deliveries/reorder/$', views.admin_reorder_deliveries, name='admin_reorder_delivery'),
-    url(r'^admin/deliveries/change_driver/$', views.admin_change_driver, name='admin_change_driver'),
-    url(r'^admin/deliveries/update$', views.admin_deliveries_update, name='admin_deliveries_update'),
     #NOT FOR PROD!
     (r'^static/media/(?P<path>,*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
