@@ -6,7 +6,6 @@ from web.models import Category, CategoryProduct, Product, Address, Location, Jo
 
 admin.site.register(Category)
 admin.site.register(CategoryProduct)
-admin.site.register(Product)
 admin.site.register(Address)
 admin.site.register(Location)
 admin.site.register(Job)
@@ -14,3 +13,9 @@ admin.site.register(GalleryItem)
 admin.site.register(StaffMember)
 admin.site.register(Driver)
 admin.site.register(Delivery)
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_filter = ('category__name',)
+
+admin.site.register(Product, ProductAdmin)
