@@ -29,6 +29,11 @@ class JobDetail(DetailView):
 def virtual_showcase(request):
     return render(request, 'web/virtual_showcase.html')
 
+def location(request,name):
+    l = get_object_or_404(Location, slug=name)
+    context = {'location': l}
+    return render(request, 'web/location.html', context)
+
 
 class Products(ListView):
     queryset = Category.objects.all()
