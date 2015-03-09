@@ -1,0 +1,31 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% block header_title %}Products{% endblock %}
+{% block header_image_src %}{% static 'images/products.JPG' %}{% endblock %}
+{% block content_blurb %}
+<p>
+    Bedrock Stone &amp; Design is proud to feature the largest selection of stone products in the Austin, Tx
+    area. You can browse just a few of them here.
+</p>
+{% endblock %}
+{% block main_content %}
+
+    {% for category in object_list %}
+       <div class="grid_3">
+            <div class="box">
+                <div class="maxheight">
+                    <div class="box_inner">
+                        <div class="box_title"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
+                        <a href="{% url 'category' category.slug %}"><img src="{{ MEDIA_URL }}{{ category.image }}" alt="{{ category.name }}"></a>
+                        <!--
+                        <div class="box_bot">
+                            <div></div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+       </div>
+{% endfor %}
+
+{% endblock %}

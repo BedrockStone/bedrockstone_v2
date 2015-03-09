@@ -1,64 +1,42 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from web.models import Job, Location, Category, GalleryItem, StaffMember
+from django.views.generic import ListView, DetailView
+from web.models import Job, Location, Category, GalleryItem, StaffMember, Product
 
 
 def index(request):
-    #return render(request, 'web/index_1.html')
     g = GalleryItem.objects.all()
     categories = Category.objects.exclude(homepage_position=None).order_by('homepage_position')[:5]
     return render(request, 'web/home.html', {'galleryItems': g, 'categories': categories})
 
 
-def contact(request):
-    locations = Location.objects.all().order_by('sort_order')
-    return render(request, 'web/contact.html', {'locations': locations})
+class ContactUs(ListView):
+    queryset = Location.objects.all()
 
 
 def aboutus(request):
     return render(request, 'web/aboutus.html')
 
 
-def staff(request):
-    s = StaffMember.objects.all().order_by('sort_order')
-    return render(request, 'web/staff.html', {'staff': s})
+class Jobs(ListView):
+    queryset = Job.objects.filter(is_active=True)
 
 
-def jobs(request):
-    j = Job.objects.filter(is_active=True).order_by('sort_order')
-    return render(request, 'web/jobs.html', {'jobs': j})
+class JobDetail(DetailView):
+    def get_object(self, queryset=None):
+        return get_object_or_404(Job, slug=self.args[0])
 
 
 def virtual_showcase(request):
     return render(request, 'web/virtual_showcase.html')
 
 
-def job_details(request, name):
-    job = get_object_or_404(Job, slug=name)
-    context = {'jobs': Job.objects.all(), 'job': job}
-    #return render(request, context, "web/job_details.html")
-    return render(request, 'web/job_details.html', context)
+class Products(ListView):
+    queryset = Category.objects.all()
 
 
-def location(request,name):
-    l = get_object_or_404(Location, slug=name)
-    context = {'location': l}
-    return render(request, 'web/location.html', context)
-
-
-def test(request):
-    return render(request, 'web/index-4.html')
-
-
-def products(request):
-    categories = Category.objects.all().order_by('sort_order')
-    context = {'categories': categories}
-    return render(request, 'web/products.html', context)
-
-
-def category(request, slug):
-    cat = get_object_or_404(Category, slug=slug)
-    context = {'category': cat}
-    return render(request, 'web/category.html', context)
+class CategoryDetail(DetailView):
+    def get_object(self, queryset=None):
+        return get_object_or_404(Category, slug=self.args[0])
 
 
 def services(request):

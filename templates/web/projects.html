@@ -1,0 +1,26 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% block header_title %}Virtual Showcase{% endblock %}
+{% block header_image_src %}{% static 'img/projects.jpg' %}{% endblock %}
+{% block content_blurb %}Browse our virtual showcase here.{% endblock %}
+{% block main_content %}
+
+{% for type in projects %}
+ <div class="grid_3">
+            <div class="box">
+                <div class="maxheight">
+                    <div class="box_inner">
+                        <div class="box_title"><a href='{% url 'project' type.slug %}'>{{ type.name }}</a></div>
+                        <a href="{% url 'category' type.slug %}"><img src="{{ MEDIA_URL }}{{ type.image }}" alt="{{ type.name }}" /></a>
+                        <!--
+                        <div class="box_bot">
+                            <div></div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+       </div>
+{% endfor %}
+
+{% endblock %}

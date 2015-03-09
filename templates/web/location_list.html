@@ -1,0 +1,36 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% block header_title %}Contact Us{% endblock %}
+{% block header_image_src %}{% static 'images/contact_us.jpg' %}{% endblock %}
+{% block content_blurb %}
+    Bedrock Stone &amp; Design has {{ locations.length }} convinient locations to serve you in the Austin, Tx area. <br />
+    Call our headquarters at 512-266-8080, or you can email us at <a href="mailto:contact@bedrockstoneanddesign.com">
+    contact@bedrockstoneanddesign.com
+    </a>.
+
+{% endblock %}
+{% block main_content %}
+     <div class="row">
+               {% for location in locations %}
+               <div class="grid_6">
+               <div class="box">
+                    <div class="box_inner">
+                        <div class="box_title">{{ location.name }}</div>
+                        <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.address.city }}{{ ' '|iriencode }}{{ location.address.zip }}" target="google">
+                                <img src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x400&markers={{ location.address |iriencode }},{{ location.address.city }}{{ ' '|iriencode }}{{ location.address.zip }}">
+                        </a>
+                        <div class="box_bot">
+                           <address class="address1">
+                            <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.address.city }}{{ ' '|iriencode }}{{ location.address.zip }}" target="google">
+                                   {{ location.address.street }}<br />
+                                   {{ location.address.city }},TX {{ location.address.zip }}<br /></a>
+                           </address>
+                            <a href="tel:{{ location.phone_number}}">{{ location.phone_number }}</a>
+                        </div>
+                   </div>
+               </div>
+               </div>
+              {% endfor %}
+
+     </div>
+{% endblock %}
