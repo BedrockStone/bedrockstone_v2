@@ -35,18 +35,18 @@ class SortableNamedModel(models.Model):
         abstract = True
 
 
-class ModelWithPicture(SortableNamedModel):
+class ModelWithPicture(NamedModel):
     image = models.ImageField(null=True, upload_to=upload_image)
 
     class Meta:
         abstract = True
 
 
-class ModelWithImage(SortableNamedModel):
+class ModelWithImage(NamedModel):
     image = models.ImageField(null=True, upload_to=upload_image)
 
 
-class Category(ModelWithPicture):
+class Category(NamedModel):
     description = models.TextField(null=True, blank=True, )
     homepage_position = models.IntegerField(null=True, blank=True)
 
@@ -54,7 +54,7 @@ class Category(ModelWithPicture):
         verbose_name_plural = 'Categories'
 
 
-class Product(ModelWithPicture):
+class Product(NamedModel):
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category)
 
@@ -69,34 +69,34 @@ class Address(models.Model):
         return self.street
 
 
-class Location(SortableNamedModel):
+class Location(NamedModel):
     address = models.ForeignKey(Address)
     description = models.TextField(null=True)
     phone_number = models.CharField(null=True, blank=True,  max_length=13)
 
 
-class Job(SortableNamedModel):
+class Job(NamedModel):
     description = models.TextField()
     is_active = models.BooleanField(default=True)
 
 
-class GalleryItem(SortableNamedModel):
+class GalleryItem(NamedModel):
     description = models.TextField(null=True, blank=True)
     preview = models.ImageField()
     image = models.ImageField()
 
 
-class StaffMember(SortableNamedModel):
+class StaffMember(NamedModel):
     title = models.CharField(max_length=50)
     bio = models.TextField(blank=True)
     email = models.EmailField(null=True, blank=True)
     photo = models.ImageField(null=True, blank=True)
 
 
-class ProjectType(ModelWithPicture):
+class ProjectType(ModelWithImage):
     pass
 
 
-class Project(ModelWithPicture):
+class Project(ModelWithImage):
     pass
 
