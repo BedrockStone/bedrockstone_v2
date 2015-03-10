@@ -48,7 +48,7 @@ class ModelWithImage(SortableNamedModel):
 '''
 
 
-class Category(SortableNamedModel):
+class Category(ModelWithPicture):
     description = models.TextField(null=True, blank=True, )
     homepage_position = models.IntegerField(null=True, blank=True)
 
@@ -56,7 +56,7 @@ class Category(SortableNamedModel):
         verbose_name_plural = 'Categories'
 
 
-class Product(SortableNamedModel):
+class Product(ModelWithPicture):
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category)
 
