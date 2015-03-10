@@ -14,3 +14,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('category__name',)
 
 admin.site.register(Product, ProductAdmin)
+
+
+class AddressInline(admin.StackedInline):
+    model = Address
+
+
+class LocationAdmin(admin.ModelAdmin):
+    inlines = [AddressInline, ]
+
+admin.site.register(Location,LocationAdmin)
