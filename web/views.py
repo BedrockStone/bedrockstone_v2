@@ -12,6 +12,11 @@ def index(request):
 class ContactUs(ListView):
     queryset = Location.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super(ListView, self).get_context_data(**kwargs)
+        context['staff'] = StaffMember.objects.filter(show_on_contact_us=True)
+        return context
+
 
 def aboutus(request):
     return render(request, 'web/aboutus.html')

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from django.contrib.auth.models import User,Group
-from web.models import Category, Product, Address, Location, Job, GalleryItem, StaffMember
+from django.contrib.auth.models import User, Group
+from web.models import Category, Product, Location, Job, GalleryItem, StaffMember
+
 
 
 class MyAdmin(AdminSite):
@@ -11,11 +12,13 @@ class MyAdmin(AdminSite):
 
 
 admin_site = MyAdmin(name='backoffice')
-admin_site.register(Job)
-admin_site.register(StaffMember)
+#django auth models
 admin_site.register(User)
 admin_site.register(Group)
-admin_site.register(Location)
+
+#generic
+admin_site.register(Job)
+admin_site.register(StaffMember)
 
 
 class ProductInline(admin.StackedInline):
@@ -24,7 +27,6 @@ class ProductInline(admin.StackedInline):
     readonly_fields = ('image_tag', )
     fields = ['name', ('image', 'image_tag'), 'sort_order']
     extra = 1
-
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -49,3 +51,12 @@ class GalleryItemAdmin(admin.ModelAdmin):
     fields = ['name', ('image', 'image_tag'), 'sort_order', ]
 
 admin_site.register(GalleryItem, GalleryItemAdmin)
+
+
+class LocationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name', 'phone_number', 'sort_order']}),
+        ('Address', {'fields': ['street', 'city', 'zip'], 'classes': ['collapse']}),
+    ]
+
+admin_site.register(Location,LocationAdmin)
