@@ -55,7 +55,7 @@ admin_site.register(GalleryItem, GalleryItemAdmin)
 
 class LocationAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'phone_number', 'sort_order']}),
+        (None,               {'fields': ['name', 'slug', 'phone_number', 'sort_order']}),
         ('Address', {'fields': ['street', 'city', 'zip'], 'classes': ['collapse']}),
     ]
 
