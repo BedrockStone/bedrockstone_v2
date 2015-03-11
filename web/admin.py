@@ -11,11 +11,12 @@ class MyAdmin(AdminSite):
 
 
 admin_site = MyAdmin(name='backoffice')
-admin_site.register(Address)
 admin_site.register(Job)
 admin_site.register(StaffMember)
 admin_site.register(User)
 admin_site.register(Group)
+admin_site.register(Location)
+
 
 class ProductInline(admin.StackedInline):
     model = Product

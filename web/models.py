@@ -60,12 +60,10 @@ class Address(models.Model):
         return self.street
 
     class Meta:
-        pass
-        #abstract = True
+        abstract = True
 
 
-class Location(SortableNamedModel):
-    address = models.ForeignKey(Address)
+class Location(SortableNamedModel, Address):
     description = models.TextField(null=True)
     phone_number = models.CharField(null=True, blank=True,  max_length=13)
 
