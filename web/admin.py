@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
+from django.contrib.auth.models import User,Group
 from web.models import Category, Product, Address, Location, Job, GalleryItem, StaffMember
 
 
@@ -13,7 +14,8 @@ admin_site = MyAdmin(name='backoffice')
 admin_site.register(Address)
 admin_site.register(Job)
 admin_site.register(StaffMember)
-
+admin_site.register(User)
+admin_site.register(Group)
 
 class ProductInline(admin.StackedInline):
     model = Product
