@@ -59,6 +59,10 @@ class Address(models.Model):
     def __str__(self):
         return self.street
 
+    class Meta:
+        pass
+        #abstract = True
+
 
 class Location(SortableNamedModel):
     address = models.ForeignKey(Address)

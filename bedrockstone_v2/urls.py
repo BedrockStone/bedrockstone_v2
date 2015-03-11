@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.views.generic import ListView
 from bedrockstone_v2 import settings
 from web import views
+from web.admin import admin_site
 
 admin.autodiscover()
 
@@ -13,6 +14,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^locations/(?P<name>.+)/$', views.location, name='locations'),
+    url(r'^backoffice/', include(admin_site.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^products/$', views.Products.as_view(), name='products'),
     url(r'^products/(.+)/$', views.CategoryDetail.as_view(), name='category'),

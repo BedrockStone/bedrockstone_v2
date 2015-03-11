@@ -4,15 +4,15 @@ from web.models import Category, Product, Address, Location, Job, GalleryItem, S
 
 
 class MyAdmin(AdminSite):
-    site_header = 'Bedrock'
-    site_title = 'Bedrock'
+    site_header = 'Bedrock Stone & Design'
+    site_title = 'Bedrock Stone & Design back office'
+    index_title = 'Site Administration'
 
 
-admin_site = MyAdmin(name='admin')
-
-admin.site.register(Address)
-admin.site.register(Job)
-admin.site.register(StaffMember)
+admin_site = MyAdmin(name='backoffice')
+admin_site.register(Address)
+admin_site.register(Job)
+admin_site.register(StaffMember)
 
 
 class ProductInline(admin.StackedInline):
@@ -23,23 +23,26 @@ class ProductInline(admin.StackedInline):
     extra = 1
 
 
-@admin.register(Category)
+
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [ProductInline, ]
     readonly_fields = ('image_tag', )
     fields = ['name', ('image', 'image_tag',), 'description', 'sort_order', 'homepage_position']
 
+admin_site.register(Category,CategoryAdmin)
 
-@admin.register(Product)
+
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ('category__name',)
     readonly_fields = ('image_tag', )
     fields = ['name', ('image', 'image_tag'), 'sort_order', ]
 
+admin_site.register(Product, ProductAdmin)
 
-@admin.register(GalleryItem)
+
 class GalleryItemAdmin(admin.ModelAdmin):
     model = GalleryItem
     readonly_fields = ('image_tag', )
     fields = ['name', ('image', 'image_tag'), 'sort_order', ]
 
+admin_site.register(GalleryItem, GalleryItemAdmin)
