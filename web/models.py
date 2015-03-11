@@ -56,9 +56,6 @@ class Address(models.Model):
     zip = models.CharField(max_length=5)
     city = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.street
-
     class Meta:
         abstract = True
 
@@ -66,6 +63,9 @@ class Address(models.Model):
 class Location(SortableNamedModel, Address):
     description = models.TextField(null=True)
     phone_number = models.CharField(null=True, blank=True,  max_length=13)
+
+    def address(self):
+        return self.street
 
 
 class Job(SortableNamedModel):
