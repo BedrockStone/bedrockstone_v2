@@ -81,13 +81,13 @@
 <div class="slider_wrapper ">
   <div id="camera_wrap" class="">
     {% for item in galleryItems %}
-    <div data-src="{{ MEDIA_URL }}{{ item.image }}"></div>
+    <div data-src="{{ MEDIA_URL }}{{ item.medium_image }}"></div>
     {% endfor %}
   </div>
   <div class="car_div">
     <div id="owl">
       {% for item in galleryItems %}
-        <div class="item"><a href="#"><img src="{{ MEDIA_URL }}{{ item.preview }}" alt="{{ image.name }}" /></a></div>
+        <div class="item"><a href="#"><img src="{{ MEDIA_URL }}{{ item.thumbnail }}" alt="{{ image.name }}" style="height:40px" /></a></div>
       {% endfor %}
     </div>
   </div>

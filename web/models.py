@@ -13,13 +13,11 @@ def upload_image(self, filename):
 
 
 def upload_thumb(self, filename):
-    return "%s/thumbs/%s%s" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'),
-                               os.path.splitext(filename)[-1])
+    return "%s/thumbs/%s.jpg" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'))
 
 
 def upload_medium(self, filename):
-    return "%s/medium/%s%s" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'),
-                               os.path.splitext(filename)[-1])
+    return "%s/medium/%s.jpg" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'))
 
 
 class SortableNamedModel(models.Model):
