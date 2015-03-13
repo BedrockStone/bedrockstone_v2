@@ -39,8 +39,8 @@ class SortableNamedModel(models.Model):
 class ModelWithPicture(SortableNamedModel):
     image = models.ImageField(null=True, upload_to=upload_image, default='product/no_image.jpeg',
                               help_text='The image to show for this item')
-    thumbnail = models.ImageField(null=True, blank=True, upload_to=upload_thumb, default='product/no_image')
-    medium_image = models.ImageField(null=True, blank=True, upload_to=upload_medium, default='product/no_image')
+    thumbnail = models.ImageField(null=True, blank=True, upload_to=upload_thumb, default='product/no_image.jpg')
+    medium_image = models.ImageField(null=True, blank=True, upload_to=upload_medium, default='product/no_image.jpg')
 
     def save(self, *args, **kwargs):
         thumb = ImageHelper(self.image)
