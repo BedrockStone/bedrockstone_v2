@@ -4,9 +4,8 @@ from django.contrib.auth.models import User, Group
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember
 
 
-
 class MyAdmin(AdminSite):
-    site_header = 'Bedrock Stone & Design'
+    site_header = 'Bedrock Stone & Design Website Administration'
     site_title = 'Bedrock Stone & Design back office'
     index_title = 'Site Administration'
 
@@ -18,7 +17,14 @@ admin_site.register(Group)
 
 #generic
 admin_site.register(Job)
-admin_site.register(StaffMember)
+#admin_site.register(StaffMember)
+
+
+class StaffMemberAdmin(admin.ModelAdmin):
+    readonly_fields = ('image_tag', )
+    fields = ['name', ('image', 'image_tag'), 'sort_order']
+
+admin_site.register(StaffMember, StaffMemberAdmin)
 
 
 class ProductInline(admin.StackedInline):
@@ -32,7 +38,7 @@ class ProductInline(admin.StackedInline):
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [ProductInline, ]
     readonly_fields = ('image_tag', )
-    fields = ['name', ('image', 'image_tag',), 'description', 'sort_order', 'homepage_position']
+    fields = ['name', 'slug', ('image', 'image_tag',), 'description', 'sort_order', 'homepage_position']
 
 admin_site.register(Category,CategoryAdmin)
 

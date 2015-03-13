@@ -120,4 +120,5 @@ AWS_HEADERS = {
 
 }
 AWS_IS_GZIPPED = True
-
+# image resizing settings
+IMAGE_SIZES = {'thumbnail': (220, 165), 'medium_image': (900, 675)}
