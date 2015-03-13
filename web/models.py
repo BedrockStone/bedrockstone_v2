@@ -60,6 +60,7 @@ class ModelWithPicture(SortableNamedModel):
 
     class Meta:
         abstract = True
+        ordering = ['sort_order']
 
 
 class Category(ModelWithPicture):
