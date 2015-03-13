@@ -44,7 +44,7 @@ class ModelWithPicture(SortableNamedModel):
     medium_image = models.ImageField(null=True, blank=True, upload_to=upload_medium, default='product/no_image.jpg')
 
     def save(self, *args, **kwargs):
-        if self.image.name != self.__class__._default_manager.get(id=self.id).image.name:
+        if self.pk is None or self.image.name != self.__class__._default_manager.get(id=self.id).image.name:
             thumb = ImageHelper(self.image)
             thumb.crop_image(IMAGE_SIZES['thumbnail'][0], IMAGE_SIZES['thumbnail'][1])
             self.thumbnail = thumb.get_file()
