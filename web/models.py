@@ -103,6 +103,7 @@ class Job(SortableNamedModel):
 class GalleryItem(ModelWithPicture):
     description = models.TextField(null=True, blank=True)
     preview = models.ImageField()
+    #TODO change image processing since this requires different aspect ratio
 
 
 class StaffMember(ModelWithPicture):
