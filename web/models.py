@@ -7,6 +7,7 @@ from web.helpers import ImageHelper
 
 
 def upload_image(self, filename):
+    self.image_changed = True
     return "%s/%s%s" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'),
                         os.path.splitext(filename)[-1])
 
@@ -43,13 +44,14 @@ class ModelWithPicture(SortableNamedModel):
     medium_image = models.ImageField(null=True, blank=True, upload_to=upload_medium, default='product/no_image.jpg')
 
     def save(self, *args, **kwargs):
-        thumb = ImageHelper(self.image)
-        thumb.crop_image(IMAGE_SIZES['thumbnail'][0], IMAGE_SIZES['thumbnail'][1])
-        self.thumbnail = thumb.get_file()
-        self.image.file.seek(0)
-        medium = ImageHelper(self.image)
-        medium.crop_image(IMAGE_SIZES['medium_image'][0], IMAGE_SIZES['medium_image'][1])
-        self.medium_image = medium.get_file()
+        if self.image.name != self.__class__._default_manager.get(id=self.id).image.name:
+            thumb = ImageHelper(self.image)
+            thumb.crop_image(IMAGE_SIZES['thumbnail'][0], IMAGE_SIZES['thumbnail'][1])
+            self.thumbnail = thumb.get_file()
+            self.image.file.seek(0)
+            medium = ImageHelper(self.image)
+            medium.crop_image(IMAGE_SIZES['medium_image'][0], IMAGE_SIZES['medium_image'][1])
+            self.medium_image = medium.get_file()
         super(ModelWithPicture, self).save(*args, **kwargs)
 
     def image_tag(self):
