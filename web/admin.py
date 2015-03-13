@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
+from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import User, Group
+from django.utils.module_loading import autodiscover_modules
+
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember
 
 
@@ -9,16 +12,14 @@ class MyAdmin(AdminSite):
     site_title = 'Bedrock Stone & Design back office'
     index_title = 'Site Administration'
 
-
+admin.autodiscover()
 admin_site = MyAdmin(name='backoffice')
-#django auth models
-admin_site.register(User)
-admin_site.register(Group)
 
 #generic
 admin_site.register(Job)
-#admin_site.register(StaffMember)
-
+#Auth
+admin_site.register(User, UserAdmin)
+admin_site.register(Group, GroupAdmin)
 
 class StaffMemberAdmin(admin.ModelAdmin):
     readonly_fields = ('image_tag', )

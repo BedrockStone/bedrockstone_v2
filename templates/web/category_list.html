@@ -16,12 +16,10 @@
                 <div class="maxheight">
                     <div class="box_inner">
                         <div class="box_title"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
-                        <a href="{% url 'category' category.slug %}"><img src="{{ MEDIA_URL }}{{ category.image }}" alt="{{ category.name }}"></a>
-                        <!--
+                        <a href="{% url 'category' category.slug %}"><img src="{{ MEDIA_URL }}{{ category.thumbnail }}" alt="{{ category.name }}"></a>
                         <div class="box_bot">
                             <div></div>
                         </div>
-                        -->
                     </div>
                 </div>
             </div>

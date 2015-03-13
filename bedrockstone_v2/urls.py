@@ -1,15 +1,16 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
-from django.views.generic import ListView
+
 from bedrockstone_v2 import settings
 from web import views
 from web.admin import admin_site
 
 admin.autodiscover()
+
+
 urlpatterns = patterns('', url(r'^$', views.index, name='index'),
                        url(r'^locations/(?P<name>.+)/$', views.location, name='locations'),
-                       url(r'^admin/', include(admin_site.urls)),
+                       url(r'^admin/', include(admin_site.urls), name="bedrock"),
                        url(r'^products/$', views.Products.as_view(), name='products'),
                        url(r'^products/(.+)/$', views.CategoryDetail.as_view(), name='category'),
                        url(r'^about/$', views.aboutus, name='about'),
