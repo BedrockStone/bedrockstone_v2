@@ -1,6 +1,7 @@
 import os
 
 from django.db import models
+from image_cropping import ImageRatioField, ImageCropField
 from bedrockstone_v2.settings import MEDIA_URL, IMAGE_SIZES
 
 from web.helpers import ImageHelper
@@ -43,14 +44,17 @@ class ModelWithPicture(SortableNamedModel):
 
     def save(self, *args, **kwargs):
         if self.pk is None or self.image.name != self.__class__._default_manager.get(id=self.id).image.name:
-            thumb = ImageHelper(self.image)
-            thumb.crop_image(IMAGE_SIZES['thumbnail'][0], IMAGE_SIZES['thumbnail'][1])
-            self.thumbnail = thumb.get_file()
-            self.image.file.seek(0)
-            medium = ImageHelper(self.image)
-            medium.crop_image(IMAGE_SIZES['medium_image'][0], IMAGE_SIZES['medium_image'][1])
-            self.medium_image = medium.get_file()
+            self.alter_images()
         super(ModelWithPicture, self).save(*args, **kwargs)
+
+    def alter_images(self):
+        thumb = ImageHelper(self.image)
+        thumb.crop_image(IMAGE_SIZES['thumbnail'][0], IMAGE_SIZES['thumbnail'][1])
+        self.thumbnail = thumb.get_file()
+        self.image.file.seek(0)
+        medium = ImageHelper(self.image)
+        medium.crop_image(IMAGE_SIZES['medium_image'][0], IMAGE_SIZES['medium_image'][1])
+        self.medium_image = medium.get_file()
 
     def image_tag(self):
         return "<img src=\"{0}{1}\" style='width:85px' />".format(MEDIA_URL, self.thumbnail)
@@ -100,10 +104,11 @@ class Job(SortableNamedModel):
     is_active = models.BooleanField(default=True)
 
 
-class GalleryItem(ModelWithPicture):
-    description = models.TextField(null=True, blank=True)
-    preview = models.ImageField()
-    #TODO change image processing since this requires different aspect ratio
+class GalleryItem(SortableNamedModel):
+    image = models.ImageField(upload_to="gallery/")
+    #preview = ImageRatioField('image', '40x40')
+    large = ImageRatioField('image', '1440x675')
+    preview = ImageRatioField('image', '40x40')
 
 
 class StaffMember(ModelWithPicture):

@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 'storages', 'compressor',
+    'easy_thumbnails', 'image_cropping',
     'web',
 )
 STATICFILES_FINDERS = (
@@ -53,7 +54,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+THUMBNAIL_DEBUG = True
+#IMAGE_CROPPING_JQUERY_URL = 'js/jquery.min.js'
 ROOT_URLCONF = 'bedrockstone_v2.urls'
 
 WSGI_APPLICATION = 'bedrockstone_v2.wsgi.application'

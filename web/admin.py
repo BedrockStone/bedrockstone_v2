@@ -3,6 +3,7 @@ from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import User, Group
 from django.utils.module_loading import autodiscover_modules
+from image_cropping import ImageCroppingMixin
 
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember
 
@@ -41,7 +42,7 @@ class CategoryAdmin(admin.ModelAdmin):
     readonly_fields = ('image_tag', )
     fields = ['name', 'slug', ('image', 'image_tag',), 'description', 'sort_order', 'homepage_position']
 
-admin_site.register(Category,CategoryAdmin)
+admin_site.register(Category, CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -52,10 +53,8 @@ class ProductAdmin(admin.ModelAdmin):
 admin_site.register(Product, ProductAdmin)
 
 
-class GalleryItemAdmin(admin.ModelAdmin):
-    model = GalleryItem
-    readonly_fields = ('image_tag', )
-    fields = ['name', ('image', 'image_tag'), 'sort_order', ]
+class GalleryItemAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    pass
 
 admin_site.register(GalleryItem, GalleryItemAdmin)
 
