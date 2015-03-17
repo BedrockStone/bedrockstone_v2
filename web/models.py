@@ -1,6 +1,7 @@
 import os
 
 from django.db import models
+from easy_thumbnails.files import get_thumbnailer
 from image_cropping import ImageRatioField, ImageCropField
 from bedrockstone_v2.settings import MEDIA_URL, IMAGE_SIZES
 
@@ -106,10 +107,19 @@ class Job(SortableNamedModel):
 
 class GalleryItem(SortableNamedModel):
     image = models.ImageField(upload_to="gallery/")
-    #preview = ImageRatioField('image', '40x40')
     large = ImageRatioField('image', '1440x675')
     preview = ImageRatioField('image', '40x40')
 
+    def image_tag(self):
+        return "<img src='{0}' style='width:40px' />".format(
+            get_thumbnailer(self.image).get_thumbnail({
+                'size': (430, 360),
+                'box': self.large, 'crop': True,
+                'detail': True, }).url
+        )
+
+    image_tag.short_description = ''
+    image_tag.allow_tags = True
 
 class StaffMember(ModelWithPicture):
     title = models.CharField(max_length=50)

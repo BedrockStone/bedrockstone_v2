@@ -59,6 +59,7 @@ THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 THUMBNAIL_DEBUG = True
+THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 #IMAGE_CROPPING_JQUERY_URL = 'js/jquery.min.js'
 ROOT_URLCONF = 'bedrockstone_v2.urls'
 
