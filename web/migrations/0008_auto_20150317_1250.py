@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='category',
             name='medium_image',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_medium, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='category',
@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='category',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_thumb, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='galleryitem',
@@ -154,7 +154,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='product',
             name='medium_image',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_medium, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='product',
@@ -174,7 +174,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='product',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_thumb, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='project',
@@ -184,7 +184,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='project',
             name='medium_image',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_medium, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='project',
@@ -204,7 +204,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='project',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_thumb, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='projecttype',
@@ -214,7 +214,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='projecttype',
             name='medium_image',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_medium, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='projecttype',
@@ -234,7 +234,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='projecttype',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_thumb, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='staffmember',
@@ -244,7 +244,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='staffmember',
             name='medium_image',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_medium, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
         migrations.AlterField(
             model_name='staffmember',
@@ -264,6 +264,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='staffmember',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image.jpg', null=True, upload_to=web.models.upload_thumb, blank=True),
+            field=models.ImageField(default=b'product/no_image.jpg', null=True,blank=True),
         ),
     ]

@@ -15,37 +15,37 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='category',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image', null=True, upload_to=web.models.upload_thumb),
+            field=models.ImageField(default=b'product/no_image', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='galleryitem',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image', null=True, upload_to=web.models.upload_thumb),
+            field=models.ImageField(default=b'product/no_image', null=True, ),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='product',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image', null=True, upload_to=web.models.upload_thumb),
+            field=models.ImageField(default=b'product/no_image', null=True, ),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='project',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image', null=True, upload_to=web.models.upload_thumb),
+            field=models.ImageField(default=b'product/no_image', null=True, ),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='projecttype',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image', null=True, upload_to=web.models.upload_thumb),
+            field=models.ImageField(default=b'product/no_image', null=True, ),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='staffmember',
             name='thumbnail',
-            field=models.ImageField(default=b'product/no_image', null=True, upload_to=web.models.upload_thumb),
+            field=models.ImageField(default=b'product/no_image', null=True, ),
             preserve_default=True,
         ),
     ]

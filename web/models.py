@@ -12,7 +12,7 @@ def upload_image(self, filename):
     self.image_changed = True
     return "%s/%s%s" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'),
                         os.path.splitext(filename)[-1])
-
+'''
 
 def upload_thumb(self, filename):
     return "%s/thumbs/%s.jpg" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'))
@@ -20,6 +20,8 @@ def upload_thumb(self, filename):
 
 def upload_medium(self, filename):
     return "%s/medium/%s.jpg" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'))
+
+'''
 
 
 class SortableNamedModel(models.Model):
@@ -40,9 +42,6 @@ class SortableNamedModel(models.Model):
 class ModelWithPicture(SortableNamedModel):
     image = models.ImageField(null=True, upload_to=upload_image, default='product/no_image.jpeg',
                               help_text='The image to show for this item')
-    #TODO: Replace these with ImageRatio fields
-    thumbnail = models.ImageField(null=True, blank=True, upload_to=upload_thumb, default='product/no_image.jpg')
-    medium_image = models.ImageField(null=True, blank=True, upload_to=upload_medium, default='product/no_image.jpg')
     cropped = ImageRatioField('image', '400x300')
 
     def save(self, *args, **kwargs):
