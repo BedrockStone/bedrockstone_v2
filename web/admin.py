@@ -22,6 +22,7 @@ admin_site.register(Job)
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
 
+
 class StaffMemberAdmin(admin.ModelAdmin):
     readonly_fields = ('image_tag', )
     fields = ['name', ('image', 'image_tag'), 'sort_order']
@@ -29,28 +30,26 @@ class StaffMemberAdmin(admin.ModelAdmin):
 admin_site.register(StaffMember, StaffMemberAdmin)
 
 
-class ProductInline(admin.StackedInline):
+class ProductInline(ImageCroppingMixin, admin.StackedInline):
     model = Product
     exclude = ('description', )
-    readonly_fields = ('image_tag', )
-    fields = ['name', ('image', 'image_tag'), 'sort_order']
+    fields = ['name', 'image', 'cropped', 'sort_order']
     extra = 1
 
 
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
     inlines = [ProductInline, ]
     list_display = ('name', 'image_tag')
-    readonly_fields = ('image_tag', )
-    fields = ['name', 'slug', ('image', 'image_tag',), 'description', 'sort_order', 'homepage_position']
+    fields = ['name', 'slug', 'image', 'cropped', 'description', 'sort_order', 'homepage_position']
 
 admin_site.register(Category, CategoryAdmin)
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_filter = ('category__name',)
     list_display = ('name', 'image_tag')
     readonly_fields = ('image_tag', )
-    fields = ['name', ('image', 'image_tag'), 'sort_order', ]
+    fields = ['name', 'image', 'cropped', 'sort_order', ]
 
 admin_site.register(Product, ProductAdmin)
 

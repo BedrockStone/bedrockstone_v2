@@ -1,17 +1,18 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
+{% load cropping %}
 {% block head_scripts %}
 <link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block header_title %}{{ category.name }}{% endblock %}
-{% block header_image_src %}{{ MEDIA_URL }}{{category.image}}{% endblock %}
+{% block header_image_src %}{% cropped_thumbnail category "cropped" height=165 %}{% endblock %}
 {% block content_blurb%}{{ category.description| linebreaks }}{% endblock %}
 {% block main_content %}
     {% for product in category.product_set.all%}
         <div class="grid_3">
             <div class="box">
-                <div class="box_title"><a title="{{ product.name }}" href="{{ MEDIA_URL }}{{ product.medium_image }}" class="fancybox">{{ product.name }}</a></div>
-                <img src="{{ MEDIA_URL }}{{ product.thumbnail }}" />
+                <div class="box_title"><a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" height=600 %}" class="fancybox">{{ product.name }}</a></div>
+                <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                 <div class="box_bot"><!--{{ product.description }}--></div>
             </div>
         </div>

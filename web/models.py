@@ -40,8 +40,10 @@ class SortableNamedModel(models.Model):
 class ModelWithPicture(SortableNamedModel):
     image = models.ImageField(null=True, upload_to=upload_image, default='product/no_image.jpeg',
                               help_text='The image to show for this item')
+    #TODO: Replace these with ImageRatio fields
     thumbnail = models.ImageField(null=True, blank=True, upload_to=upload_thumb, default='product/no_image.jpg')
     medium_image = models.ImageField(null=True, blank=True, upload_to=upload_medium, default='product/no_image.jpg')
+    cropped = ImageRatioField('image', '400x300')
 
     def save(self, *args, **kwargs):
         if self.pk is None or self.image.name != self.__class__._default_manager.get(id=self.id).image.name:
@@ -58,7 +60,13 @@ class ModelWithPicture(SortableNamedModel):
         self.medium_image = medium.get_file()
 
     def image_tag(self):
-        return "<img src=\"{0}{1}\" style='width:85px' />".format(MEDIA_URL, self.thumbnail)
+        return "<img src='{0}' style='width:40px' />".format(
+            get_thumbnailer(self.image).get_thumbnail({
+                'size': (430, 360),
+                'box': self.cropped, 'crop': True,
+                'detail': True, }).url
+        )
+
 
     image_tag.short_description = ''
     image_tag.allow_tags = True
@@ -120,6 +128,7 @@ class GalleryItem(SortableNamedModel):
 
     image_tag.short_description = ''
     image_tag.allow_tags = True
+
 
 class StaffMember(ModelWithPicture):
     title = models.CharField(max_length=50)

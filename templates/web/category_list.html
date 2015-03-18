@@ -1,5 +1,6 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
+{% load cropping %}
 {% block header_title %}Products{% endblock %}
 {% block header_image_src %}{% static 'images/products.JPG' %}{% endblock %}
 {% block content_blurb %}
@@ -16,7 +17,7 @@
                 <div class="maxheight">
                     <div class="box_inner">
                         <div class="box_title"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
-                        <a href="{% url 'category' category.slug %}"><img src="{{ MEDIA_URL }}{{ category.thumbnail }}" alt="{{ category.name }}"></a>
+                        <a href="{% url 'category' category.slug %}"><img src="{% cropped_thumbnail category "cropped" height=165  %}" /></a>
                         <div class="box_bot">
                             <div></div>
                         </div>
