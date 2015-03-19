@@ -16,7 +16,7 @@
                 <div class="maxheight">
                     <div class="box_inner">
                         <div class="box_title"><a href='{% url 'category' item.slug %}'>{{ item.name }}</a></div>
-                        <a href="{% url 'category' item.slug %}"><img src="{% cropped_thumbnail item "cropped" height=165  %}" /></a>
+                        <a href="{% url 'project_type' item.slug %}"><img src="{% cropped_thumbnail item "cropped" height=165  %}" /></a>
                         <div class="box_bot">
                             <div></div>
                         </div>

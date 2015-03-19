@@ -19,7 +19,7 @@ urlpatterns = patterns('', url(r'^$', views.index, name='index'),
                        url(r'^jobs/(.+)/$', views.JobDetail.as_view(), name='job'),
                        url(r'^services/$', views.services, name='services'),
                        url(r'^showcase/$', views.VirtualShowcase.as_view(), name='showcase'),
-                       url(r'^showcase/(.+)/$', views.Project.as_view(), name='category'),
+                       url(r'^showcase/(.+)/$', views.Project.as_view(), name='project_type'),
                      
                        #NOT FOR PROD
                        (r'^static/media/(?P<path>,*)$', 'django.views.static.serve',
