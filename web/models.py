@@ -2,26 +2,13 @@ import os
 
 from django.db import models
 from easy_thumbnails.files import get_thumbnailer
-from image_cropping import ImageRatioField, ImageCropField
-from bedrockstone_v2.settings import MEDIA_URL, IMAGE_SIZES
-
-from web.helpers import ImageHelper
+from image_cropping import ImageRatioField
 
 
 def upload_image(self, filename):
     self.image_changed = True
     return "%s/%s%s" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'),
                         os.path.splitext(filename)[-1])
-'''
-
-def upload_thumb(self, filename):
-    return "%s/thumbs/%s.jpg" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'))
-
-
-def upload_medium(self, filename):
-    return "%s/medium/%s.jpg" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'))
-
-'''
 
 
 class SortableNamedModel(models.Model):
@@ -44,20 +31,6 @@ class ModelWithPicture(SortableNamedModel):
                               help_text='The image to show for this item')
     cropped = ImageRatioField('image', '400x300')
 
-    def save(self, *args, **kwargs):
-        if self.pk is None or self.image.name != self.__class__._default_manager.get(id=self.id).image.name:
-            self.alter_images()
-        super(ModelWithPicture, self).save(*args, **kwargs)
-
-    def alter_images(self):
-        thumb = ImageHelper(self.image)
-        thumb.crop_image(IMAGE_SIZES['thumbnail'][0], IMAGE_SIZES['thumbnail'][1])
-        self.thumbnail = thumb.get_file()
-        self.image.file.seek(0)
-        medium = ImageHelper(self.image)
-        medium.crop_image(IMAGE_SIZES['medium_image'][0], IMAGE_SIZES['medium_image'][1])
-        self.medium_image = medium.get_file()
-
     def image_tag(self):
         return "<img src='{0}' style='width:40px' />".format(
             get_thumbnailer(self.image).get_thumbnail({
@@ -65,7 +38,6 @@ class ModelWithPicture(SortableNamedModel):
                 'box': self.cropped, 'crop': True,
                 'detail': True, }).url
         )
-
 
     image_tag.short_description = ''
     image_tag.allow_tags = True
@@ -137,9 +109,9 @@ class StaffMember(ModelWithPicture):
 
 
 class ProjectType(ModelWithPicture):
-    pass
+    description = models.TextField(blank=True, null=True)
 
 
 class Project(ModelWithPicture):
-    pass
+    type = models.ForeignKey(ProjectType)
 

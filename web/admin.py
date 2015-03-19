@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 from django.utils.module_loading import autodiscover_modules
 from image_cropping import ImageCroppingMixin
 
-from web.models import Category, Product, Location, Job, GalleryItem, StaffMember
+from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType
 
 
 class MyAdmin(AdminSite):
@@ -68,3 +68,15 @@ class LocationAdmin(admin.ModelAdmin):
     ]
 
 admin_site.register(Location,LocationAdmin)
+
+
+class ProjectInlineAdmin(ImageCroppingMixin, admin.StackedInline):
+    model = Project
+    extra = 1
+
+
+class ProjectTypeAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('name', 'image_tag')
+    inlines = [ProjectInlineAdmin, ]
+
+admin_site.register(ProjectType, ProjectTypeAdmin)

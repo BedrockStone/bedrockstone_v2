@@ -1,0 +1,29 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% load cropping %}
+{% block header_title %}Virtual Showcase{% endblock %}
+{% block header_image_src %}{% static 'images/projects.jpg' %}{% endblock %}
+{% block content_blurb %}
+<p>
+   Browse some of the amazing projects built using natural stone from Bedrock Stone &amp; Design.
+</p>
+{% endblock %}
+{% block main_content %}
+
+    {% for item in object_list %}
+       <div class="grid_3">
+            <div class="box">
+                <div class="maxheight">
+                    <div class="box_inner">
+                        <div class="box_title"><a href='{% url 'category' item.slug %}'>{{ item.name }}</a></div>
+                        <a href="{% url 'category' item.slug %}"><img src="{% cropped_thumbnail item "cropped" height=165  %}" /></a>
+                        <div class="box_bot">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+{% endfor %}
+
+{% endblock %}

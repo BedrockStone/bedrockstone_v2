@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from web.models import Job, Location, Category, GalleryItem, StaffMember, Product
+from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType
 
 
 def index(request):
@@ -31,8 +31,13 @@ class JobDetail(DetailView):
         return get_object_or_404(Job, slug=self.args[0])
 
 
-def virtual_showcase(request):
-    return render(request, 'web/virtual_showcase.html')
+class VirtualShowcase(ListView):
+    queryset = ProjectType.objects.all()
+
+
+class Project(DetailView):
+    def get_object(self, queryset=None):
+        return get_object_or_404(ProjectType, slug=self.args[0])
 
 
 def location(request,name):
