@@ -3,12 +3,16 @@ import os
 from django.db import models
 from easy_thumbnails.files import get_thumbnailer
 from image_cropping import ImageRatioField
+import time
 
 
 def upload_image(self, filename):
-    self.image_changed = True
-    return "%s/%s%s" % (type(self).__name__.lower(), self.name.lower().replace(' ', '_'),
-                        os.path.splitext(filename)[-1])
+    result = "%s/%s_%s%s" % (type(self).__name__.lower(),
+                            self.name.lower().replace(' ', '_'),
+                            time.time(),
+                            os.path.splitext(filename)[-1])
+
+    return result
 
 
 class SortableNamedModel(models.Model):
