@@ -8,9 +8,9 @@ import time
 
 def upload_image(self, filename):
     result = "%s/%s_%s%s" % (type(self).__name__.lower(),
-                            self.name.lower().replace(' ', '_'),
-                            time.time(),
-                            os.path.splitext(filename)[-1])
+                             self.name.lower().replace(' ', '_'),
+                             time.time(),
+                             os.path.splitext(filename)[-1])
 
     return result
 

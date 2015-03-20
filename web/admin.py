@@ -49,7 +49,7 @@ class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_filter = ('category__name',)
     list_display = ('name', 'image_tag')
     readonly_fields = ('image_tag', )
-    fields = ['name', 'image', 'cropped', 'sort_order', ]
+    fields = ['name', 'category', 'image', 'cropped', 'sort_order', ]
 
 admin_site.register(Product, ProductAdmin)
 
