@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 from django.utils.module_loading import autodiscover_modules
 from image_cropping import ImageCroppingMixin
 
-from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType
+from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture
 
 
 class MyAdmin(AdminSite):
@@ -32,7 +32,7 @@ admin_site.register(StaffMember, StaffMemberAdmin)
 
 class ProductInline(ImageCroppingMixin, admin.StackedInline):
     model = Product
-    exclude = ('description', )
+    exclude = ('description','long_description', 'short_description')
     fields = ['name', 'image', 'cropped', 'sort_order']
     extra = 1
 
@@ -40,7 +40,7 @@ class ProductInline(ImageCroppingMixin, admin.StackedInline):
 class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
     inlines = [ProductInline, ]
     list_display = ('name', 'image_tag')
-    fields = ['name', 'slug', 'image', 'cropped', 'description', 'sort_order', 'homepage_position']
+    fields = ['name', 'slug', 'image', 'cropped','short_description', 'long_description', 'sort_order', 'homepage_position']
 
 admin_site.register(Category, CategoryAdmin)
 
@@ -61,13 +61,30 @@ class GalleryItemAdmin(ImageCroppingMixin, admin.ModelAdmin):
 admin_site.register(GalleryItem, GalleryItemAdmin)
 
 
-class LocationAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None,               {'fields': ['name', 'slug', 'phone_number', 'sort_order']}),
-        ('Address', {'fields': ['street', 'city', 'zip'], 'classes': ['collapse']}),
-    ]
+class LocationPhotoAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    fields = ('location', 'image', 'cropped')
+    list_display = ('image_tag', )
 
-admin_site.register(Location,LocationAdmin)
+admin_site.register(LocationPicture, LocationPhotoAdmin)
+
+
+class LocationPhotoInlineAdmin(ImageCroppingMixin, admin.StackedInline):
+    model = LocationPicture
+    fields = ('image', 'cropped')
+    extra = 1
+
+
+class LocationAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name', 'image', 'cropped', 'slug', 'phone_number', 'sort_order',
+                                         'short_description', 'long_description']}),
+        ('Address', {'fields': ['street', 'city', 'zip']}),
+    ]
+    inlines = [LocationPhotoInlineAdmin]
+
+admin_site.register(Location, LocationAdmin)
+
+
 
 
 class ProjectInlineAdmin(ImageCroppingMixin, admin.StackedInline):

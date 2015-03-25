@@ -9,8 +9,12 @@
     <h2>{% block header_title %}{% endblock %}</h2>
     <div class="grid_3">
         <div class="box" style="padding:7px;margin:0 1em 0 0; ">
+            {% block header_graphic %}
             <img src="{% block header_image_src %}{% endblock %}"  style="width:200px;" />
+            {% endblock %}
+        <div class="box_bot">{% block under_header_graphic %}{% endblock %}</div>
         </div>
+
     </div>
        {% block content_blurb %}{% endblock %}
 

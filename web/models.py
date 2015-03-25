@@ -17,6 +17,12 @@ def upload_image(self, filename):
 
 class SortableNamedModel(models.Model):
     name = models.CharField(max_length=100, help_text='The name for this item')
+    long_description = models.TextField(null=True, blank=True,
+                                        help_text='Description text used when this item is displayed on a full page')
+    short_description = models.TextField(null=True, blank=True,
+                                         help_text='Description text used when this item is shown in a list. '
+                                                   'It will also be shown in bold format in front of the'
+                                                   'long description on full page displays')
     slug = models.CharField(max_length=100,
                             help_text='This field is used for links, it should usually be the name with spaces replaced'
                                       ' by an underscore')
@@ -30,10 +36,7 @@ class SortableNamedModel(models.Model):
         abstract = True
 
 
-class ModelWithPicture(SortableNamedModel):
-    image = models.ImageField(null=True, upload_to=upload_image, default='product/no_image.jpeg',
-                              help_text='The image to show for this item')
-    cropped = ImageRatioField('image', '400x300')
+class ImageTagModel(object):
 
     def image_tag(self):
         return "<img src='{0}' style='width:40px' />".format(
@@ -42,9 +45,14 @@ class ModelWithPicture(SortableNamedModel):
                 'box': self.cropped, 'crop': True,
                 'detail': True, }).url
         )
-
     image_tag.short_description = ''
     image_tag.allow_tags = True
+
+
+class ModelWithPicture(SortableNamedModel, ImageTagModel):
+    image = models.ImageField(null=True, upload_to=upload_image, default='product/no_image.jpeg',
+                              help_text='The image to show for this item')
+    cropped = ImageRatioField('image', '400x300')
 
     class Meta:
         abstract = True
@@ -75,12 +83,23 @@ class Address(models.Model):
         abstract = True
 
 
-class Location(SortableNamedModel, Address):
+class Location(ModelWithPicture, Address):
     description = models.TextField(null=True)
     phone_number = models.CharField(null=True, blank=True, max_length=13)
+    description = models.TextField(null=True, blank=True)
 
     def address(self):
         return self.street
+
+
+class LocationPicture(models.Model, ImageTagModel):
+    image = models.ImageField(upload_to=upload_image)
+    cropped = ImageRatioField('image', '400x300')
+    location = models.ForeignKey(Location)
+
+    @property
+    def name(self):
+        return self.location.name
 
 
 class Job(SortableNamedModel):
@@ -88,21 +107,14 @@ class Job(SortableNamedModel):
     is_active = models.BooleanField(default=True)
 
 
-class GalleryItem(SortableNamedModel):
+class GalleryItem(SortableNamedModel, ImageTagModel):
     image = models.ImageField(upload_to="gallery/")
     large = ImageRatioField('image', '1440x675')
     preview = ImageRatioField('image', '40x40')
 
-    def image_tag(self):
-        return "<img src='{0}' style='width:40px' />".format(
-            get_thumbnailer(self.image).get_thumbnail({
-                'size': (430, 360),
-                'box': self.large, 'crop': True,
-                'detail': True, }).url
-        )
-
-    image_tag.short_description = ''
-    image_tag.allow_tags = True
+    @property
+    def cropped(self):
+        return self.preview
 
 
 class StaffMember(ModelWithPicture):

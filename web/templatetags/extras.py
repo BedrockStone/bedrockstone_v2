@@ -1,17 +1,15 @@
 __author__ = 'elliottohara'
 from django import template
-from django.core.urlresolvers import reverse
 
 register = template.Library()
 
 
-@register.simple_tag
-def nav_item(request, args):
-    pieces = args.split(',')
-    url = pieces[0]
-    name = pieces[1]
-    c = ""
-    if request.path == reverse(url):
-        c = " class='current'"
+@register.filter(name='box')
+def box(request, **kwargs):
+    return_val = '<div class="box_inner"><div class="maxheight">' \
+                 '<div class="box_title"><a href="{1}" class="{2}">{0}</a></div>' \
+                 '<div class="box_bot"><a href="{1}" class="{2}"><img src="{3}" title="{0}" /></a></div>' \
+                 '</div></div>'
+    return_val = return_val.format(kwargs['title'], kwargs['href'], kwargs['a_class'], kwargs['src'])
 
-    return "<li{}><a href='{}'>{}</a>".format(c, reverse(url), name)
+    return return_val

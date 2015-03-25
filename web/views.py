@@ -40,6 +40,10 @@ class Project(DetailView):
         return get_object_or_404(ProjectType, slug=self.args[0])
 
 
+class StaffList(ListView):
+    queryset = StaffMember.objects.filter(show_on_contact_us=True)
+
+
 def location(request,name):
     l = get_object_or_404(Location, slug=name)
     context = {'location': l}
