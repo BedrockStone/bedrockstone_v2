@@ -114,13 +114,13 @@
 <section class="content">
   <div class="container">
     <div class="row">
-      {% for category in categories %}
+      {% for item in content_items %}
         <div class="grid_4">
             <div class="box">
               <div class="maxheight">
-                <div class="box_title"><a href="{% url 'category' category.slug %}">{{ category.name }}</a></div>
-                <a href="{% url 'category' category.slug %}"><img src="{{ MEDIA_URL }}{{ category.image }}" alt="{{ category.name }}"></a>
-                <div class="box_bot">{{ category.description }}</div>
+                <div class="box_title"><a href="{% url 'content' item.slug %}">{{ item.name }}</a></div>
+                <a href="{% url 'content'  item.slug%}"><img src="{% cropped_thumbnail item 'cropped' %}" alt="{{ item.name }}"></a>
+                <div class="box_bot">{{ item.short_description }}</div>
               </div>
             </div>
       </div>

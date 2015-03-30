@@ -1,0 +1,13 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% load cropping %}
+{% block head_scripts %}
+<link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block header_title %}{{ contentpage.name }}{% endblock %}
+{% block header_image_src %}{% cropped_thumbnail contentpage "cropped" height=165 %}{% endblock %}
+{% block content_blurb%}
+    <strong>{% if contentpage.short_description %} {{ contentpage.short_description | linebreaks }}{% endif %}</strong>
+    {{ contentpage.long_description| linebreaks }}
+{% endblock %}
+{

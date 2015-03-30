@@ -60,7 +60,6 @@ class ModelWithPicture(SortableNamedModel, ImageTagModel):
 
 
 class Category(ModelWithPicture):
-    description = models.TextField(null=True, blank=True, )
     homepage_position = models.IntegerField(null=True, blank=True,
                                             help_text="The order this shows on the home page. If no value is specified"
                                                       "the item will not show on the home page.")
@@ -70,7 +69,6 @@ class Category(ModelWithPicture):
 
 
 class Product(ModelWithPicture):
-    description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category)
 
 
@@ -86,7 +84,6 @@ class Address(models.Model):
 class Location(ModelWithPicture, Address):
     description = models.TextField(null=True)
     phone_number = models.CharField(null=True, blank=True, max_length=13)
-    description = models.TextField(null=True, blank=True)
 
     def address(self):
         return self.street
@@ -103,7 +100,6 @@ class LocationPicture(models.Model, ImageTagModel):
 
 
 class Job(SortableNamedModel):
-    description = models.TextField()
     is_active = models.BooleanField(default=True)
 
 
@@ -131,3 +127,7 @@ class ProjectType(ModelWithPicture):
 class Project(ModelWithPicture):
     type = models.ForeignKey(ProjectType)
 
+
+class ContentPage(ModelWithPicture):
+    active = models.BooleanField(default=True)
+    homepage_position = models.IntegerField(null=True, blank=True)

@@ -17,12 +17,12 @@ urlpatterns = patterns('', url(r'^$', views.index, name='index'),
                        url(r'^contact/$', views.ContactUs.as_view(), name='contact'),
                        url(r'^jobs/$', views.Jobs.as_view(), name='jobs'),
                        url(r'^jobs/(.+)/$', views.JobDetail.as_view(), name='job'),
-                       url(r'^services/$', views.services, name='services'),
                        url(r'^showcase/$', views.VirtualShowcase.as_view(), name='showcase'),
                        url(r'^showcase/(.+)/$', views.Project.as_view(), name='project_type'),
+                       url(r'^(.+)/', views.Content.as_view(), name='content'),
                      
                        #NOT FOR PROD
-                       (r'^static/media/(?P<path>,*)$', 'django.views.static.serve',
+                       url(r'^static/media/(?P<path>,*)$', 'django.views.static.serve',
                         {'document_root': settings.MEDIA_ROOT}),)
 
 

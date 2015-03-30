@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import User, Group
-from django.utils.module_loading import autodiscover_modules
 from image_cropping import ImageCroppingMixin
 
-from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture
+from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture, \
+    ContentPage
 
 
 class MyAdmin(AdminSite):
@@ -97,3 +97,9 @@ class ProjectTypeAdmin(ImageCroppingMixin, admin.ModelAdmin):
     inlines = [ProjectInlineAdmin, ]
 
 admin_site.register(ProjectType, ProjectTypeAdmin)
+
+
+class ContentPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    pass
+
+admin_site.register(ContentPage, ContentPageAdmin)

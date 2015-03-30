@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType
+from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage
 
 
 def index(request):
     g = GalleryItem.objects.all()
-    categories = Category.objects.exclude(homepage_position=None).order_by('homepage_position')[:5]
-    return render(request, 'web/home.html', {'galleryItems': g, 'categories': categories})
+    #categories = Category.objects.exclude(homepage_position=None).order_by('homepage_position')[:5]
+    content_pages = ContentPage.objects.exclude(homepage_position=None)
+    return render(request, 'web/home.html', {'galleryItems': g, 'content_items': content_pages})
 
 
 class ContactUs(ListView):
@@ -29,6 +30,11 @@ class Jobs(ListView):
 class JobDetail(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Job, slug=self.args[0])
+
+
+class Content(DetailView):
+    def get_object(self, queryset=None):
+        return get_object_or_404(ContentPage,slug=self.args[0])
 
 
 class VirtualShowcase(ListView):
@@ -59,12 +65,6 @@ class CategoryDetail(DetailView):
         return get_object_or_404(Category, slug=self.args[0])
 
 
-def services(request):
-    return render(request, 'web/services.html')
-
-
-def gallery(request):
-    return render(request, 'web/gallery.html')
 
 
 def natural_stone(request):
