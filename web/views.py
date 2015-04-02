@@ -63,10 +63,3 @@ class Products(ListView):
 class CategoryDetail(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Category, slug=self.args[0])
-
-
-
-
-def natural_stone(request):
-    return render(request, 'web/natural_stone.html')
-

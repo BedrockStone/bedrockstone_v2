@@ -21,7 +21,7 @@ class SortableNamedModel(models.Model):
                                         help_text='Description text used when this item is displayed on a full page')
     short_description = models.TextField(null=True, blank=True,
                                          help_text='Description text used when this item is shown in a list. '
-                                                   'It will also be shown in bold format in front of the'
+                                                   'It will also be shown in bold format in front of the '
                                                    'long description on full page displays')
     slug = models.CharField(max_length=100,
                             help_text='This field is used for links, it should usually be the name with spaces replaced'
@@ -129,5 +129,12 @@ class Project(ModelWithPicture):
 
 
 class ContentPage(ModelWithPicture):
-    active = models.BooleanField(default=True)
-    homepage_position = models.IntegerField(null=True, blank=True)
+    homepage_position = models.IntegerField(null=True, blank=True,
+                                            help_text="The position (1-3) to be shown on the home page "
+                                                      "(under the gallery item display).  If left blank, the page can "
+                                                      "still be navigated to, but will not have a section on the "
+                                                      "home page.")
+
+
+class MenuItem(SortableNamedModel):
+    parent = models.ForeignKey("MenuItem", null=True, blank=True, help_text="The item to make this a subitem of.")

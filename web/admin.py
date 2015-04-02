@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 from image_cropping import ImageCroppingMixin
 
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture, \
-    ContentPage
+    ContentPage, MenuItem
 
 
 class MyAdmin(AdminSite):
@@ -103,3 +103,9 @@ class ContentPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
     pass
 
 admin_site.register(ContentPage, ContentPageAdmin)
+
+
+class MenuItemAdmin(admin.ModelAdmin):
+    exclude = ['long_description']
+
+admin_site.register(MenuItem, MenuItemAdmin)

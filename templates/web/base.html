@@ -61,7 +61,21 @@
         </h1>
         <div class="navigation ">
           <nav>
-            <ul class="sf-menu">
+
+             <ul class="sf-menu">
+                 {% for menu_item in navigation %}
+                     <li>
+                         <a href="{{ menu_item.slug }}" title="{{ menu_item.short_description }}">{{ menu_item.name }}</a>
+                     {% if menu_item.menuitem_set.count %}
+                         <ul>
+                         {% for child in menu_item.menuitem_set.all %}
+                              <li><a href="{{ child.slug }}" title="{{ child.short_description }}">{{ child.name }}</a></li>
+                         {% endfor %}
+                         </ul>
+                     {% endif %}
+                     </li>
+                 {% endfor %}
+             <!--
              <li><a href="{% url 'index' %}">Home</a></li>
              <li><a href="{% url 'products' %}">Products</a></li>
              <li><a href="{% url 'showcase' %}">Showcase</a></li>
@@ -69,7 +83,9 @@
              <li><a href="{% url 'jobs' %}">Jobs</a></li>
              <li><a href="{% url 'about' %}">About</a>
                     <ul><li><a href="{% url 'contact' %}">Contact</a></li></ul>
+
              </li>
+             -->
            </ul>
           </nav>
           <div class="clear"></div>

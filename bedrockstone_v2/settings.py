@@ -112,7 +112,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     'django.core.context_processors.request',
-    'web.core.context_processor',)
+    'web.core.context_processor',
+    'web.context_processors.menu_items'
+)
 
 from local_settings import *
 
