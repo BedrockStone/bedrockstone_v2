@@ -114,9 +114,7 @@ class GalleryItem(SortableNamedModel, ImageTagModel):
 
 
 class StaffMember(ModelWithPicture):
-    title = models.CharField(max_length=50)
     email = models.EmailField(null=True, blank=True)
-    bio = models.TextField(blank=True, null=True)
     show_on_contact_us = models.BooleanField(default=True)
 
 
