@@ -13,10 +13,11 @@
 {% endblock %}
 {% block under_header_graphic %}{{ location.address }}<br />{{location.city }}, TX, {{ location.zip }}{% endblock %}
 {% block content_blurb %}
-    {{ location.description | linebreaks }}
+      {% if location.short_description %}<strong> {{ location.short_description | linebreaks }}</strong>{% endif %}
+    {{ location.long_description| linebreaks }}
 {% endblock %}
 {% block main_content %}
-
+{% if location.locationpicture_set.length %}
 <h3>A few pictures of {{ location.name }}</h3>
 {% for picture in location.locationpicture_set.all %}
     <div class="grid_3">
@@ -33,6 +34,7 @@
             </div>
     </div>
 {% endfor %}
+{% endif %}
 {% endblock %}
 {% block end_scripts %}
     <script src="{% static 'js/jquery.fancybox.js' %}"></script>
