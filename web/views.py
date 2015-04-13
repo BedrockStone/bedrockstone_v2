@@ -7,7 +7,11 @@ def index(request):
     g = GalleryItem.objects.all()
     #categories = Category.objects.exclude(homepage_position=None).order_by('homepage_position')[:5]
     content_pages = ContentPage.objects.exclude(homepage_position=None)
-    return render(request, 'web/home.html', {'galleryItems': g, 'content_items': content_pages})
+    locations = Location.objects.all()
+    return render(request, 'web/home.html',
+                  {'galleryItems': g,
+                   'content_items': content_pages,
+                   'locations': locations})
 
 
 class ContactUs(ListView):

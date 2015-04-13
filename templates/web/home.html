@@ -130,23 +130,14 @@
       <div class="grid_12">
         <h3>Our Locations</h3>
         <div id="owl1">
-          <div class="item">
-            <img src="{% static 'images/rock_1.jpg' %}" class="img_inner" alt="">
-            <div class="text1"><a href="{% url 'locations' 'rock_1' %}">Rock 1</a></div>
-          </div>
-          <div class="item">
-            <img src="{% static 'images/rock_2.jpg' %}" class="img_inner" alt="">
-            <div class="text1"><a href="{% url 'locations' 'rock_2' %}">Rock 2</a></div>
-          </div>
-          <div class="item">
-            <img src="{% static 'images/rock_3.jpg' %}" class="img_inner" alt="">
-            <div class="text1"><a href="{% url 'locations' 'rock_3' %}">Rock 3</a></div>
-          </div>
-          <div class="item">
-            <img src="{% static 'images/rock_4.jpg' %}" class="img_inner" alt="">
-            <div class="text1"><a href="{% url 'locations' 'rock_4' %}">Rock 4</a></div>
-          </div>
-
+            {% for location in locations %}
+                <div class="item">
+                <a href="{% url 'locations' 'rock_1' %}">
+                <img class="img_inner" src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=200x200&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
+                </a>
+                <div class="text1"><a href="{% url 'locations' location.slug %}">{{ location.name }}</a></div>
+                </div>
+            {% endfor %}
         </div>
       </div>
     </div>
