@@ -25,7 +25,7 @@ admin_site.register(Group, GroupAdmin)
 
 class StaffMemberAdmin(admin.ModelAdmin):
     readonly_fields = ('image_tag', )
-    fields = ['name', ('image', 'image_tag'), 'sort_order']
+    fields = ['name', 'title', ('image', 'image_tag'), 'sort_order']
 
 admin_site.register(StaffMember, StaffMemberAdmin)
 
