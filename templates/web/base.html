@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bedrock Stone Austin's premier rock yard</title>
+<title>Bedrock Stone &amp; Design, Austin's premier rock yard</title>
 <meta charset="utf-8">
 <meta name = "format-detection" content = "telephone=no" />
 <!-- TODO Make nice favicon.ico
@@ -43,6 +43,14 @@
 
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=485924734773789";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!--==============================
               header
 =================================-->
@@ -94,7 +102,10 @@
   <div class="container">
     <div class="row">
       <div class="grid_12">
-         <div class="copyright">Bedrock Stone &amp; Design &copy; <span id="copyright-year"></span> All Rights Reserved
+          <div class="copyright" style="text-align: center;">
+              <a href="https://www.facebook.com/bedrockaustin"><img src="{% static 'images/facebook.png' %}" /> </a> |
+              <a href="tel:512-266-8080">512-266-8080</a> |
+              Bedrock Stone &amp; Design &copy; <span id="copyright-year"></span> All Rights Reserved
           </div>
       </div>
     </div>
