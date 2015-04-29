@@ -7,9 +7,9 @@
 {% block header_image_src %}{% static 'images/contact_us.jpg' %}{% endblock %}
 {% block content_blurb %}
     Bedrock Stone &amp; Design has {{ object_list.length }} convinient locations to serve you in the Austin, Tx area. <br />
-    Call our headquarters at 512-266-8080, email us at
+    Call our headquarters at <b>512-266-8080</b>, email us at
     <a href="mailto:contact@bedrockstoneanddesign.com">contact@bedrockstoneanddesign.com</a>, or ask for us by department.
-    <ul style="padding-top: 1em;">
+    <ul style="padding-top: 1em; overflow: auto;">
      {% for member in staff %}
             <li><h4 style="display: inline">{{ member.name }}</h4> - {{ member.title }}<br />
                 <a href="mailto:{{ member.email }}">{{ member.email }}</a>
