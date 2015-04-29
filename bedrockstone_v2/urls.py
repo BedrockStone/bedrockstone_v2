@@ -33,6 +33,8 @@ urlpatterns = patterns('', url(r'^$', views.index, name='index'),
                        url(r'^chopped.html', RedirectView.as_view(url='/products/chopped_block/', permanent=True)),
                        url(r'^pavers.html', RedirectView.as_view(url='/products/pavers/', permanent=True)),
                        url(r'^riverrock.html', RedirectView.as_view(url='/products/aggregates/', permanent=True)),
+                       url(r'^bouldersriverrock', RedirectView.as_view(url='/products/boulders/', permanent=True)),
+                       url(r'^bouldersriverrock', RedirectView.as_view(url='/products/boulders/', permanent=True)),
 
 
 
