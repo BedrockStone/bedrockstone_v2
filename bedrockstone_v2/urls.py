@@ -25,7 +25,7 @@ urlpatterns = patterns('', url(r'^$', views.index, name='index'),
 
                        #legacy url redirects
                        url(r'^staff.php', RedirectView.as_view(url='/contact/', permanent=True)),
-                       url(r'^aboutus.html', RedirectView.as_view(url='/about/', permanent=True)),
+                       url(r'^aboutus.php', RedirectView.as_view(url='/about/', permanent=True)),
                        url(r'^contact.php', RedirectView.as_view(url='/contact/', permanent=True)),
                        url(r'^landscape.html', RedirectView.as_view(url='/landscaping_supplies/', permanent=True)),
                        url(r'^pools.html', RedirectView.as_view(url='/showcase/pools/', permanent=True)),
