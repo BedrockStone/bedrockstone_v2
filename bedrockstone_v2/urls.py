@@ -22,6 +22,20 @@ urlpatterns = patterns('', url(r'^$', views.index, name='index'),
                        url(r'^showcase/$', views.VirtualShowcase.as_view(), name='showcase'),
                        url(r'^showcase/(.+)/$', views.Project.as_view(), name='project_type'),
                        url(r'^(.+)/', views.Content.as_view(), name='content'),
+
+                       #legacy url redirects
+                       url(r'^staff.php', RedirectView.as_view(url='/contact/', permanent=True)),
+                       url(r'^aboutus.html', RedirectView.as_view(url='/about/', permanent=True)),
+                       url(r'^contact.php', RedirectView.as_view(url='/contact/', permanent=True)),
+                       url(r'^landscape.html', RedirectView.as_view(url='/landscaping_supplies/', permanent=True)),
+                       url(r'^pools.html', RedirectView.as_view(url='/showcase/pools/', permanent=True)),
+                       url(r'^temp_delivery.html', RedirectView.as_view(url='/customer_service/', permanent=True)),
+                       url(r'^chopped.html', RedirectView.as_view(url='/products/chopped_block/', permanent=True)),
+                       url(r'^pavers.html', RedirectView.as_view(url='/products/pavers/', permanent=True)),
+                       url(r'^riverrock.html', RedirectView.as_view(url='/products/aggregates/', permanent=True)),
+
+
+
                        #NOT FOR PROD
                        url(r'^static/media/(?P<path>,*)$', 'django.views.static.serve',
                         {'document_root': settings.MEDIA_ROOT}),)
