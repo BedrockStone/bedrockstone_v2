@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage
+from django.utils.translation import ugettext as _
 
 
 def index(request):
@@ -24,7 +26,10 @@ class ContactUs(ListView):
 
 
 def aboutus(request):
-    return render(request, 'web/aboutus.html')
+    #return render(request, 'web/aboutus.html')
+    print _("Hello World")
+    return HttpResponse(_("Hello World"))
+
 
 
 class Jobs(ListView):
@@ -67,3 +72,7 @@ class Products(ListView):
 class CategoryDetail(DetailView):
     def get_object(self, queryset=None):
         return get_object_or_404(Category, slug=self.args[0])
+
+
+def hello_world(request):
+    return HttpResponse(_("Hello World"))

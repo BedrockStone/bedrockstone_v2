@@ -1,8 +1,9 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
-{% block header_title %}Virtual Showcase{% endblock %}
+{% load i18n %}
+{% block header_title %}{% trans "Virtual Showcase" %}{% endblock %}
 {% block header_image_src %}{% static 'img/projects.jpg' %}{% endblock %}
-{% block content_blurb %}Browse our virtual showcase here.{% endblock %}
+{% block content_blurb %}{% trans "Browse our virtual showcase here."%}{% endblock %}
 {% block main_content %}
 
 {% for type in projects %}

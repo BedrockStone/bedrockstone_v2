@@ -3,6 +3,7 @@ from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import User, Group
 from image_cropping import ImageCroppingMixin
+from modeltranslation.admin import TranslationAdmin
 
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture, \
     ContentPage, MenuItem
@@ -37,7 +38,7 @@ class ProductInline(ImageCroppingMixin, admin.StackedInline):
     extra = 1
 
 
-class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
+class CategoryAdmin(ImageCroppingMixin, TranslationAdmin):
     inlines = [ProductInline, ]
     list_display = ('name', 'image_tag')
     fields = ['name', 'slug', 'image', 'cropped','short_description', 'long_description', 'sort_order', 'homepage_position']
@@ -45,7 +46,7 @@ class CategoryAdmin(ImageCroppingMixin, admin.ModelAdmin):
 admin_site.register(Category, CategoryAdmin)
 
 
-class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
+class ProductAdmin(ImageCroppingMixin, TranslationAdmin):
     list_filter = ('category__name',)
     list_display = ('name', 'image_tag')
     readonly_fields = ('image_tag', )
@@ -54,7 +55,7 @@ class ProductAdmin(ImageCroppingMixin, admin.ModelAdmin):
 admin_site.register(Product, ProductAdmin)
 
 
-class GalleryItemAdmin(ImageCroppingMixin, admin.ModelAdmin):
+class GalleryItemAdmin(ImageCroppingMixin, TranslationAdmin):
     list_display = ('sort_order', 'image_tag')
     pass
 
@@ -74,7 +75,7 @@ class LocationPhotoInlineAdmin(ImageCroppingMixin, admin.StackedInline):
     extra = 1
 
 
-class LocationAdmin(ImageCroppingMixin, admin.ModelAdmin):
+class LocationAdmin(ImageCroppingMixin, TranslationAdmin):
     fieldsets = [
         (None,               {'fields': ['name', 'image', 'cropped', 'slug', 'phone_number', 'sort_order',
                                          'short_description', 'long_description']}),
@@ -92,20 +93,20 @@ class ProjectInlineAdmin(ImageCroppingMixin, admin.StackedInline):
     extra = 1
 
 
-class ProjectTypeAdmin(ImageCroppingMixin, admin.ModelAdmin):
+class ProjectTypeAdmin(ImageCroppingMixin, TranslationAdmin):
     list_display = ('name', 'image_tag')
     inlines = [ProjectInlineAdmin, ]
 
 admin_site.register(ProjectType, ProjectTypeAdmin)
 
 
-class ContentPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
+class ContentPageAdmin(ImageCroppingMixin, TranslationAdmin):
     pass
 
 admin_site.register(ContentPage, ContentPageAdmin)
 
 
-class MenuItemAdmin(admin.ModelAdmin):
+class MenuItemAdmin(TranslationAdmin):
     exclude = ['long_description']
 
 admin_site.register(MenuItem, MenuItemAdmin)

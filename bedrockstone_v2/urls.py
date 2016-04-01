@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.generic import RedirectView
 
@@ -9,7 +10,7 @@ from web.admin import admin_site
 admin.autodiscover()
 
 
-urlpatterns = patterns('', url(r'^$', views.index, name='index'),
+urlpatterns = i18n_patterns('', url(r'^$', views.index, name='index'),
                        url(r'^locations/(?P<name>.+)/$', views.location, name='locations'),
                        url(r'^admin/', include(admin_site.urls), name="bedrock"),
                        url(r'^products/$', views.Products.as_view(), name='products'),
@@ -35,12 +36,11 @@ urlpatterns = patterns('', url(r'^$', views.index, name='index'),
                        url(r'^riverrock.html', RedirectView.as_view(url='/products/aggregates/', permanent=True)),
                        url(r'^bouldersriverrock', RedirectView.as_view(url='/products/boulders/', permanent=True)),
                        url(r'^bouldersriverrock', RedirectView.as_view(url='/products/boulders/', permanent=True)),
-
-
-
+                       url(r'^helloworld/$', views.hello_world, name='hello_world'),
                        #NOT FOR PROD
                        url(r'^static/media/(?P<path>,*)$', 'django.views.static.serve',
                         {'document_root': settings.MEDIA_ROOT}),)
 
 
+urlpatterns += url(r'^setlang/', 'django.views.i18n.set_language'),
 
