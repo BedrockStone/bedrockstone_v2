@@ -4,5 +4,5 @@ web/static/media/
 web/static/admin/
 bedrockstone_v2/local_settings.*
 bedrockstone_v2/local_settings.
-db.sqlite3
+*.sqlite3
 
