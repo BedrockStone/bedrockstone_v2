@@ -6,3 +6,8 @@ bedrockstone_v2/local_settings.*
 bedrockstone_v2/local_settings.
 *.sqlite3
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
