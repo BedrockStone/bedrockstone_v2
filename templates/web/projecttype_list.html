@@ -1,11 +1,12 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
 {% load cropping %}
+{% load i18n %}
 {% block header_title %}Virtual Showcase{% endblock %}
 {% block header_image_src %}{% static 'images/projects.jpg' %}{% endblock %}
 {% block content_blurb %}
 <p>
-   Browse some of the amazing projects built using natural stone from Bedrock Stone &amp; Design.
+   {% blocktrans %}Browse some of the amazing projects built using natural stone from Bedrock Stone &amp; Design.{% endblocktrans %}
 </p>
 {% endblock %}
 {% block main_content %}

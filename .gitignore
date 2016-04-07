@@ -5,7 +5,7 @@ web/static/admin/
 bedrockstone_v2/local_settings.*
 bedrockstone_v2/local_settings.
 *.sqlite3
-
+nhup.out
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -7,15 +7,16 @@
 {% endblock %}
 {% block header_image_src %}{% static 'images/contact_us.jpg' %}{% endblock %}
 {% block content_blurb %}
-    {% blocktrans with  yard_count=object_list.length %}
-    Bedrock Stone &amp; Design has {{ yard_count }} convenient locations to serve you in the Austin, Tx area. <br />
-    Call our headquarters at <b><a href="tel:512-266-8080">512-266-8080</a></b>, email us at
-    <a href="mailto:contact@bedrockstoneanddesign.com">contact@bedrockstoneanddesign.com</a>, or ask for us by department.
-    {% endblocktrans %}
+    {% blocktrans %}Bedrock Stone &amp; Design has 4 convenient locations to serve you in the Austin, Tx area. <br />
+        Call our headquarters at <b><a href="tel:512-266-8080">512-266-8080</a></b>,
+        email us at <a href="mailto:contact@bedrockstoneanddesign.com">contact@bedrockstoneanddesign.com</a>,
+        or ask for us by department.{% endblocktrans %}
     <ul style="padding-top: 1em; overflow: auto;">
      {% for member in staff %}
-            <li><h4 style="display: inline">{{ member.name }}</h4> - {{ member.title }}<br />
+            <li><h4 style="display: inline">{{ member.name }}</h4> {% if member.title %} - {{ member.title }}{% endif %}<br />
+                {% if member.email %}
                 <a href="mailto:{{ member.email }}">{{ member.email }}</a>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
