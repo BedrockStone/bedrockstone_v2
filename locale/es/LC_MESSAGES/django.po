@@ -85,7 +85,7 @@ msgid ""
 "    area.\n"
 msgstr ""
 "\n"
-"Bedrock Stone & amp; Diseño se enorgullece en presentar la mayor selección "
+"Bedrock Stone & Diseño se enorgullece en presentar la mayor selección "
 "de productos de piedra en el Austin , Tx\n"
 
 #: templates/web/category_list.html:15
@@ -108,7 +108,7 @@ msgstr "Galería de Proyectos"
 
 #: templates/web/gallery.html:6
 msgid "View Bedrock Stone &amp; Design products in projects here"
-msgstr "Ver Bedrock Stone &amp; productos de diseño en proyectos aquí"
+msgstr "Ver Bedrock Stone & productos de diseño en proyectos aquí"
 
 #: templates/web/home.html:102
 msgid "Austin's premier rock supplier!"
@@ -124,7 +124,7 @@ msgid ""
 "the \"Stone of Choice\", not only for\n"
 "            commercial contractors, but designers and retail customers."
 msgstr ""
-"Bedrock Stone & amp; El diseño es la sede de la mayor selección de Piedra en "
+"Bedrock Stone & El diseño es la sede de la mayor selección de Piedra en "
 "el centro de Texas . \n"
 "  Con cuatro lugares convenientes , tanto en el Norte y Sur de Austin Los "
 "clientes son capaces de beneficiarse de la amplia \n"
@@ -186,7 +186,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Bedrock Stone & amp; El diseño tiene 4 localizaciones convenientes a  "
+"Bedrock Stone & El diseño tiene 4 localizaciones convenientes a  "
 "Servirle en el área de Austin, Tx <br />\n"
 "Llame a nuestra oficina central en <b><a href="
 "\"tel:512-266-8080\">512-266-8080</a></b>, envíanos un email a <a href="
@@ -208,7 +208,7 @@ msgstr "Navegar por nuestro escaparate virtual de aquí."
 
 #: templates/web/staff.html:4
 msgid "Bedrock Stone &amp; Design Senior Staff"
-msgstr "Bedrock Stone & amp; Diseño del titulado"
+msgstr "Bedrock Stone & Diseño del titulado"
 
 #: web/views.py:30 web/views.py:31 web/views.py:78
 msgid "Hello World"
