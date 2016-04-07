@@ -26,11 +26,8 @@ class ContactUs(ListView):
 
 
 def aboutus(request):
-    #return render(request, 'web/aboutus.html')
-    print _("Hello World")
-    return HttpResponse(_("Hello World"))
-
-
+    return render(request, 'web/aboutus.html')
+    
 
 class Jobs(ListView):
     queryset = Job.objects.filter(is_active=True)
