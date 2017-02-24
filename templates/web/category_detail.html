@@ -24,11 +24,14 @@
 
 
     {% endfor %}
+     <!-- Preload it -->
+    <div style="display: none;">
     {% for product in category.product_set.all%}
-        <!-- Preload it -->
+       
         <img style="display: none" src="{{ product.image.url }}" />
                 
     {% endfor %}
+    </div>
 {% endblock %}
 {% block end_scripts %}
     <script src="{% static 'js/jquery.fancybox.js' %}"></script>
