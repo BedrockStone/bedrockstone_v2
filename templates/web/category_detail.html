@@ -15,8 +15,6 @@
         <div class="grid_3">
             <div class="box">
                 <div class="box_title"><a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">{{ product.name }}</a></div>
-                <!-- Preload it -->
-                <img style="display: none" src="{{ product.image.url }}" />
                 <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
                     <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                 </a>
@@ -25,6 +23,11 @@
         </div>
 
 
+    {% endfor %}
+    {% for product in category.product_set.all%}
+        <!-- Preload it -->
+        <img style="display: none" src="{{ product.image.url }}" />
+                
     {% endfor %}
 {% endblock %}
 {% block end_scripts %}
