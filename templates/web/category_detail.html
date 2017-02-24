@@ -14,8 +14,10 @@
     {% for product in category.product_set.all%}
         <div class="grid_3">
             <div class="box">
-                <div class="box_title"><a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" height=600 %}" class="fancybox">{{ product.name }}</a></div>
-                <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
+                <div class="box_title"><a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">{{ product.name }}</a></div>
+                <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
+                    <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
+                </a>
                 <div class="box_bot"><!--{{ product.short_description }}--></div>
             </div>
         </div>
