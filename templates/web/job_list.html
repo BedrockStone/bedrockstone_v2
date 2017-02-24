@@ -1,5 +1,6 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
+{% load i18n %}
 {% block header_title %}Jobs at Bedrock Stone &amp; Design{% endblock %}
 {% block header_image_src %}{% static 'images/jobs.jpg' %}{% endblock %}
 {% block content_blurb %}
@@ -23,6 +24,6 @@
     </div>
 
 {% else %}
-    <p>We currently have no openings. Please check back later.</p>
+    <p>{% trans "We currently have no openings. Please check back later." %}</p>
 {% endif %}
 {% endblock %}

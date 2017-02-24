@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 """
 Django settings for bedrockstone_v2 project.
 
@@ -30,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 import storages
 INSTALLED_APPS = (
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,12 +51,19 @@ STATICFILES_FINDERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+
+
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
 from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
@@ -88,6 +98,19 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGES = (
+    ('en', _('English')),
+    #('es', _('Spanish')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+    "/Users/elliottohara/projects/bedrockstone_v2/locale/"
+)
+
+print LOCALE_PATHS
+
 
 
 # Static files (CSS, JavaScript, Images)

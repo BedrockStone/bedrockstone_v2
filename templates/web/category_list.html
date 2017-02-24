@@ -1,15 +1,21 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
+{% load i18n %}
 {% load cropping %}
-{% block header_title %}Products{% endblock %}
+{% block header_title %}{% trans "Products" %}{% endblock %}
 {% block header_image_src %}{% static 'images/products.JPG' %}{% endblock %}
 {% block content_blurb %}
 <strong>
+{% blocktrans %}
     Bedrock Stone &amp; Design is proud to feature the largest selection of stone products in the Austin, Tx
     area.
+{% endblocktrans %}
 </strong>
-<p>No matter what your design project is, the natural stone products we feature are sure to be a valuable addition
+<p>
+{% blocktrans %}
+    No matter what your design project is, the natural stone products we feature are sure to be a valuable addition
 to it. Take a few minute and browse through just a small selection of what we carry at our locations in Austin, Tx.
+{% endblocktrans %}
 </p>
 {% endblock %}
 {% block main_content %}

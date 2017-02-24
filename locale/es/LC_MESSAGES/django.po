@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-07 17:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bedrockstone_v2/settings.py:103
+msgid "English"
+msgstr "Inglés"
+
+#: bedrockstone_v2/settings.py:104
+msgid "Spanish"
+msgstr "Español"
+
+#: templates/web/aboutus.html:8
+msgid ""
+"\n"
+"Bedrock Stone &amp; Design is the headquarters for the largest selection of "
+"stone in Central Texas. With four convenient\n"
+"    locations, both North and South Austin customers are able to benefit "
+"from wide selection of product. Bedrock Stone\n"
+"    &amp; Design takes great pride in being the Stone of Choice, not only "
+"for commercial contractors, but\n"
+"    designers and retail customers as well. "
+msgstr ""
+"\n"
+"Lecho de roca de piedra y diseño es la sede de la selección más grande de la "
+"piedra en el centro de Texas. Con cuatro lugares convenientes , los clientes "
+"tanto en el Norte y Sur de Austin son capaces de beneficiarse de la amplia "
+"selección de productos. Lecho de roca de piedra y diseño se enorgullece de "
+"ser la piedra de la elección , no sólo para los contratistas comerciales , "
+"pero los diseñadores y los clientes al por menor también."
+
+#: templates/web/aboutus.html:14
+msgid ""
+"\n"
+"The company was founded in 2002 and has been rapidly expanding, with even "
+"further growth on the horizon. With the\n"
+"    beautiful outdoor showroom that showcases over 100 samples of installed "
+"designs, clients are sure to find something\n"
+"    that compliments current and future projects. At Bedrock Stone & Design, "
+"not only will you find the widest product\n"
+"    and color selection, you will also find top-notch sales staff that are "
+"eager to assist you in your decision making\n"
+"    process.\n"
+msgstr ""
+"\n"
+"La empresa fue fundada en 2002 y ha sido rápida expansión , con un "
+"crecimiento aún mayor en el horizonte . Con la hermosa sala de exposición al "
+"aire libre que expone más de 100 muestras de diseños instalados , los "
+"clientes están seguros de encontrar algo que se complementa con los "
+"proyectos actuales y futuros . En Bedrock Stone & Design , no sólo va a "
+"encontrar el producto más amplia y selección de color , también se encuentra "
+"personal de ventas de primer nivel que están dispuestos a ayudarle en su "
+"proceso de toma de decisiones.\n"
+
+#: templates/web/aboutus.html:25
+msgid ""
+"\n"
+"    Let stone become a part of your indoor and outdoor surroundings, and let "
+"Bedrock make this a reality!\n"
+msgstr ""
+"\n"
+"Deje que la piedra se convierta en una parte de su entorno interior y "
+"exterior , y dejar  Bedrock hacer esto una realidad !\n"
+
+#: templates/web/base.html:7
+msgid "Bedrock Stone &amp; Design, Austin's premier rock yard"
+msgstr "Patio de rock más Importante de Austin"
+
+#: templates/web/base.html:110
+msgid "All Rights Reserved"
+msgstr "Todos los derechos reservados"
+
+#: templates/web/base.html:117
+msgid "Select Language:"
+msgstr ""
+
+#: templates/web/category_list.html:5
+msgid "Products"
+msgstr "Productos"
+
+#: templates/web/category_list.html:9
+msgid ""
+"\n"
+"    Bedrock Stone &amp; Design is proud to feature the largest selection of "
+"stone products in the Austin, Tx\n"
+"    area.\n"
+msgstr ""
+"\n"
+"Bedrock Stone & Diseño se enorgullece en presentar la mayor selección de "
+"productos de piedra en el Austin , Tx\n"
+
+#: templates/web/category_list.html:15
+msgid ""
+"\n"
+"    No matter what your design project is, the natural stone products we "
+"feature are sure to be a valuable addition\n"
+"to it. Take a few minute and browse through just a small selection of what "
+"we carry at our locations in Austin, Tx.\n"
+msgstr ""
+"\n"
+"No importa cuál sea su proyecto de diseño es , los productos de piedra "
+"natural quepresentamos están seguros de ser una valiosa adiciónlo. Tómese "
+"unos minutos y navegar a través de sólo una pequeña selección de lo que "
+"llevamos en nuestras ubicaciones enAustin , Tx .\n"
+
+#: templates/web/gallery.html:5
+msgid "Project Gallery"
+msgstr "Galería de Proyectos"
+
+#: templates/web/gallery.html:6
+msgid "View Bedrock Stone &amp; Design products in projects here"
+msgstr "Ver Bedrock Stone & productos de diseño en proyectos aquí"
+
+#: templates/web/home.html:102
+msgid "Austin's premier rock supplier!"
+msgstr "El principal proveedor de rock de Austin !"
+
+#: templates/web/home.html:103
+msgid ""
+"Bedrock Stone &amp; Design is the headquarters for the largest selection of "
+"stone in Central Texas.\n"
+"            With four convenient locations, both North and South Austin "
+"customers are able to benefit from wide\n"
+"            selection of product. At Bedrock, we take great pride in being "
+"the \"Stone of Choice\", not only for\n"
+"            commercial contractors, but designers and retail customers."
+msgstr ""
+"Bedrock Stone & El diseño es la sede de la mayor selección de Piedra en el "
+"centro de Texas . \n"
+"  Con cuatro lugares convenientes , tanto en el Norte y Sur de Austin Los "
+"clientes son capaces de beneficiarse de la amplia \n"
+"  Selección de producto. En roca de fondo , nos sentimos muy orgullosos de "
+"ser La \" Piedra de la opción \" , no sólo para \n"
+" contratistas comerciales , pero los diseñadores y los clientes al por menor."
+
+#: templates/web/home.html:131
+msgid "Our Locations"
+msgstr "Ubicaciones"
+
+#: templates/web/job_detail.html:9
+msgid ""
+"\n"
+"     To apply for this job, please send an email with your resume (in word "
+"or pdf format) to\n"
+"     <a href=\"mailto:jobs@bedrockstoneanddesign.com"
+"\">jobs@bedrockstoneanddesign.com</a>\n"
+"     "
+msgstr ""
+"\n"
+"Para solicitar este trabajo , por favor envíe un correo electrónico con su "
+"curriculum vitae ( en formato word o pdf ) a <a href=\"mailto:"
+"jobs@bedrockstoneanddesign.com>jobs@bedrockstoneanddesign.com</a>"
+
+#: templates/web/job_list.html:27
+msgid "We currently have no openings. Please check back later."
+msgstr ""
+"Actualmente no tenemos ninguna aberturas . Por favor, vuelva más tarde."
+
+#: templates/web/location.html:21
+#, python-format
+msgid " A few pictures of %(location_name)s "
+msgstr "Unas cuantas fotos de %(location_name)s"
+
+#: templates/web/location_list.html:4
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+#: templates/web/location_list.html:10
+msgid ""
+"Bedrock Stone &amp; Design has 4 convenient locations to serve you in the "
+"Austin, Tx area. <br />\n"
+"        Call our headquarters at <b><a href="
+"\"tel:512-266-8080\">512-266-8080</a></b>,\n"
+"        email us at <a href=\"mailto:contact@bedrockstoneanddesign.com"
+"\">contact@bedrockstoneanddesign.com</a>,\n"
+"        or ask for us by department."
+msgstr ""
+"Bedrock Stone & El diseño tiene 4 localizaciones convenientes a  Servirle en "
+"el área de Austin, Tx <br />\n"
+"Llame a nuestra oficina central en <b><a href="
+"\"tel:512-266-8080\">512-266-8080</a></b>, envíanos un email a <a href="
+"\"mailto:contact@bedrockstoneanddesign.com\">contact@bedrockstoneanddesign."
+"com</a>, o pedir para nosotros por el departamento."
+
+#: templates/web/location_list.html:27
+msgid "Locations"
+msgstr "Ubicaciones"
+
+#: templates/web/projects.html:4
+msgid "Virtual Showcase"
+msgstr "Escaparate virtual"
+
+#: templates/web/projects.html:6
+msgid "Browse our virtual showcase here."
+msgstr "Navegar por nuestro escaparate virtual de aquí."
+
+#: templates/web/projecttype_list.html:9
+msgid ""
+"Browse some of the amazing projects built using natural stone from Bedrock "
+"Stone &amp; Design."
+msgstr ""
+"Ver algunos de los increíbles proyectos construidos con piedra natural de roca de fondo de Bedrock Stone & Design."
+
+#: templates/web/staff.html:4
+msgid "Bedrock Stone &amp; Design Senior Staff"
+msgstr "Bedrock Stone & Diseño del titulado"
+
+#: web/views.py:75
+msgid "Hello World"
+msgstr "Hola! I don't know spanish!"

@@ -1,22 +1,30 @@
 {% extends 'web/content_page.html' %}
 {% load staticfiles %}
+{% load i18n %}
 {% block header_title %}About Us{% endblock %}
 {% block header_image_src %}{% static 'images/about_us.jpg' %}{% endblock %}
 {% block content_blurb %}
 
-<p>
+<p>{% blocktrans %}
 Bedrock Stone &amp; Design is the headquarters for the largest selection of stone in Central Texas. With four convenient
     locations, both North and South Austin customers are able to benefit from wide selection of product. Bedrock Stone
     &amp; Design takes great pride in being the Stone of Choice, not only for commercial contractors, but
-    designers and retail customers as well.
+    designers and retail customers as well. {% endblocktrans %}
 </p><p>
+{% blocktrans %}
 The company was founded in 2002 and has been rapidly expanding, with even further growth on the horizon. With the
     beautiful outdoor showroom that showcases over 100 samples of installed designs, clients are sure to find something
     that compliments current and future projects. At Bedrock Stone & Design, not only will you find the widest product
     and color selection, you will also find top-notch sales staff that are eager to assist you in your decision making
-    process.</p>
+    process.
+{% endblocktrans %}
+</p>
+
+
 <p><strong>
-Let stone become a part of your indoor and outdoor surroundings, and let Bedrock make this a reality!
+{% blocktrans %}
+    Let stone become a part of your indoor and outdoor surroundings, and let Bedrock make this a reality!
+{% endblocktrans %}
 </strong>
 </p>
 

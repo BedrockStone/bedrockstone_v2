@@ -1,6 +1,6 @@
 {% extends 'web/base.html' %}
 {% load cropping %}
-
+{% load i18n%}
 {% load staticfiles %}
 {% block head_scripts %}
 <!--[if (gt IE 9)|!(IE)]><!-->
@@ -99,11 +99,11 @@
   <div class="container">
     <div class="row">
       <div class="grid_12">
-        <h2>Austin's premier rock supplier!</h2>
-        <strong>Bedrock Stone &amp; Design is the headquarters for the largest selection of stone in Central Texas.
+        <h2>{% trans "Austin's premier rock supplier!" %}</h2>
+        <strong>{% blocktrans %}Bedrock Stone &amp; Design is the headquarters for the largest selection of stone in Central Texas.
             With four convenient locations, both North and South Austin customers are able to benefit from wide
             selection of product. At Bedrock, we take great pride in being the "Stone of Choice", not only for
-            commercial contractors, but designers and retail customers.</strong>
+            commercial contractors, but designers and retail customers.{% endblocktrans %}</strong>
       </div>
     </div>
   </div>
@@ -128,7 +128,7 @@
     </div>
     <div class="row">
       <div class="grid_12">
-        <h3>Our Locations</h3>
+        <h3>{% trans "Our Locations" %}</h3>
         <div id="owl1">
             {% for location in locations %}
                 <div class="item">
