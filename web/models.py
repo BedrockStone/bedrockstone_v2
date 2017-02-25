@@ -63,6 +63,7 @@ class Category(ModelWithPicture):
     homepage_position = models.IntegerField(null=True, blank=True,
                                             help_text="The order this shows on the home page. If no value is specified"
                                                       "the item will not show on the home page.")
+    parent = models.ForeignKey("self", null = True, help_text="Parent category", related_name="children")                                                      
 
     class Meta:
         verbose_name_plural = 'Categories'

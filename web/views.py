@@ -63,7 +63,7 @@ def location(request,name):
 
 
 class Products(ListView):
-    queryset = Category.objects.all()
+    queryset = Category.objects.filter(parent_id=None)
 
 
 class CategoryDetail(DetailView):
