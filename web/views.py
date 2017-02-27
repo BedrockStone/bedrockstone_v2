@@ -63,7 +63,7 @@ def location(request,name):
 
 
 class Products(ListView):
-    queryset = Category.objects.all().order_by('sort_order')
+    queryset = Category.objects.order_by('sort_order')
 
 
 class CategoryDetail(DetailView):
