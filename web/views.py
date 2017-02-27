@@ -44,7 +44,7 @@ class Content(DetailView):
 
 
 class VirtualShowcase(ListView):
-    queryset = ProjectType.objects.all().order_by('sort_order')
+    queryset = ProjectType.objects.order_by('sort_order')
 
 
 class Project(DetailView):
@@ -63,7 +63,7 @@ def location(request,name):
 
 
 class Products(ListView):
-    queryset = Category.objects.order_by('sort_order')
+    queryset = Category.objects.order_by('sort_order').all()
 
 
 class CategoryDetail(DetailView):
