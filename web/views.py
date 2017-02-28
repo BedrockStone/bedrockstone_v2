@@ -64,7 +64,7 @@ def location(request,name):
 
 class Products(ListView):
     queryset = Category.objects.order_by('sort_order').all()
-
+    
 
 class CategoryDetail(DetailView):
     def get_object(self, queryset=None):
