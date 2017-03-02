@@ -34,7 +34,7 @@
             caption: true,
             navigation: false,
             fx: 'mosaic',
-            time: 3000,
+            time: 4000,
             onStartTransition:function(){
               var ind = $camera.find('.camera_pag_ul>li.cameracurrent').index();
               (ind < 0)&&(ind = 0);
@@ -129,7 +129,7 @@
     <div class="row">
       <div class="grid_12">
         <h3>{% trans "Our Locations" %}</h3>
-        <div id="owl1">
+        <div>
             {% for location in locations %}
                 <div class="item">
                 <a href="{% url 'locations' location.slug %}">
