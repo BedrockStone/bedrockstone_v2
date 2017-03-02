@@ -130,7 +130,7 @@
       <div class="grid_12">
         <h3>{% trans "Our Locations" %}</h3>
             {% for location in locations %}
-                <div class="grid_4">
+                <div class="grid_3">
                 <a href="{% url 'locations' location.slug %}">
                 <img class="img_inner" src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=200x200&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
                 </a>
