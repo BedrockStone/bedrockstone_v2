@@ -129,9 +129,8 @@
     <div class="row">
       <div class="grid_12">
         <h3>{% trans "Our Locations" %}</h3>
-        <div class="grid_4">
             {% for location in locations %}
-                <div class="item">
+                <div class="grid_4">
                 <a href="{% url 'locations' location.slug %}">
                 <img class="img_inner" src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=200x200&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
                 </a>
@@ -139,7 +138,6 @@
                 </div>
             {% endfor %}
         </div>
-      </div>
     </div>
   </div>
 </section>
