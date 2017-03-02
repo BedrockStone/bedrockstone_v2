@@ -129,7 +129,7 @@
     <div class="row">
       <div class="grid_12">
         <h3>{% trans "Our Locations" %}</h3>
-        <div>
+        <div class="grid_4">
             {% for location in locations %}
                 <div class="item">
                 <a href="{% url 'locations' location.slug %}">
