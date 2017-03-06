@@ -41,7 +41,7 @@ class ProductInline(ImageCroppingMixin, admin.StackedInline):
 class CategoryAdmin(ImageCroppingMixin, TranslationAdmin):
     inlines = [ProductInline, ]
     list_display = ('name', 'image_tag')
-    fields = ['name', 'slug', 'image', 'cropped','short_description', 'long_description', 'sort_order', 'homepage_position']
+    fields = ['name', 'slug', 'image', 'cropped', 'parent', 'short_description', 'long_description', 'sort_order', 'homepage_position']
 
 admin_site.register(Category, CategoryAdmin)
 
