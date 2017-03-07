@@ -4,7 +4,7 @@
 {% block header_title %}{{ job.name }}{% endblock %}
 {% block header_image_src %}{% static 'images/jobs.jpg' %}{% endblock %}
 {% block content_blurb %}
- {{ job.description | linebreaks }}
+ {{ job.long_description | linebreaks }}
  <p>
      {% blocktrans %}
      To apply for this job, please send an email with your resume (in word or pdf format) to
