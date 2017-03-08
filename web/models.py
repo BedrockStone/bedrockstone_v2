@@ -75,7 +75,7 @@ class Product(ModelWithPicture):
 
 class StaffMember(SortableNamedModel):
     email = models.EmailField(null=True, blank=True)
-    show_on_contact_us = models.BooleanField(default=True)
+    show_on_contact_us = models.BooleanField(default=False)
     title = models.CharField(null=True, blank=True, max_length=100)
 
 
