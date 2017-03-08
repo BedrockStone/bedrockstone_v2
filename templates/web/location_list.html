@@ -29,7 +29,7 @@
                <div class="grid_3">
                <div class="box">
                     <div class="box_inner" style="padding: .3rem">
-                        <div class="box_title">{{ location.name }}</div>
+                        <div class="box_title"><a href="{% url 'locations' location.slug %}">{{ location.name }}</a></div>
                         <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}" target="google">
                                 <img src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x400&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
                         </a>

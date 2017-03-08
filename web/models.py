@@ -73,6 +73,12 @@ class Product(ModelWithPicture):
     category = models.ForeignKey(Category)
 
 
+class StaffMember(SortableNamedModel):
+    email = models.EmailField(null=True, blank=True)
+    show_on_contact_us = models.BooleanField(default=True)
+    title = models.CharField(null=True, blank=True, max_length=100)
+
+
 class Address(models.Model):
     street = models.CharField(max_length=100)
     zip = models.CharField(max_length=5)
@@ -85,7 +91,7 @@ class Address(models.Model):
 class Location(ModelWithPicture, Address):
     description = models.TextField(null=True)
     phone_number = models.CharField(null=True, blank=True, max_length=13)
-
+    staff = models.ManyToManyField(StaffMember)
     def address(self):
         return self.street
 
@@ -112,12 +118,6 @@ class GalleryItem(SortableNamedModel, ImageTagModel):
     @property
     def cropped(self):
         return self.preview
-
-
-class StaffMember(ModelWithPicture):
-    email = models.EmailField(null=True, blank=True)
-    show_on_contact_us = models.BooleanField(default=True)
-    title = models.CharField(null=True, blank=True, max_length=100)
 
 
 class ProjectType(ModelWithPicture):

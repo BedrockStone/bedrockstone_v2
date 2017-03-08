@@ -11,9 +11,22 @@
     <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}" target="google">
         <img src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=200x200&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
     </a>
+    <div class="box_bot">
+     <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}" target="google">
+        <address>
+            {{ location.address }}<br />{{location.city }}, TX, {{ location.zip }}
+        </address>
+     </a>
+    <a href="tel:+1{{ location.phone_number }}">{{ location.phone_number }}</a>
+    </div>
+    </a>
 {% endblock %}
-{% block under_header_graphic %}{{ location.address }}<br />{{location.city }}, TX, {{ location.zip }}{% endblock %}
 {% block content_blurb %}
+      {% for staffMember in location.staff.all %}
+      <h4>
+         {{ staffMember.name }}, {{ staffMember.title }}
+      </h4>
+      {% endfor %}
       {% if location.short_description %}<strong> {{ location.short_description | linebreaks }}</strong>{% endif %}
     {{ location.long_description| linebreaks }}
 {% endblock %}

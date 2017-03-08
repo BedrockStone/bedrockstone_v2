@@ -25,8 +25,7 @@ admin_site.register(Group, GroupAdmin)
 
 
 class StaffMemberAdmin(admin.ModelAdmin):
-    readonly_fields = ('image_tag', )
-    fields = ['name', 'title', ('image', 'image_tag'), 'sort_order']
+    fields = ['name', 'title', 'sort_order']
 
 admin_site.register(StaffMember, StaffMemberAdmin)
 
@@ -78,7 +77,7 @@ class LocationPhotoInlineAdmin(ImageCroppingMixin, admin.StackedInline):
 class LocationAdmin(ImageCroppingMixin, TranslationAdmin):
     fieldsets = [
         (None,               {'fields': ['name', 'image', 'cropped', 'slug', 'phone_number', 'sort_order',
-                                         'short_description', 'long_description']}),
+                                         'short_description', 'long_description','staff']}),
         ('Address', {'fields': ['street', 'city', 'zip']}),
     ]
     inlines = [LocationPhotoInlineAdmin]
