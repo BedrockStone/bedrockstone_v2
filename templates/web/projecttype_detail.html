@@ -13,19 +13,14 @@
             <div class="box">
                 <div class="box_title"><a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">{{ product.name }}</a></div>
                 <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
+                 <img style="display: none" src="{{ product.image.url }}" />
                 <div class="box_bot"><!--{{ product.description }}--></div>
             </div>
         </div>
 
 
     {% endfor %}
-     <!-- Preload it -->
-    <div style="display: none;">
-    {% for product in projecttype.product_set.all%}
-       
-        <img style="display: none" src="{{ product.image.url }}" />
-                
-    {% endfor %}
+     
     </div>
 {% endblock %}
 {% block end_scripts %}
