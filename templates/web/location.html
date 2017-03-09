@@ -26,12 +26,15 @@
         {% if location.short_description %}
             {{ location.short_description | linebreaks }}
         {% endif %}
-        {% for staffMember in location.staff.all %}
-         {{ staffMember.name }} - {{ staffMember.title }}
-         <br />
-      {% endfor %}
     </strong>
     {{ location.long_description| linebreaks }}
+    <h3>Senior Staff for {{ location.name }}</h3>
+    <p>
+        {% for staffMember in location.staff.all %}
+            {{ staffMember.name }} - {{ staffMember.title }} <br />
+        {% endfor %}
+    </p>
+
 {% endblock %}
 {% block main_content %}
 <h3>{% blocktrans with location.name as location_name %} A few pictures of {{ location_name }} {% endblocktrans %}</h3>
