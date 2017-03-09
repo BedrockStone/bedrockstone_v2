@@ -129,12 +129,24 @@
     <div class="row">
         <h3>{% trans "Our Locations" %}</h3>
             {% for location in locations %}
-                <div class="grid_3">
-                <a href="{% url 'locations' location.slug %}">
-                <img class="img_inner" src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=200x200&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
-                </a>
-                <div class="text1"><a href="{% url 'locations' location.slug %}">{{ location.name }}</a></div>
-                </div>
+              <div class="grid_3">
+               <div class="box">
+                    <div class="box_inner" style="padding: .3rem">
+                        <div class="box_title"><a href="{% url 'locations' location.slug %}">{{ location.name }}</a></div>
+                        <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}" target="google">
+                                <img src="//maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x400&markers={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}">
+                        </a>
+                        <div class="box_bot">
+                           <address class="address1">
+                            <a href="//maps.google.com?q={{ location.address |iriencode }},{{ location.city }}{{ ' '|iriencode }}{{ location.zip }}" target="google">
+                                   {{ location.street }}<br />
+                                   {{ location.city }},TX {{ location.zip }}<br /></a>
+                           </address>
+                            <a href="tel:{{ location.phone_number}}">{{ location.phone_number }}</a>
+                        </div>
+                   </div>
+               </div>
+               </div>
             {% endfor %}
     </div>
   </div>
