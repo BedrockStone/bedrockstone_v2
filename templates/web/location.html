@@ -22,12 +22,15 @@
     </a>
 {% endblock %}
 {% block content_blurb %}
-      {% for staffMember in location.staff.all %}
-      <h4>
-         {{ staffMember.name }}, {{ staffMember.title }}
-      </h4>
+    <strong>
+        {% if location.short_description %}
+            {{ location.short_description | linebreaks }}
+        {% endif %}
+        {% for staffMember in location.staff.all %}
+         {{ staffMember.name }} - {{ staffMember.title }}
+         <br />
       {% endfor %}
-      {% if location.short_description %}<strong> {{ location.short_description | linebreaks }}</strong>{% endif %}
+    </strong>
     {{ location.long_description| linebreaks }}
 {% endblock %}
 {% block main_content %}
