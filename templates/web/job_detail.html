@@ -4,6 +4,7 @@
 {% block header_title %}{{ job.name }}{% endblock %}
 {% block header_image_src %}{% static 'images/jobs.jpg' %}{% endblock %}
 {% block content_blurb %}
+ <strong>{{ job.short_description | linebreaks }}</strong>
  {{ job.long_description | linebreaks }}
  <p>
      {% blocktrans %}
