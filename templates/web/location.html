@@ -28,7 +28,7 @@
         {% endif %}
     </strong>
     {{ location.long_description| linebreaks }}
-    <h3>Senior Staff for {{ location.name }}</h3>
+    <h3>Senior Staff</h3>
     <p>
         {% for staffMember in location.staff.all %}
             {{ staffMember.name }} - {{ staffMember.title }} <br />
