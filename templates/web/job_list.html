@@ -8,17 +8,14 @@
     <div class="row">
     <ul>
         {% for job in jobs %}
-            <li><h4><a href="{% url 'job' job.slug%}">{{job.name  }}</a></h4></li>
-            <!--
-            <h3>{{ job.name }}</h3>
-            <div>
-                {{ job.description | linebreaks }}
-                <div>
-                    To apply for this job, please send an email with your resume (in word or pdf format) to
-                    <a href="mailto:jobs@bedrockstoneanddesign.com">jobs@bedrockstoneanddesign.com</a>
-                </div>
-            </div>
-            -->
+            <li>
+                <a href="{% url 'job' job.slug%}">
+                <h3>{{job.name  }}</a></h3>
+                <strong>
+                    {{job.short_description | linebreaks}}
+                </strong>
+                </a>
+            </li>
         {% endfor %}
     </ul>
     </div>
