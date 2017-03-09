@@ -43,11 +43,8 @@
             <div class="box">
                 <div class="maxheight">
                     <div class="box_inner">
-                        <div class="box_title"><div></div></div>
                         <a class="fancybox" href='{% cropped_thumbnail picture 'cropped' width=800 %}'><img src="{% cropped_thumbnail picture "cropped" height=165  %}" /></a>
-                        <div class="box_bot">
-                            <div></div>
-                        </div>
+                        <img src="{% cropped_thumbnail picture 'cropped' width=800 %}" style="display: none;" />  
                     </div>
                 </div>
             </div>
