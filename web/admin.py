@@ -25,7 +25,7 @@ admin_site.register(Group, GroupAdmin)
 
 
 class StaffMemberAdmin(admin.ModelAdmin):
-    fields = ['name', 'title', 'sort_order', 'show_on_contact_us']
+    fields = ['name', 'title', 'sort_order','email' 'show_on_contact_us']
 
 admin_site.register(StaffMember, StaffMemberAdmin)
 
