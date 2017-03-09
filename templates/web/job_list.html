@@ -15,6 +15,9 @@
                     {{job.short_description | linebreaks}}
                 </strong>
                 </a>
+                <div>
+                <a href="{%url 'job' job.slug %}">more info...</a>
+                </div>
             </li>
         {% endfor %}
     </ul>
