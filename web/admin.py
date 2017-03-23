@@ -33,7 +33,7 @@ admin_site.register(StaffMember, StaffMemberAdmin)
 class ProductInline(ImageCroppingMixin, admin.StackedInline):
     model = Product
     exclude = ('description','long_description', 'short_description')
-    fields = ['name', 'image', 'cropped', 'sort_order']
+    fields = ['name', 'image', 'cropped', 'retail_price','sort_order']
     extra = 1
 
 
