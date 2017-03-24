@@ -17,10 +17,12 @@
  {{ product.long_description | linebreaks }}
  {% endblock %}
  {% block end_scripts %}
+ 
     <script src="{% static 'js/jquery.fancybox.js' %}"></script>
     <script type="text/javascript">
         $(function(){
            $('.fancybox').fancybox();
         });
     </script>
+    <img style="display: none" src="{{ product.image.url }}" />
 {% endblock %}
