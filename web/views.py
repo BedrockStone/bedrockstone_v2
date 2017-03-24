@@ -64,7 +64,11 @@ def location(request,name):
 
 class Products(ListView):
     queryset = Category.objects.filter(parent=None).order_by('sort_order').all()
-    
+
+
+class ProductDetail(DetailView):
+    def get_object(self, queryset=None):
+        return get_object_or_404(Product, slug=self.args[0])
 
 class CategoryDetail(DetailView):
     def get_object(self, queryset=None):

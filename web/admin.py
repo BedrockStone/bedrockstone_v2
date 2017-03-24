@@ -49,7 +49,8 @@ class ProductAdmin(ImageCroppingMixin, TranslationAdmin):
     list_filter = ('category__name',)
     list_display = ('name', 'image_tag')
     readonly_fields = ('image_tag', )
-    fields = ['name', 'category', 'image', 'cropped', 'sort_order', ]
+    fields = ['name','slug', 'category', 'image', 'cropped','retail_price', 'sort_order', 
+    'short_description', 'long_description' ]
 
 admin_site.register(Product, ProductAdmin)
 

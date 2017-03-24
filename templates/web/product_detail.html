@@ -1,0 +1,26 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% load cropping %}
+
+{% load i18n %}
+{% block head_scripts %}
+<link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block header_title %}{{ product.name }}{% endblock %}
+{% block header_graphic %}
+    <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
+        <img src="{% cropped_thumbnail product "cropped" height=300 %}" />
+    </a>
+{% endblock %}
+{% block content_blurb %}
+ <strong>{{ product.short_description | linebreaks }}</strong>
+ {{ product.long_description | linebreaks }}
+ {% endblock %}
+ {% block end_scripts %}
+    <script src="{% static 'js/jquery.fancybox.js' %}"></script>
+    <script type="text/javascript">
+        $(function(){
+           $('.fancybox').fancybox();
+        });
+    </script>
+{% endblock %}
