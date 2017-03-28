@@ -77,7 +77,8 @@ class Product(ModelWithPicture):
 
 
 class ProductImage(models.Model, ImageTagModel):
-    image = models.ImageField(null=True, upload_to="ProductImage", default='product/no_image.jpeg',
+    
+    image = models.ImageField(null=True, upload_to="ProductImages/%Y/%m/%d/", default='product/no_image.jpeg',
                               help_text='The image to show for this item')
     cropped = ImageRatioField('image', '400x300')
     product = models.ForeignKey(Product)
