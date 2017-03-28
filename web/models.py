@@ -75,6 +75,14 @@ class Product(ModelWithPicture):
     retail_price = models.DecimalField(null = True, blank = True, decimal_places=2, max_digits = 15,
      default = None, help_text='Price to show on website.')
 
+
+class ProductImage(models.Model, ImageTagModel):
+    image = models.ImageField(null=True, upload_to="ProductImage", default='product/no_image.jpeg',
+                              help_text='The image to show for this item')
+    cropped = ImageRatioField('image', '400x300')
+    product = models.ForeignKey(Product)
+
+
 class StaffMember(SortableNamedModel):
     email = models.EmailField(null=True, blank=True)
     show_on_contact_us = models.BooleanField(default=False)

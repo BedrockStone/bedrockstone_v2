@@ -6,7 +6,7 @@ from image_cropping import ImageCroppingMixin
 from modeltranslation.admin import TranslationAdmin
 
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture, \
-    ContentPage, MenuItem
+    ContentPage, MenuItem, ProductImage
 
 
 class MyAdmin(AdminSite):
@@ -44,6 +44,11 @@ class CategoryAdmin(ImageCroppingMixin, TranslationAdmin):
 
 admin_site.register(Category, CategoryAdmin)
 
+class ProductImageInlineAdmin(ImageCroppingMixin, admin.StackedInline):
+    model = ProductImage
+    fields = ('image', 'cropped')
+    extra = 1
+
 
 class ProductAdmin(ImageCroppingMixin, TranslationAdmin):
     list_filter = ('category__name',)
@@ -51,6 +56,7 @@ class ProductAdmin(ImageCroppingMixin, TranslationAdmin):
     readonly_fields = ('image_tag', )
     fields = ['name','slug', 'category', 'image', 'cropped','retail_price', 'sort_order', 
     'short_description', 'long_description' ]
+    inlines = [ProductImageInlineAdmin]
 
 admin_site.register(Product, ProductAdmin)
 

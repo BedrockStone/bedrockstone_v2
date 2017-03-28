@@ -16,6 +16,19 @@
  <strong>{{ product.short_description | linebreaks }}</strong>
  {{ product.long_description | linebreaks }}
  {% endblock %}
+ {% block main_content %}
+   {% for product_image in product.productimage_set.all %}
+   <div class="grid_3">
+            <div class="box">
+            <div class="maxheight"><div class="boxinner">
+                 <a title="{{ product.name }}" href="{{ product_image.image.url }}" class="fancybox">
+                        
+                    </a>
+            </div></div>
+            </div>
+   </div>
+   {% endfor %}
+ {% endblock %}
  {% block end_scripts %}
  
     <script src="{% static 'js/jquery.fancybox.js' %}"></script>
