@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mysql_db:
+    image: mysql
+    environment: 
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=bedrockweb
+      - MYSQL_PASSWORD=bedrockweb
+      - MYSQL_DATABASE=bedrock
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - .:/bedrockstone_v2
+    ports:
+      - "8080:8080"
+    links:
+      - mysql_db
+    depends_on:
+      - mysql_db
+      

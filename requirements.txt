@@ -1,5 +1,7 @@
 Cheetah==2.4.4
 Django==1.9.5
+mysql-python
+psycopg2
 Pillow==3.2.0
 PyYAML==3.10
 argparse==1.2.1
