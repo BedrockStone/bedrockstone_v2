@@ -7,6 +7,8 @@ services:
       - MYSQL_USER=bedrockweb
       - MYSQL_PASSWORD=bedrockweb
       - MYSQL_DATABASE=bedrock
+    volumes:
+      - /storage/docker/mysql-datadir:/var/lib/mysql
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8080
