@@ -74,6 +74,8 @@ class Product(ModelWithPicture):
     vender_id = models.CharField(null = True, blank = True, max_length = 15, default = None, help_text = 'Quickbooks product id')
     retail_price = models.DecimalField(null = True, blank = True, decimal_places=2, max_digits = 15,
      default = None, help_text='Price to show on website.')
+    more_images_text = models.CharField(null = True, blank = True, max_length = 45, default = "More Images", 
+        help_text="Text to show above extra product images")
 
 
 class ProductImage(models.Model, ImageTagModel):

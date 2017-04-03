@@ -8,10 +8,10 @@
 {% endblock %}
 {% block header_title %}{{ product.name }}{% endblock %}
 {% block image_grid %}
-    <div class="grid_7" style="margin-left: 0">
+    <div class="grid_9" style="margin-left: 0">
         <div class="box" style="padding:7px;margin:0 1em 0 0; ">
             <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
-                <img src="{% cropped_thumbnail product "cropped" width=520 %}" />
+                <img src="{% cropped_thumbnail product "cropped" width=690 %}" />
             </a>
         </div>
     </div>
@@ -23,7 +23,7 @@
  {% block main_content %}
    
    {% if product.productimage_set.all %}
-   <h3>A few more pictures of {{ product.name }}</h3>
+   <h3>{{ product.more_images_text }}</h3>
    {% for product_image in product.productimage_set.all %}
    <div class="grid_3">
             <div class="box">
