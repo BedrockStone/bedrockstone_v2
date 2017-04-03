@@ -84,6 +84,8 @@ class ProductImage(models.Model, ImageTagModel):
                               help_text='The image to show for this item')
     cropped = ImageRatioField('image', '400x300')
     product = models.ForeignKey(Product)
+    name = models.CharField(null = True, blank = True, max_length = 15, default = None,
+        help_text = "text to show above image")
 
 
 class StaffMember(SortableNamedModel):

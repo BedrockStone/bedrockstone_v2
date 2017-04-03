@@ -29,7 +29,11 @@
             <div class="box">
                 <div class="maxheight">
                     <div class="boxinner">
-                        <div class="box_title"></div>
+                        <div class="box_title">
+                            {%if product_image.name %}
+                                {{ product_image.name }}
+                            {% endif %}
+                        </div>
                         <a title="{{ product.name }}" href="{{ product_image.image.url }}" class="fancybox">
                             <img src="{% cropped_thumbnail product_image "cropped" height=165 %}" />
                         </a>
