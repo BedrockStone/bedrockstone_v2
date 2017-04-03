@@ -46,7 +46,7 @@ admin_site.register(Category, CategoryAdmin)
 
 class ProductImageInlineAdmin(ImageCroppingMixin, admin.StackedInline):
     model = ProductImage
-    fields = ('image', 'cropped')
+    fields = ('image', 'cropped', 'name')
     extra = 1
 
 
