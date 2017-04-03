@@ -7,17 +7,23 @@
 <link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block header_title %}{{ product.name }}{% endblock %}
-{% block header_graphic %}
-    <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
-        <img src="{% cropped_thumbnail product "cropped" height=300 %}" />
-    </a>
+{% block image_grid %}
+    <div class="grid_7" style="margin-left: 0">
+        <div class="box" style="padding:7px;margin:0 1em 0 0; ">
+            <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
+                <img src="{% cropped_thumbnail product "cropped" width=520 %}" />
+            </a>
+        </div>
+    </div>
 {% endblock %}
 {% block content_blurb %}
  <strong>{{ product.short_description | linebreaks }}</strong>
- {{ product.long_description | linebreaks }}
+ {{ product.long_description | safe }}
  {% endblock %}
  {% block main_content %}
    
+   {% if product.productimage_set.all %}
+   <h3>A few more pictures of {{ product.name }}</h3>
    {% for product_image in product.productimage_set.all %}
    <div class="grid_3">
             <div class="box">
@@ -33,6 +39,7 @@
             </div>
     </div>
    {% endfor %}
+   {%endif%}
  {% endblock %}
  {% block end_scripts %}
  
