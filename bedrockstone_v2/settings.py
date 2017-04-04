@@ -24,7 +24,7 @@ SECRET_KEY = 'r3@m81j=gb6nfy5)zi3q=y_9+na$ygzb$x2y1t)%61$#_^4$sa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+# TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -122,7 +122,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'web/static')
 #Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'web/static/media')
 MEDIA_URL = '/static/media/'
-
+'''
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
@@ -138,7 +138,30 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'web.core.context_processor',
     'web.context_processors.menu_items'
 )
-
+'''
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR,  'templates')
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 from local_settings import *
 
 
