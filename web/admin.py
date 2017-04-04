@@ -38,6 +38,7 @@ class ProductInline(ImageCroppingMixin, admin.StackedInline):
 
 
 class CategoryAdmin(ImageCroppingMixin, TranslationAdmin):
+    list_filter = ('parent__name' , )
     inlines = [ProductInline, ]
     list_display = ('name', 'image_tag')
     fields = ['name', 'slug', 'image', 'cropped', 'parent', 'short_description', 'long_description', 'sort_order', 'homepage_position']
