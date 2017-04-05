@@ -109,10 +109,6 @@ LOCALE_PATHS = (
     "/Users/elliottohara/projects/bedrockstone_v2/locale/"
 )
 
-print LOCALE_PATHS
-
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
@@ -148,7 +144,7 @@ TEMPLATES = [
         },
     },
 ]
-from local_settings import *
+from .local_settings import *
 
 
 

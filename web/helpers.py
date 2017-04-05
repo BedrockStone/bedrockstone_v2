@@ -1,4 +1,4 @@
-import StringIO
+from io import StringIO
 import os
 from PIL import Image
 from django.core.files.uploadedfile import SimpleUploadedFile

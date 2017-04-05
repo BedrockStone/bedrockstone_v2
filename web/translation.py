@@ -1,7 +1,7 @@
 __author__ = 'elliottohara'
 from modeltranslation.translator import TranslationOptions, register, translator
 from web.models import SortableNamedModel, ProjectType
-from helpers import itersubclasses
+from .helpers import itersubclasses
 
 
 class SortableNamedModelOptions(TranslationOptions):
