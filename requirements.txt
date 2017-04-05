@@ -1,5 +1,5 @@
 Cheetah==2.4.4
-Django==1.9.5
+Django
 mysql-python
 psycopg2
 Pillow==3.2.0

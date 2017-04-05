@@ -10,7 +10,7 @@ from web.admin import admin_site
 admin.autodiscover()
 
 
-urlpatterns = i18n_patterns('', url(r'^$', views.index, name='index'),
+urlpatterns = i18n_patterns(url(r'^$', views.index, name='index'),
                        url(r'^locations/(?P<name>.+)/$', views.location, name='locations'),
                        url(r'^admin/', include(admin_site.urls), name="bedrock"),
                        url(r'^products/$', views.Products.as_view(), name='products'),
@@ -26,5 +26,5 @@ urlpatterns = i18n_patterns('', url(r'^$', views.index, name='index'),
                        )
 
 
-# urlpatterns += url(r'^setlang/', include('django.conf.urls.i18n')),
+urlpatterns += url(r'^setlang/', include('django.conf.urls.i18n')),
 
