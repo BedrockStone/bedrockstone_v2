@@ -66,6 +66,7 @@
     {% endfor %}
      <!-- Preload it -->
     <div style="display: none;">
+        <img style="display: none" src="category.image.url" />
     {% for product in category.product_set.all%}
        
         <img style="display: none" src="{{ product.image.url }}" />
