@@ -28,7 +28,7 @@ to it. Take a few minute and browse through just a small selection of what we ca
                         <div class="box_title maxheight2 ta__center"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
                         <a href="{% url 'category' category.slug %}"><img src="{% cropped_thumbnail category "cropped" height=165  %}" /></a>
                         <div class="box_bot">
-                            <div>{% if category.short_description != None %} {{ category.short_description }}{% endif %}</div>
+                            {% if category.short_description != None %} {{ category.short_description }}{% endif %}
                         </div>
                     </div>
                 </div>

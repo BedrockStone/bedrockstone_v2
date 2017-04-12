@@ -5,7 +5,16 @@
 <link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block header_title %}{{ category.name }}{% endblock %}
-{% block header_image_src %}{% cropped_thumbnail category "cropped" height=165 %}{% endblock %}
+{% block image_grid %}
+    <div class="grid_4" style="margin-left: 0">
+        <div class="box" style="padding:7px;margin:0 1em 0 0; ">
+            <a title="{{ category.name }}" href="{{ category.image.url }}" class="fancybox">
+                <img src="{% cropped_thumbnail category "cropped" height=220 %}" />
+                <div style="text-align:center;margin-top:.3em;"><span class="fa fa-search-plus"> High Res</span></div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
 {% block content_blurb%}
     <strong>{% if category.short_description %} {{ category.short_description | linebreaks }}{% endif %}</strong>
     {{ category.long_description| linebreaks }}
@@ -14,7 +23,7 @@
 {% for category in category.children.all%}
         <div class="grid_3">
             <div class="box">
-                <div class="box_title maxheight2 ta__center"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
+                <div class="box_title maxheight ta__center"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
                         <a href="{% url 'category' category.slug %}"><img src="{% cropped_thumbnail category "cropped" height=165  %}" /></a>
                         <div class="box_bot">
                             <div>{% if category.short_description != None %} {{ category.short_description }}{% endif %}</div>
