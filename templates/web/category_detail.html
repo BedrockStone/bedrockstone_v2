@@ -14,7 +14,7 @@
 {% for category in category.children.all%}
         <div class="grid_3">
             <div class="box">
-                <div class="box_title maxheight"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
+                <div class="box_title maxheight2 ta__center"><a href='{% url 'category' category.slug %}'>{{ category.name }}</a></div>
                         <a href="{% url 'category' category.slug %}"><img src="{% cropped_thumbnail category "cropped" height=165  %}" /></a>
                         <div class="box_bot">
                             <div>{% if category.short_description != None %} {{ category.short_description }}{% endif %}</div>
@@ -28,7 +28,7 @@
         <div class="grid_3">
             <div class="box">
             <div class="maxheight"><div class="boxinner">
-                <div class="box_title maxheight2">
+                <div class="box_title maxheight2 ta__center">
                     {% if product.short_description %}
                         <a title="{{ product.name }}" href='{% url 'productDetail' product.slug %}'>{{ product.name }}</a>
                     {% else %}
