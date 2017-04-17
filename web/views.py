@@ -77,3 +77,6 @@ class CategoryDetail(DetailView):
 
 def hello_world(request):
     return HttpResponse(_("Hello World"))
+
+def coverage(request):
+    return render(request, 'web/coverage.html')

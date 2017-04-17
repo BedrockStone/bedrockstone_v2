@@ -22,6 +22,7 @@ urlpatterns = i18n_patterns(url(r'^$', views.index, name='index'),
                        url(r'^jobs/(.+)/$', views.JobDetail.as_view(), name='job'),
                        url(r'^showcase/$', views.VirtualShowcase.as_view(), name='showcase'),
                        url(r'^showcase/(.+)/$', views.Project.as_view(), name='project_type'),
+                       url(r'^resources/coverage/$', views.coverage, name='coverage'),
                        url(r'^(.+)/', views.Content.as_view(), name='content'),
                        )
 
