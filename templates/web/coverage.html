@@ -41,10 +41,22 @@ h3{
            <input id='aggregate_depth' value="1" type="number"/> Inches
        </p>
        <p>
-            <strong>Product Needed: </strong> <span id="aggregate_results">0.5</span> Yards
-          
-            
+            <strong>Yards: </strong> <input id="aggregate_results" type="number" value="0.5"> Yards
        </p>
+       <table style="display:none;">
+       <thead>
+          <tr>
+            <th rowspan="2">Square Feet</th><th colspan="6">Inches Depth</th>
+          </tr>
+          <tr><th>1&quot;</th><th>2&quot;</th><th>3&quot;</th><th>4&quot;</th><th>5&quot;</th><th>6&quot;</th>
+          <tr>
+        </thead>
+        <tbody>
+          <tr><th>160</th><td>1/2 YD</td><td>1 YD</td><td>1 1/2 YD</td><td>2 YD</td><td>2 1/2 YD</td><td>3 YD</td></tr>
+          <tr><th>420</th><td>1 1/2 YD</td><td>3 YD</td><td>4 1/2 YD</td><td>6 YD</td><td>7 1/2 YD</td><td>9 YD</td></tr>
+        </tbody>
+     </table>
+       
    </div>
    <div class='grid_5'>
      <h3>Soil</h3>
@@ -59,7 +71,7 @@ h3{
            <input id='soil_depth' value="1"  type="number" /> Inches
        </p>
        <p>
-            <strong>Product Needed: </strong> <span id="soil_results">0.5</span> Yards
+            <strong>Yards: </strong> <input type="number" id="soil_results" value="0.5" />
        </p>
    </div>
    </div>
@@ -280,27 +292,45 @@ h3{
         
         document.getElementById('aggregate_feet').addEventListener('keyup', calculateAggregate);
         document.getElementById('aggregate_depth').addEventListener('keyup', calculateAggregate);
-
+        document.getElementById('aggregate_results').addEventListener('keyup', calculateAggregateSqFt);
         function calculateAggregate(){
             let feet = document.getElementById('aggregate_feet').value;
             let depth = document.getElementById('aggregate_depth').value;
-            let result = feet * depth / 280;
-            result = Number(result).toFixed(1);
+            let yards = feet * depth / 280;
+            yards = Number(yards).toFixed(1);
             // result = Math.ceil(result / 5) * 5;
-            document.getElementById('aggregate_results').innerHTML = result;
+            document.getElementById('aggregate_results').value = yards;
 
 
         }
+        function calculateAggregateSqFt(){
+            let yards = document.getElementById('aggregate_results').value;
+            let depth = document.getElementById('aggregate_depth').value;
+            
+            let feet = depth * 280 * yards; 
+            
+            
+            result = Number(feet).toFixed(1);
+            // result = Math.ceil(result / 5) * 5;
+            document.getElementById('aggregate_feet').value = feet;
+        }
         document.getElementById('soil_feet').addEventListener('keyup', calculateSoil);
         document.getElementById('soil_depth').addEventListener('keyup', calculateSoil);
+         document.getElementById('soil_results').addEventListener('keyup', calculateSoilSqFeet);
 
         function calculateSoil(){
           let feet = document.getElementById('soil_feet').value;
-            let depth = document.getElementById('soil_depth').value;
-            let result = feet * depth / 324;
-            result = Number(result).toFixed(1);
-            // result = Math.ceil(result / 5) * 5;
-            document.getElementById('soil_results').innerHTML = result;
+          let depth = document.getElementById('soil_depth').value;
+          let yards = feet * depth / 324;
+          yards = Number(yards).toFixed(1);
+          document.getElementById('soil_results').value = yards;
+        }
+        function calculateSoilSqFeet(){
+          let yards = document.getElementById('soil_results').value;
+          let depth = document.getElementById('soil_depth').value;
+          let feet = yards * depth * 324;
+          feet = Number(feet).toFixed(1);
+          document.getElementById('soil_feet').value = feet;
         }
         
    </script>
