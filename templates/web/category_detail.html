@@ -3,6 +3,7 @@
 {% load cropping %}
 {% block head_scripts %}
 <link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
+
 {% endblock %}
 {% block header_title %}{{ category.name }}{% endblock %}
 {% block image_grid %}
@@ -53,7 +54,7 @@
                         <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                     </a>
                 {% endif %}
-                <div class="box_bot">
+                <div class="box_bot ta__center">
                     {% if product.retail_price %}
                         ${{ product.retail_price | stringformat:"1.2f" }}
                     {% endif %}
