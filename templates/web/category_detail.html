@@ -42,7 +42,7 @@
                     {% if product.short_description %}
                         <a title="{{ product.name }}" href='{% url 'productDetail' product.slug %}'>{{ product.name }}</a>
                     {% else %}
-                        <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">{{ product.name }}</a>
+                        <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" max_size="2000x2000" %}" class="fancybox">{{ product.name }}</a>
                     {% endif %}
                 </div>
                 {% if product.short_description %}
@@ -50,7 +50,7 @@
                         <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                     </a>
                 {% else %}
-                    <a title="{{ product.name }}" href="{{ product.image.url }}" class="fancybox">
+                    <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" max_size="2000x2000" %}" class="fancybox">
                         <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                     </a>
                 {% endif %}
@@ -70,7 +70,7 @@
         <img style="display: none" src="{{ category.image.url }}" />
     {% for product in category.product_set.all%}
        
-        <img style="display: none" src="{{ product.image.url }}" />
+        <img style="display: none" src="{% cropped_thumbnail product "cropped" max_size="2000x2000" %}" />
                 
     {% endfor %}
     </div>
