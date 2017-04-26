@@ -42,7 +42,7 @@
                     {% if product.short_description %}
                         <a title="{{ product.name }}" href='{% url 'productDetail' product.slug %}'>{{ product.name }}</a>
                     {% else %}
-                        <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" max_size="2000x2000" width=2000 %}" class="fancybox">{{ product.name }}</a>
+                        <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" width=2000 %}" class="fancybox">{{ product.name }}</a>
                     {% endif %}
                 </div>
                 {% if product.short_description %}
@@ -51,7 +51,7 @@
                     </a>
                 {% else %}
                     <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" max_size="2000x2000" %}" class="fancybox">
-                        <img src="{% cropped_thumbnail product "cropped" max_size="2000x2000" width=2000 %}" />
+                        <img src="{% cropped_thumbnail product "cropped" width=2000 %}" />
                     </a>
                 {% endif %}
                 <div class="box_bot ta__center">
