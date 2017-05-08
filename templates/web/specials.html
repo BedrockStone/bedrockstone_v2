@@ -12,8 +12,9 @@
     text-align: center;
     font-size:xx-large;
   }
-  .special :hover{
-    border: dashed 4px #5ab645;
+  .special:hover{
+    border: dashed 4px #2dabdf;
+    cursor: pointer;
   }
   .special h3{
     color: #5ab645;
@@ -40,7 +41,7 @@
 {% block content %}
   <div class="container" style="min-height: 350px">
     <div class="row">
-      <div class="grid_12">
+      <div class="grid_12" onclick="window.location='/products/water_features/'">
         <h2>Bedrock Specials</h2>
         <p>Not only does Bedrock Stone &amp; Design offer fair every day pricing, we offer
           run specials regularly. Check them out here.
