@@ -123,7 +123,9 @@ ul {
     background: url(../images/count_bg.png) 0 0 repeat-x;
     box-shadow:  0px 2px 2px #8e8e8e;
 }
-
+.green {
+    color: 5ab645;
+}
 .list li .text1 {
     margin-bottom: 4px;
 }

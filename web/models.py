@@ -23,7 +23,7 @@ class SortableNamedModel(models.Model):
                                          help_text='Description text used when this item is shown in a list. '
                                                    'It will also be shown in bold format in front of the '
                                                    'long description on full page displays')
-    slug = models.CharField(max_length=100,
+    slug = models.CharField(null=True, blank = True, max_length=100,
                             help_text='This field is used for links, it should usually be the name with spaces replaced'
                                       ' by an underscore')
     sort_order = models.IntegerField(default=500, help_text='The order in which this item will show on list pages')
@@ -153,3 +153,12 @@ class ContentPage(ModelWithPicture):
 
 class MenuItem(SortableNamedModel):
     parent = models.ForeignKey("MenuItem", null=True, blank=True, help_text="The item to make this a subitem of.")
+"""
+class Special(SortableNamedModel):
+    start_date = models.DateField()
+    end_date = models.DateField()
+    image = models.ImageField(upload_to=upload_image, default='product/no_image.jpeg')
+    cropped = ImageRatioField('image', free_crop = True, null = True, blank = True)
+    html = models.TextField(blank = True, null = True)
+    href = models.CharField(null = True, blank = True, max_length = 254, default = None)
+    """

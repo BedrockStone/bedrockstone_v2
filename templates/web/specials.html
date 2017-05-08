@@ -1,0 +1,63 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% load cropping %}
+{% block head_scripts %}
+<style type="text/css">
+  .special{
+    border: dashed 4px black;
+    margin: 1rem;
+    padding: 1rem;
+    background: white;
+    width: 80%;
+    text-align: center;
+    font-size:xx-large;
+  }
+  .special :hover{
+    border: dashed 4px #5ab645;
+  }
+  .special h3{
+    color: #5ab645;
+    font-size: 75px;
+
+  }
+  .special p{
+    font-size: large;
+    margin-top:.5em;
+  }
+  .special span a{
+    font-size: medium;
+    margin-top:1em;
+  }
+  .special .valid_through{
+    border:solid 1px black;
+    width: 45%;
+    font-size: small;
+    margin: 0 auto;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+{% block content %}
+  <div class="container" style="min-height: 350px">
+    <div class="row">
+      <div class="grid_12">
+        <h2>Bedrock Specials</h2>
+        <p>Not only does Bedrock Stone &amp; Design offer fair every day pricing, we offer
+          run specials regularly. Check them out here.
+        </p>
+        <div class='special'>
+          <h3>15% Off Water Features</h3>
+          <strong>With purchase of 2 or more</strong>
+          <br />
+          <p>
+            Offer includes fountains, water and fire bowls.
+          </p>
+          <div class="valid_through">
+            Offer valid through 7-01-2017
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -80,3 +80,6 @@ def hello_world(request):
 
 def coverage(request):
     return render(request, 'web/coverage.html')
+
+def specials(request):
+    return render(request, 'web/specials.html')

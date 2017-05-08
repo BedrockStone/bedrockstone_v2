@@ -8,8 +8,7 @@
 <!--<![endif]-->
 <script>
  $(document).ready(function(){
-
-
+      
        /////////////////////// camera with owl carousel //////////////////////////
 
         var $owl = $("#owl"),
@@ -83,7 +82,9 @@
 <div class="slider_wrapper ">
   <div id="camera_wrap" class="">
     {% for item in galleryItems %}
-    <div data-src="{% cropped_thumbnail item 'large' %}"></div>
+    <div data-src="{% cropped_thumbnail item 'large' %}" {% if item.slug %} data-link="{{ item.slug }}" {%endif%}>
+      
+    </div>
 
     {% endfor %}
   </div>
