@@ -54,5 +54,11 @@
            $('.fancybox').fancybox();
         });
     </script>
-    <img style="display: none" src="{{ product.image.url }}" />
+    <div style="display:none">
+    <!-- PRELOAD -->
+    <img src="{% cropped_thumbnail product "cropped" width=2000 %}" />
+    {% for product_image in product.productimage_set.all %}
+        <img src="{% cropped_thumbnail product_image "cropped" width=2000 %}" />
+    {% endfor %}
+    </div>
 {% endblock %}
