@@ -35,7 +35,7 @@
                                 {{ product_image.name }}
                             {% endif %}
                         </div>
-                        <a title="{{ product_image.name }}" href="{{ product_image.image.url }}" class="fancybox">
+                        <a title="{{ product_image.name }}" href="{% cropped_thumbnail product_image "cropped" width=2000 %}" class="fancybox">
                             <img src="{% cropped_thumbnail product_image "cropped" height=165 %}" />
                         </a>
                         <div class="box_bot"></div>
