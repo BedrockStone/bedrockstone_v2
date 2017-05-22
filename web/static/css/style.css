@@ -360,7 +360,9 @@ header h1 a img {
 .bt__2  {
     color: #ff4498 !important;
 }
-
+.pink {
+    color: #ff4498
+}
 .box_bot {
     padding: 14px 21px 16px;
 }
