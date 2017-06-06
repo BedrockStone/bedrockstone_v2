@@ -11,6 +11,7 @@ admin.autodiscover()
 
 
 urlpatterns = i18n_patterns(url(r'^$', views.index, name='index'),
+                       url(r'^shipping/$', views.shipping, name='shipping'),
                        url(r'^locations/(?P<name>.+)/$', views.location, name='locations'),
                        url(r'^admin/', include(admin_site.urls), name="bedrock"),
                        url(r'^products/$', views.Products.as_view(), name='products'),

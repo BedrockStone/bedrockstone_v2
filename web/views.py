@@ -24,6 +24,10 @@ class ContactUs(ListView):
         context['staff'] = StaffMember.objects.filter(show_on_contact_us=True)
         return context
 
+def shipping(request):
+    locations = Location.objects.all()
+    return render(request, 'web/shipping.html',{'locations':locations})
+
 
 def aboutus(request):
     return render(request, 'web/aboutus.html')

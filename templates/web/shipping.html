@@ -1,0 +1,108 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% load cropping %}
+{% block head_scripts %}
+<style type="text/css">
+    #form label{
+        display: inline-block;
+        width:80px;
+        
+        
+    }
+    #form label:active{
+        content: ":"
+    }
+ </style>
+{% endblock %}
+{% block content %}
+  <div class="container" style="min-height: 350px">
+    <div class="row">
+      <div class="grid_12" >
+        <h2>Shipping Rates</h2>
+        <p>To calculate shipping costs, first select the location product will be shipped from,
+            then enter your address.
+        </p>
+
+        <div id='form' class="row">
+            <div class="grid_10">
+            <p>
+            <label for="location">Yard</label>
+            <select id="location">
+                 {% for location in locations %}
+                <option value="{{ location.address }},{{ location.city }}, TX {{ location.zip }}">{{ location.name }}</option>
+                {% endfor %}
+            </select>
+            </p>
+            <p>
+            <label for="truckType">Truck Type</label>
+            <select id="truckType">
+                <option value="DUMP">Dump Truck</option>
+                <option value="FLAT">Flatbed</option>
+            </select>
+            </p>
+            <p>
+            <label for="toStreet">Street</label>
+            <input type="text" id="toStreet" />
+            </p>
+            <p>
+            <label for="toZip">Zip</label>
+            <input type="number" id="toZip" />
+            </p>
+            <p>
+            <input type="button" value="Calculate Shipping Price" onclick="calculate();" />
+            </p>
+        <div>
+        <div id="results" class="grid_10">
+
+        </div>
+    </div>
+  </div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEznB690IUUa_57YBKvlCm49axsKYC7PY&callback=initMap"></script>
+<script>
+    var myStuff = {
+        zones: 
+            [
+            {MaxMilage:5, cost:{DUMP:25, FLAT:85}},
+            {MaxMilage:10, cost:{DUMP:30, FLAT:95}},
+            {MaxMilage:15, cost:{DUMP:35, FLAT:110}},
+            {MaxMilage:25, cost:{DUMP:45, FLAT:120}},
+            {MaxMilage:35, cost:{DUMP:50, FLAT:130}},
+            {MaxMilage:45, cost:{FLAT:40}}]
+    };
+    function initMap(){
+     myStuff.service = new google.maps.DistanceMatrixService;
+        
+    }
+    function calculate(){
+        
+        var toStreet = document.getElementById('toStreet').value;
+        var toZip = document.getElementById('toZip').value;
+        var toAddress = toStreet + ', ' + toZip;
+
+        myStuff.service.getDistanceMatrix({
+            'origins': [document.getElementById('location').value],
+            'destinations':  [toAddress],
+            'unitSystem': google.maps.UnitSystem.IMPERIAL,
+            'travelMode': 'DRIVING'
+        }, function(response, status){
+           let milageText = response.rows[0].elements[0].distance.text;
+           let miles = parseFloat(milageText);
+           document.getElementById('results').innerHTML = "Distance: " + milageText;
+           let zoneMilage = myStuff.zones.find(o => o.MaxMilage >= miles);
+           var type = document.getElementById("truckType").value;
+           if(zoneMilage && zoneMilage.cost[type]){
+               cost = "$" + zoneMilage.cost[type];
+           }else
+           {
+               cost = "Call for quote";
+           }
+           
+           document.getElementById('results').innerHTML = "Distance: " + milageText + "<br /> Cost:" + cost; 
+        
+           
+        });
+    }
+    
+</script>
+
+{% endblock %}
