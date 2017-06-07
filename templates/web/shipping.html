@@ -74,12 +74,12 @@
     var myStuff = {
         zones: 
             [
-            {MaxMilage:5, cost:{DUMP:25, FLAT:85}},
-            {MaxMilage:10, cost:{DUMP:30, FLAT:95}},
-            {MaxMilage:15, cost:{DUMP:35, FLAT:110}},
-            {MaxMilage:25, cost:{DUMP:45, FLAT:120}},
-            {MaxMilage:35, cost:{DUMP:50, FLAT:130}},
-            {MaxMilage:45, cost:{FLAT:40}}]
+            {MaxMilage:3, cost:{DUMP:25, FLAT:85}},
+            {MaxMilage:6, cost:{DUMP:30, FLAT:95}},
+            {MaxMilage:10, cost:{DUMP:35, FLAT:110}},
+            {MaxMilage:14, cost:{DUMP:45, FLAT:120}},
+            {MaxMilage:20, cost:{DUMP:50, FLAT:130}},
+            {MaxMilage:25, cost:{FLAT:140}}]
     };
     function initMap(){
         myStuff.map = new google.maps.Map(document.getElementById('map'), {
@@ -124,6 +124,7 @@
         var toZip = document.getElementById('toZip').value;
         var toAddress = toStreet + ', ' + toZip;
         var resultsElement = document.getElementById('results');
+        resultsElement.innerHTML = "";
         var fromAddress = document.getElementById('location').value;
         myStuff.fromAddress = fromAddress;
         myStuff.service.getDistanceMatrix({
