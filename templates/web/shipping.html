@@ -37,29 +37,31 @@
         <div class="grid_4">
             <p>
             <label for="location">Yard</label>
-            <select id="location">
-                    {% for location in locations %}
-                <option value="{{ location.address }},{{ location.city }}, TX {{ location.zip }}">{{ location.name }}</option>
+            <select id="location" onchange="formValueChanged()">
+                <option value="">SELECT YARD</option>
+                {% for location in locations %}
+                    <option value="{{ location.address }},{{ location.city }}, TX {{ location.zip }}">{{ location.name }}</option>
                 {% endfor %}
             </select>
             </p>
             <p>
             <label for="truckType">Truck Type</label>
-            <select id="truckType">
-                <!-- <option value="DUMP">Dump Truck</option> -->
+            <select id="truckType" onchange="formValueChanged()">
+                <option value="">SELECT TRUCK TYPE</option>
+                <option value="DUMP">Dump Truck</option>
                 <option value="FLAT">Flatbed</option>
             </select>
             </p>
             <p>
             <label for="toStreet">Street</label>
-            <input type="text" id="toStreet" placeholder="Street Address" />
+            <input onkeypress="formValueChanged()" type="text" id="toStreet" placeholder="Street Address" />
             </p>
             <p>
-            <label for="toZip">Zip</label>
+            <label for="formValueChanged()">Zip</label>
             <input type="number" id="toZip" placeholder="Zip Code" />
             </p>
             <p>
-            <input type="button" value="Calculate Shipping Price" onclick="calculate();" />
+            <input id="calculateButton" type="button" value="Calculate Shipping Price" onclick="calculate();" disabled="disabled" />
             </p>
             <span id="results"></span>
         </div>
@@ -74,14 +76,35 @@
     var myStuff = {
         zones: 
             [
-            {MaxMilage:3, cost:{DUMP:25, FLAT:85}},
-            {MaxMilage:6, cost:{DUMP:30, FLAT:95}},
-            {MaxMilage:10, cost:{DUMP:35, FLAT:110}},
-            {MaxMilage:14, cost:{DUMP:45, FLAT:120}},
-            {MaxMilage:20, cost:{DUMP:50, FLAT:130}},
-            {MaxMilage:25, cost:{FLAT:140}}]
+            {ZoneID: 'SH1', MaxMilage:3, cost:{DUMP:35, FLAT:95}},
+            {ZoneID: 'SH2', MaxMilage:6, cost:{DUMP:40, FLAT:105}},
+            {ZoneID: 'SH3', MaxMilage:10, cost:{DUMP:50, FLAT:120}},
+            {ZoneID: 'SH4', MaxMilage:15, cost:{DUMP:55, FLAT:130}},
+            {ZoneID: 'SH5', MaxMilage:20, cost:{DUMP:65, FLAT:135}},
+            {ZoneID: 'SH6', MaxMilage:25, cost:{DUMP:75, FLAT: 140}},
+            {ZoneID: 'SH7', MaxMilage:35, cost:{DUMP:95, FLAT: 155}}]
     };
+    function formValueChanged(){
+        
+        resetResults();
+        if(
+            document.getElementById('location').value != '' &&
+            document.getElementById('truckType').value != '' &&
+            document.getElementById('toStreet').value != '' 
+        ){
+            document.getElementById('calculateButton').removeAttribute('disabled');
+        }else{
+            document.getElementById('calculateButton').disabled = "disabled";
+        }
+        
+            
+    }
+    function resetResults(){
+        document.getElementById('results').innerHTML = "";
+    }
     function initMap(){
+        
+
         myStuff.map = new google.maps.Map(document.getElementById('map'), {
             center: {lat:30.3975305,lng:-97.92643059999999},
             zoom: 10
@@ -96,6 +119,7 @@
         var options = document.getElementById('location').options;
         for(var i = 0; i < options.length; i++){
             option = options[i];
+            if(option.value == "") continue;
             addPinFor(option);
         }
     }
@@ -122,7 +146,7 @@
         
         var toStreet = document.getElementById('toStreet').value;
         var toZip = document.getElementById('toZip').value;
-        var toAddress = toStreet + ', ' + toZip;
+        var toAddress = toStreet + ',' + toZip;
         var resultsElement = document.getElementById('results');
         resultsElement.innerHTML = "";
         var fromAddress = document.getElementById('location').value;
@@ -149,8 +173,10 @@
            {
                cost = "Call for quote";
            }
+           var zoneId = zoneMilage.ZoneID + type.substr(0,1);
+           resultsElement.innerHTML = "Zone: " + zoneId + "<br />" + 
+                "Distance: " + milageText + "<br />" + " Price:" + cost
            
-           resultsElement.innerHTML = "Distance: " + milageText + "<br /> Cost:" + cost; 
         
            
         });
