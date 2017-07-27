@@ -162,3 +162,17 @@ class Special(SortableNamedModel):
     html = models.TextField(blank = True, null = True)
     href = models.CharField(null = True, blank = True, max_length = 254, default = None)
     """
+
+class DeliveryCharge(SortableNamedModel):
+    max_milage = models.DecimalField(null = False, blank = False, decimal_places=2, max_digits = 15,
+        help_text="The maximum miles allowed for this rate")
+    dump_rate = models.DecimalField(null = True, blank = True, decimal_places=2, max_digits = 15,
+        help_text = "The price for dump truck delivery")
+    flatbed_rate = models.DecimalField(null = True, blank = True, decimal_places=2, max_digits = 15,
+        help_text = "The price for flatbed delivery")
+    lookup_id = models.CharField(null = False, blank =False, max_length = 15, default = None, 
+        help_text = 'Quickbooks Lookup')
+    
+    class Meta:
+        ordering = ['lookup_id']
+    

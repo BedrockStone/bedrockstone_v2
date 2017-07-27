@@ -6,7 +6,7 @@ from image_cropping import ImageCroppingMixin
 from modeltranslation.admin import TranslationAdmin
 
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture, \
-    ContentPage, MenuItem, ProductImage
+    ContentPage, MenuItem, ProductImage, DeliveryCharge
 
 
 class MyAdmin(AdminSite):
@@ -117,3 +117,9 @@ class MenuItemAdmin(TranslationAdmin):
     exclude = ['long_description']
 
 admin_site.register(MenuItem, MenuItemAdmin)
+
+class DeliveryChargeAdmin(admin.ModelAdmin):
+   fields = ('max_milage', 'dump_rate', 'flatbed_rate','lookup_id')
+   list_display = ('lookup_id','dump_rate','flatbed_rate')
+
+admin_site.register(DeliveryCharge, DeliveryChargeAdmin)

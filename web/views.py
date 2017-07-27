@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage
+from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage, DeliveryCharge
 from django.utils.translation import ugettext as _
 
 
@@ -26,7 +26,8 @@ class ContactUs(ListView):
 
 def shipping(request):
     locations = Location.objects.all()
-    return render(request, 'web/shipping.html',{'locations':locations})
+    rates = DeliveryCharge.objects.all()
+    return render(request, 'web/shipping.html',{'locations':locations,'rates':rates})
 
 
 def aboutus(request):

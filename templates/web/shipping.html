@@ -74,15 +74,22 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEznB690IUUa_57YBKvlCm49axsKYC7PY&callback=initMap"></script>
 <script>
     var myStuff = {
-        zones: 
+        dynamicZones: 
             [
+            {% for rate in rates %}
+                {ZoneID: '{{rate.lookup_id}}', MaxMilage:{{rate.max_milage}}, cost:{DUMP:{{rate.dump_rate}},FLAT:{{rate.flatbed_rate}}}},
+            {% endfor %}
+            ],
+            zones:[
+            
             {ZoneID: 'D1', MaxMilage:3, cost:{DUMP:35, FLAT:95}},
             {ZoneID: 'D2', MaxMilage:6, cost:{DUMP:40, FLAT:105}},
             {ZoneID: 'D3', MaxMilage:10, cost:{DUMP:50, FLAT:120}},
             {ZoneID: 'D4', MaxMilage:15, cost:{DUMP:55, FLAT:130}},
             {ZoneID: 'D5', MaxMilage:20, cost:{DUMP:65, FLAT:135}},
             {ZoneID: 'D6', MaxMilage:25, cost:{DUMP:75, FLAT: 140}},
-            {ZoneID: 'D7', MaxMilage:35, cost:{DUMP:95, FLAT: 155}}]
+            {ZoneID: 'D7', MaxMilage:35, cost:{DUMP:95, FLAT: 155}}
+            ]
     };
     function formValueChanged(){
         
