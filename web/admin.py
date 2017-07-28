@@ -120,6 +120,6 @@ admin_site.register(MenuItem, MenuItemAdmin)
 
 class DeliveryChargeAdmin(admin.ModelAdmin):
    fields = ('max_milage', 'dump_rate', 'flatbed_rate','lookup_id')
-   list_display = ('lookup_id','dump_rate','flatbed_rate')
+   list_display = ('lookup_id','max_miles', 'dump_rate','flatbed_rate')
 
 admin_site.register(DeliveryCharge, DeliveryChargeAdmin)
