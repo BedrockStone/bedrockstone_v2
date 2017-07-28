@@ -74,13 +74,13 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEznB690IUUa_57YBKvlCm49axsKYC7PY&callback=initMap"></script>
 <script>
     var myStuff = {
-        dynamicZones: 
+        zones: 
             [
             {% for rate in rates %}
                 {ZoneID: '{{rate.lookup_id}}', MaxMilage:{{rate.max_milage}}, cost:{DUMP:{{rate.dump_rate}},FLAT:{{rate.flatbed_rate}}}},
             {% endfor %}
             ],
-            zones:[
+            old_zones:[
             
             {ZoneID: 'D1', MaxMilage:3, cost:{DUMP:35, FLAT:95}},
             {ZoneID: 'D2', MaxMilage:6, cost:{DUMP:40, FLAT:105}},
