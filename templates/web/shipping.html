@@ -79,6 +79,7 @@
             {% for rate in rates %}
                 {ZoneID: '{{rate.lookup_id}}', MaxMilage:{{rate.max_milage}}, cost:{DUMP:{{rate.dump_rate}},FLAT:{{rate.flatbed_rate}}}},
             {% endfor %}
+                {ZoneID:'DQ', MaxMilage:1000000,cost:{}}
             ]
     };
     function formValueChanged(){
@@ -168,7 +169,7 @@
                cost = "$" + zoneMilage.cost[type];
            }else
            {
-               cost = "Call for quote";
+               cost = "SEE MANAGER FOR PRICE QUOTE";
            }
            var zoneId = zoneMilage.ZoneID + type.substr(0,1);
            resultsElement.innerHTML = "Zone: " + zoneId + "<br />" + 
