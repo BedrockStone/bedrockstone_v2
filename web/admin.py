@@ -55,7 +55,7 @@ class ProductAdmin(ImageCroppingMixin, TranslationAdmin):
     list_filter = ('category__name',)
     list_display = ('name', 'image_tag')
     readonly_fields = ('image_tag', )
-    fields = ['name','slug', 'category', 'image', 'cropped','retail_price', 'sort_order', 
+    fields = ['name','slug', 'category', 'image', 'cropped','retail_price','sold_out', 'sort_order', 
     'short_description', 'long_description', 'more_images_text' ]
     inlines = [ProductImageInlineAdmin]
 
