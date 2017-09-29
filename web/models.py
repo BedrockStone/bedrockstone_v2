@@ -155,15 +155,12 @@ class ContentPage(ModelWithPicture):
 
 class MenuItem(SortableNamedModel):
     parent = models.ForeignKey("MenuItem", null=True, blank=True, help_text="The item to make this a subitem of.")
-"""
+
 class Special(SortableNamedModel):
     start_date = models.DateField()
     end_date = models.DateField()
-    image = models.ImageField(upload_to=upload_image, default='product/no_image.jpeg')
-    cropped = ImageRatioField('image', free_crop = True, null = True, blank = True)
-    html = models.TextField(blank = True, null = True)
-    href = models.CharField(null = True, blank = True, max_length = 254, default = None)
-    """
+    header_color = models.CharField(null=True, blank=True, max_length=15, default=None)
+    
 
 class DeliveryCharge(SortableNamedModel):
     max_milage = models.DecimalField(null = False, blank = False, decimal_places=2, max_digits = 15,

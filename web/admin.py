@@ -6,7 +6,7 @@ from image_cropping import ImageCroppingMixin
 from modeltranslation.admin import TranslationAdmin
 
 from web.models import Category, Product, Location, Job, GalleryItem, StaffMember, Project, ProjectType, LocationPicture, \
-    ContentPage, MenuItem, ProductImage, DeliveryCharge
+    ContentPage, MenuItem, ProductImage, DeliveryCharge, Special
 
 
 class MyAdmin(AdminSite):
@@ -123,3 +123,8 @@ class DeliveryChargeAdmin(admin.ModelAdmin):
    list_display = ('lookup_id','max_milage', 'dump_rate','flatbed_rate')
 
 admin_site.register(DeliveryCharge, DeliveryChargeAdmin)
+
+class SpecialAdmin(admin.ModelAdmin):
+    pass
+
+admin_site.register(Special, SpecialAdmin)

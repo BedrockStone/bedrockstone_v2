@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage, DeliveryCharge
+from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage, DeliveryCharge, Special
 from django.utils.translation import ugettext as _
-
+from datetime import datetime, timedelta, time
 
 def index(request):
     g = GalleryItem.objects.all()
@@ -87,4 +87,6 @@ def coverage(request):
     return render(request, 'web/coverage.html')
 
 def specials(request):
-    return render(request, 'web/specials.html')
+    specials = Special.objects.filter(start_date__lte = datetime.now(), end_date__gte = datetime.now())
+
+    return render(request, 'web/specials.html', {'specials':specials})

@@ -53,44 +53,25 @@
         <p>Not only does Bedrock Stone &amp; Design offer fair every day pricing, we
           run specials regularly. Check them out here.
         </p>
-        <div class='special' onclick="window.location='/products/building_stones/'">
-          <h3>$20 off Drystack</h3>
-          <strong>$20 off each ton of drystack stone.</strong>
+        {% for special in specials %}
+        <div class='special' onclick="window.location='{{special.slug}}'">
+          {% if special.header_color %}
+          <h3 style="color: {{ special.header_color }}">{{ special.name }}</h3>
+          {% else %}
+          <h3>{{ special.name }}</h3>
+          {% endif %}
+          <strong>{{special.short_description}}</strong>
           <br />
           <p>
-            Hurricane Harvey will likely cause significant runoff damage to landscapes in our area. 
-            To help out our community, 
-            Bedrock Stone will be discounting all drystack products by $20 a ton.
+           {{special.long_description}}
           </p>
           <div class="valid_through">
-            Offer valid through 9-30-2017
+            Offer valid through {{special.end_date}}
           </div>
           
         </div>
-        <!--
-        <div class='special' onclick="window.location='/products/building_stones/'">
-          <h3 class="pink">Weekly Special</h3>
-          <strong>$10 off each TON, Buff Lueders Patio</strong>
-          <br />
-          <p>
-              Normal price, $295, discounted price, $285. Minimum purchase, 1 Ton.
-          </p>
-          <div class="valid_through">
-            Offer valid through 7-29-2017
-          </div>
-          -->
-        </div>
-        <div style='display:none;' class='special' onclick="window.location='/product/old_chicago_brick'">
-          <h3>Chicago Brick</h3>
-          <strong>$0.25 off, Chicago Brick</strong>
-          <br />
-          <p>
-              Normal price, $1.50 each, discounted price, $1.25.
-          </p>
-          <div class="valid_through">
-            Offer valid through 7-15-2017
-          </div>
-          
+        {% endfor %}
+        
         </div>
       </div>
     </div>
