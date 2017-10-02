@@ -10,6 +10,8 @@
     {% blocktrans %}Bedrock Stone &amp; Design has 4 convenient locations to serve you in the Austin, Tx area. <br />
         Please direct all inquries and questions to one of the following.
         {% endblocktrans %}
+    <div class="row">
+    <div class="grid_5">
     <ul style="padding-top: 1em; overflow: auto;">
      {% for member in staff %}
             <li><h4 style="display: inline">{{ member.name }}</h4> {% if member.title %} - {{ member.title }}{% endif %}<br />
@@ -19,7 +21,11 @@
             </li>
         {% endfor %}
     </ul>
-
+    </div>
+    <div class="grid_3">
+        <a target="_mail" href="mailto:contact@bedrockstoneanddesign.com?subject=Sales inquiry" class="btn">Sales Inquiry</a>
+    </div>
+    </div>
 {% endblock %}
 {% block main_content %}
      <div class="row">
