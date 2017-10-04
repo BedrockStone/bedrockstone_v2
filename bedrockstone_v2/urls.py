@@ -24,6 +24,8 @@ urlpatterns = i18n_patterns(url(r'^$', views.index, name='index'),
                        url(r'^showcase/$', views.VirtualShowcase.as_view(), name='showcase'),
                        url(r'^showcase/(.+)/$', views.Project.as_view(), name='project_type'),
                        url(r'^resources/coverage/$', views.coverage, name='coverage'),
+                       url(r'^salesInquiry/', views.salesInquiry, name="salesInquiry"),
+                       url(r'^thankyou/', views.thankyou, name="thankyou"),
                        url(r'^specials/$', views.specials, name='specials'),\
                        url(r'^(.+)/', views.Content.as_view(), name='content'),
                        

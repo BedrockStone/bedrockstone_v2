@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from web.models import Job, Location, Category, GalleryItem, StaffMember, Product, ProjectType, ContentPage, DeliveryCharge, Special
 from django.utils.translation import ugettext as _
 from datetime import datetime, timedelta, time
+from web.core import send_email
 
 def index(request):
     g = GalleryItem.objects.all()
@@ -90,3 +91,20 @@ def specials(request):
     specials = Special.objects.filter(start_date__lte = datetime.now(), end_date__gte = datetime.now())
 
     return render(request, 'web/specials.html', {'specials':specials})
+
+def salesInquiry(request):
+    
+    if request.method == "POST":
+        body = "New Sales Inquiry from Web. \n\n\n"
+        for name in request.POST:
+            if name != "csrfmiddlewaretoken":
+                body += name + ": " + request.POST[name]+ "\n\n"
+
+        
+        send_email(request.POST.get('emailAddress'),['contact@bedrockstoneanddesign.com'], 'Sales Inquery from ' + request.POST.get('name'), body )
+        return redirect("thankyou")
+
+    return render(request, "web/sales_lead.html")
+
+def thankyou(request):
+    return render(request, "web/thankyou.html")

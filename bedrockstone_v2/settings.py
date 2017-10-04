@@ -159,3 +159,11 @@ AWS_HEADERS = {
 AWS_IS_GZIPPED = True
 # image resizing settings
 IMAGE_SIZES = {'thumbnail': (220, 165), 'medium_image': (900, 675)}
+
+#EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER = 'smtp@bedrockstoneanddesign.com'
+EMAIL_HOST_PASSWORD = 'bedrock99922'
+DEFAULT_EMAIL_FROM = 'smtpg@bedrockstoneanddesign.com'

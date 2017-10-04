@@ -1,0 +1,46 @@
+{% extends 'web/content_page.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block header_title %}{% trans "Contact Us" %}{% endblock %}
+{% block head_scripts %}
+<link href="{% static 'js/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/form.css' %}" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    #form label label{
+        font-size: 15px;
+        min-height: 25px;
+        font-weight: bold;
+        margin-top:.2em;
+    }
+</style>
+{% endblock %}
+{% block image_grid %}{% endblock %}
+{% block content_blurb %}
+    {% blocktrans %}
+        Please fill out the form below, and one of our sales representatives will contact 
+        you shortly.
+    {% endblocktrans %}
+    <br />
+    <form method="POST" id="form">
+        {% csrf_token %} 
+            <label>
+                <label class="message" for="name">Full Name:</label>
+                <input id="name" name="name" placeholder="Full Name" required="required" />
+            </label>
+            <label>
+                <label for="emailAddress">Email Address:</label>
+                <input id="emailAddress" name="emailAddress" placeholder="Email Address" required="required" type="email" />
+            </label>
+            <label>
+                <label for="phoneNumber">Phone Number:</label>
+                <input id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+            </label>
+            <label>
+                <label for="info">Info about your project:</label>
+                <textarea id="info" name="Information"></textarea>
+            </label>
+            <label class="btns">
+                <button type="submit" value="OK" class="btn">Submit</button>
+            </label>
+    </form>
+{% endblock %}
