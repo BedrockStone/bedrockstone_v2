@@ -46,14 +46,14 @@
                     {% endif %}
                 </div>
                 {% if product.short_description %}
-                    <a title="{{ product.name }}" href='{% url 'productDetail' product.slug %}' style="position: relative; display:block; height: 165px;">
+                    <a title="{{ product.name }}" href='{% url 'productDetail' product.slug %}' style="position: relative; display:block; height: 220px;">
                         <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                         {% if product.sold_out%}
                         <img src="{% static 'images/sold.png' %}" style="position:absolute; top:0" />
                         {% endif %}
                     </a>
                 {% else %}
-                    <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" width=2000 %}" class="fancybox" style="position: relative; display:block; height: 165px;">
+                    <a title="{{ product.name }}" href="{% cropped_thumbnail product "cropped" width=2000 %}" class="fancybox" style="position: relative; display:block; height: 220px;">
                         <img src="{% cropped_thumbnail product "cropped" height=165 %}" />
                         {% if product.sold_out%}
                         <img src="{% static 'images/sold.png' %}" style="position:absolute; top:0" />
