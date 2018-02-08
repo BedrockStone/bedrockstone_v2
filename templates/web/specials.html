@@ -42,6 +42,7 @@
     font-size: small;
     margin: 0 auto;
     text-align: center;
+    text-transform: uppercase;
   }
 </style>
 {% endblock %}
@@ -50,9 +51,6 @@
     <div class="row">
       <div class="grid_12" >
         <h2>Bedrock Specials</h2>
-        <p>Not only does Bedrock Stone &amp; Design offer fair every day pricing, we
-          run specials regularly. Check them out here.
-        </p>
         {% for special in specials %}
         <div class='special' onclick="window.location='{{special.slug}}'">
           {% if special.header_color %}
@@ -66,6 +64,7 @@
            {{special.long_description}}
           </p>
           <div class="valid_through">
+            Coupon valid at time of purchase.<br />
             Offer valid through {{special.end_date}}
           </div>
           
