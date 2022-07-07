@@ -16,7 +16,7 @@ jsonpointer==1.0
 oauth==1.0.1
 prettytable==0.7.2
 rcssmin==1.0.6
-requests==2.2.1
+requests==2.20.0
 rjsmin==1.0.12
 six==1.5.2
 ssh-import-id==3.21
